@@ -1,7 +1,1 @@
-ÉLÉMENTAIRE ! V4.1 — Collection Mystère
-Déposez index.html à la racine de votre dépôt GitHub Pages.
-Les 118 éléments sont masqués avant déblocage. Deux questions pour révéler chaque carte.
-Six raretés ludiques et révélation animée. Progression V4 conservée via localStorage.
-Les illustrations WebP individuelles ne sont PAS encore réalisées. Pour les ajouter, créez assets/elements/001-h.webp, etc.
-La carte affiche un visuel de substitution en attendant.
-Conservez une sauvegarde de votre V4 actuelle avant remplacement.
+Six cadres PNG RGBA transparents. Placer dans assets/cadres/ sur GitHub Pages. Les images originales JPEG ont été détourées automatiquement ; vérifier les contours sur fond sombre avant publication. Aucun fichier de l’application n’est modifié.
