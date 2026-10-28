@@ -1,5 +1,7 @@
-ÉLÉMENTAIRE ! V4 — Les 118 éléments
-
-Déposez index.html à la racine du dépôt GitHub Pages, en remplaçant l'ancien fichier.
-Toutes les fonctionnalités V3 restent dans le même fichier. La collection V4 utilise sa propre sauvegarde locale (elementaire-v4-elements).
-La V4 contient 118 éléments, un tableau périodique, une recherche, des familles et des défis d'identification. Les illustrations individuelles premium et des missions plus approfondies restent à développer.
+ÉLÉMENTAIRE ! V4.1 — Collection Mystère
+Déposez index.html à la racine de votre dépôt GitHub Pages.
+Les 118 éléments sont masqués avant déblocage. Deux questions pour révéler chaque carte.
+Six raretés ludiques et révélation animée. Progression V4 conservée via localStorage.
+Les illustrations WebP individuelles ne sont PAS encore réalisées. Pour les ajouter, créez assets/elements/001-h.webp, etc.
+La carte affiche un visuel de substitution en attendant.
+Conservez une sauvegarde de votre V4 actuelle avant remplacement.
