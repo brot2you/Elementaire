@@ -399,6 +399,48 @@ table.compte th,table.compte td{padding:5px 10px;border-bottom:1px solid rgba(26
 .pt-frame{display:block;width:100%;height:calc(100vh - 130px);min-height:600px;border:3px solid var(--ink);border-radius:18px;box-shadow:var(--ombre);background:var(--bg)}
 .onglet .pastille{display:inline-block;min-width:1.4em;margin-left:6px;padding:0 6px;border-radius:999px;background:var(--ko);color:#fff;font-size:.75rem;line-height:1.5}
 .lien + .lien{margin-left:14px}
+.boutons-tete{display:flex;gap:10px;flex-wrap:wrap;align-self:flex-start}
+.boutons-tete .reglages-btn{align-self:auto}
+.sv-panneau{max-width:640px}
+.becher-d.agite{animation:agite .5s}
+@keyframes agite{20%{transform:rotate(-4deg)}40%{transform:rotate(4deg)}60%{transform:rotate(-3deg)}80%{transform:rotate(2deg)}}
+.balance-d{display:flex;flex-direction:column;align-items:center;gap:6px;background:var(--ink);color:#fff;border-radius:14px;padding:14px}
+.balance-d .ecran{font-family:'Courier New',monospace;font-weight:700;font-size:1.4rem;background:#B8F5C8;color:#0b2a14;padding:6px 12px;border-radius:6px}
+.balance-d small{opacity:.8;font-weight:600}
+.balance-d .lecture{color:#fff;font-size:.85rem;text-align:center}
+.atome-btn{display:inline-flex;align-items:center;gap:6px;background:var(--paper);border:2.5px solid var(--ink);border-radius:999px;padding:6px 14px 6px 6px;font-family:var(--display);font-weight:800;box-shadow:2px 2px 0 var(--ink)}
+.atome-btn i{width:24px;height:24px;border-radius:50%;border:2px solid var(--ink)}
+.plan-travail{min-height:90px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;padding:10px;border:2.5px dashed rgba(26,16,51,.35);border-radius:14px;background:var(--paper)}
+.plan-travail.assemble{border-style:solid;border-color:var(--ok);animation:assemble .6s}
+.plan-travail.assemble .atome-pose{margin:0 -8px}
+@keyframes assemble{40%{transform:scale(1.06)}}
+.atome-pose{width:46px;height:46px;border-radius:50%;border:2.5px solid var(--ink);font-family:var(--display);font-weight:800;box-shadow:inset -5px -6px 0 rgba(0,0,0,.18),2px 2px 0 var(--ink);transition:margin .4s}
+.oscillo{max-height:260px}
+.souffle{animation:souffle 1s linear infinite}
+@keyframes souffle{from{transform:translateX(-6px);opacity:.3}50%{opacity:1}to{transform:translateX(10px);opacity:.2}}
+.exp-souvenir{margin:8px 0;padding:8px 12px;border-radius:12px;border:2px dashed rgba(26,16,51,.35);background:#FFF6D6;font-weight:600}
+.exp-souvenir.obtenu{border-style:solid;border-color:var(--ink);background:var(--y);box-shadow:2px 2px 0 var(--ink)}
+.sous-exp{font-family:var(--display);margin:0 0 8px}
+.morse-lampe{display:flex;align-items:center;gap:16px;margin-bottom:10px}
+.morse-lampe .ampoule{width:64px;height:64px;border-radius:50%;border:3px solid var(--ink);background:#3a3550;transition:background .05s,box-shadow .05s}
+.morse-lampe .ampoule.on{background:#FFF27A;box-shadow:0 0 30px 10px rgba(255,228,92,.8)}
+.morse-lampe .role{font-weight:600;color:var(--muted)}
+.morse-table{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:4px;margin:6px 0 12px;font-family:'Courier New',monospace;font-size:.9rem}
+.morse-table span{background:var(--paper);border:1.5px solid rgba(26,16,51,.25);border-radius:8px;padding:2px 6px}
+.saisie{border:2px solid var(--ink);border-radius:10px;padding:8px 10px;font-weight:700;text-transform:uppercase;width:160px}
+.appareils{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.appareils .puce small{opacity:.75}
+.jauge-i .ji-barre{position:relative;height:22px;border:2.5px solid var(--ink);border-radius:999px;background:var(--paper);overflow:hidden}
+.jauge-i .ji-barre span{display:block;height:100%;width:0;transition:width .3s}
+.jauge-i .ji-barre i{position:absolute;top:0;bottom:0;width:3px;background:var(--ink)}
+.exp-svg.espace{max-height:460px}
+.sv-panneau h3{margin:18px 0 4px}
+.sv-etat{background:var(--bg);border:2px dashed rgba(26,16,51,.3);border-radius:14px;padding:10px 14px;margin:10px 0}
+.sv-resume{font-weight:700;margin:0 0 4px}
+.sv-panneau textarea{font-family:'Courier New',monospace;font-size:.8rem;word-break:break-all}
+.sv-apercu{margin-top:12px;border:2.5px solid var(--ink);border-radius:14px;padding:12px 14px;background:#E8FBF1;box-shadow:var(--ombre-s)}
+.sv-apercu p{margin:0 0 6px}
+.sv-apercu.erreur-bloc{background:#FFE3E6;font-weight:700}
 </style>
 </head>
 <body>
@@ -410,7 +452,7 @@ table.compte th,table.compte td{padding:5px 10px;border-bottom:1px solid rgba(26
       <h1>Élémentaire&nbsp;!</h1>
       <p>La physique-chimie du collège, élément par élément. Chaque notion est une case du tableau des notions : stabilise-les toutes.</p>
     </div>
-    <button class="reglages-btn" id="btn-reglages" type="button" aria-haspopup="dialog">Aa Affichage</button>
+    <div class="boutons-tete"><button class="reglages-btn" id="btn-sauvegarde" type="button" aria-haspopup="dialog">Sauvegarde</button><button class="reglages-btn" id="btn-reglages" type="button" aria-haspopup="dialog">Aa Affichage</button></div>
   </div>
 </header>
 
@@ -480,7 +522,7 @@ table.compte th,table.compte td{padding:5px 10px;border-bottom:1px solid rgba(26
   <section id="vue-labo" hidden>
     <div id="labo-accueil">
       <h2>Le labo</h2>
-      <p class="intro">Douze expériences à manipuler, chacune avec ses défis. Chaque défi réussi rapporte 2 boosters de cartes d’éléments. Une expérience s’ouvre dès qu’une de ses notions est débloquée dans le tableau des notions.</p>
+      <p class="intro">Vingt et une expériences à manipuler, chacune avec ses défis. Chaque défi réussi rapporte 2 boosters, et une expérience terminée donne une carte souvenir d’élément. Une expérience s’ouvre dès qu’une de ses notions est débloquée dans le tableau des notions.</p>
       <p class="labo-compte" id="labo-compte"></p>
       <div class="exp-grille" id="labo-liste"></div>
     </div>
@@ -488,7 +530,7 @@ table.compte th,table.compte td{padding:5px 10px;border-bottom:1px solid rgba(26
       <button class="btn sec" type="button" id="exp-retour">← Toutes les expériences</button>
       <div class="exp-tete"><div class="exp-guide" id="exp-guide"></div><div><h2 id="exp-titre"></h2><p class="exp-bulle" id="exp-bulle"></p></div></div>
       <p class="intro" id="exp-intro"></p>
-      <div class="bloc"><h3>Défis</h3><ul class="exp-defis" id="exp-defis"></ul><p class="consigne" id="exp-notions"></p></div>
+      <div class="bloc"><h3>Défis</h3><ul class="exp-defis" id="exp-defis"></ul><p class="exp-souvenir" id="exp-souvenir"></p><p class="consigne" id="exp-notions"></p></div>
       <div class="bloc exp-zone" id="exp-zone"></div>
       <div class="bloc" id="exp-conclusion-bloc" hidden><h3>Ce qu’il faut retenir</h3><p id="exp-conclusion"></p></div>
     </div>
@@ -589,6 +631,7 @@ table.compte th,table.compte td{padding:5px 10px;border-bottom:1px solid rgba(26
     </div>
     <div class="option"><label for="r-lexend" style="margin:0">Police Lexend (lecture facilitée)</label><input type="checkbox" id="r-lexend"></div>
     <div class="option"><label for="r-espace" style="margin:0">Espacement augmenté</label><input type="checkbox" id="r-espace"></div>
+    <div class="option"><label for="r-son" style="margin:0">Sons (défis réussis, notions stabilisées)</label><input type="checkbox" id="r-son"></div>
     <div class="option" style="display:block">
       <span>Mode prof : tout déverrouiller</span>
       <div id="prof-form" class="ligne" style="margin-top:8px"><div><input type="text" id="prof-code" placeholder="Code prof" autocomplete="off" aria-label="Code prof"></div><button class="btn sec" type="button" id="prof-ok">Valider</button></div>
@@ -601,6 +644,29 @@ table.compte th,table.compte td{padding:5px 10px;border-bottom:1px solid rgba(26
       <div class="actions"><button class="btn danger" type="button" id="r-oui">Oui, effacer</button><button class="btn sec" type="button" id="r-non">Annuler</button></div>
     </div>
     <div class="actions"><button class="btn" type="button" id="reg-fermer">Fermer</button></div>
+  </div>
+</div>
+
+<div class="voile" id="sauvegarde" hidden>
+  <div class="panneau sv-panneau" role="dialog" aria-modal="true" aria-labelledby="sv-titre">
+    <h2 id="sv-titre">Sauvegarde</h2>
+    <p class="consigne">Ta progression est enregistrée seulement sur cet appareil. Sauvegarde-la pour la retrouver sur une autre tablette, un autre ordinateur, ou après avoir vidé ton navigateur.</p>
+    <div class="sv-etat"><p class="sv-resume" id="sv-actuel"></p><p class="consigne" id="sv-derniere"></p></div>
+    <h3>Exporter</h3>
+    <div class="actions"><button class="btn" type="button" id="sv-telecharger">Télécharger un fichier</button><button class="btn sec" type="button" id="sv-afficher">Obtenir un code à copier</button></div>
+    <div id="sv-code-bloc" hidden>
+      <label for="sv-code">Ton code de sauvegarde <span class="consigne" id="sv-taille"></span></label>
+      <textarea id="sv-code" readonly rows="4" spellcheck="false"></textarea>
+      <div class="actions"><button class="btn sec" type="button" id="sv-copier">Copier le code</button></div>
+      <p class="consigne">Garde ce code en lieu sûr : envoie-le-toi par la messagerie de l’ENT ou colle-le dans un document.</p>
+    </div>
+    <h3>Importer</h3>
+    <div class="actions"><button class="btn sec" type="button" id="sv-choisir">Choisir un fichier de sauvegarde</button><input type="file" id="sv-fichier" accept=".json,application/json,text/plain" hidden></div>
+    <label for="sv-coller">Ou colle ton code ici</label>
+    <textarea id="sv-coller" rows="3" spellcheck="false" placeholder="ELEM1.…"></textarea>
+    <div class="actions"><button class="btn sec" type="button" id="sv-importer-code">Vérifier le code</button></div>
+    <div class="sv-apercu" id="sv-apercu" hidden aria-live="polite"></div>
+    <div class="actions"><button class="btn" type="button" id="sv-fermer">Fermer</button></div>
   </div>
 </div>
 
@@ -760,6 +826,9 @@ h3{font-family:var(--display);font-weight:800;font-size:1rem;margin:0 0 10px}
 .badge.niveau{background:var(--bl);color:#fff}
 .badge.pous{background:#D6F6FF;color:var(--ink)}
 .badge.rarete{background:var(--rc);color:#fff}
+.badge.souvenir{background:var(--y);color:var(--ink)}
+.souvenir-bloc{background:#FFF6D6}
+.souvenir-bloc p{margin:0 0 4px}
 .slot.lueur .face{box-shadow:0 0 28px 4px var(--rc);border-radius:6%;animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{50%{box-shadow:0 0 40px 10px var(--rc)}}
 
@@ -838,6 +907,43 @@ h3{font-family:var(--display);font-weight:800;font-size:1rem;margin:0 0 10px}
   .fiche{width:100%}
   .tableau{min-width:1000px;gap:4px}
 }
+/* Illustrations */
+.carte .illu{position:absolute;right:-.9em;bottom:-.4em;width:1.9em;height:1.9em;border-radius:50%;background:#fff;border:2px solid #1A1033;box-shadow:.12em .12em 0 #1A1033;padding:.2em;z-index:2}
+.carte .illu svg{width:100%;height:100%;display:block}
+.bloc-illu{display:flex;align-items:center;gap:14px}
+.grande-illu{width:72px;height:72px;flex:none;border-radius:16px;background:var(--bg);border:2.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);padding:8px}
+.grande-illu svg{width:100%;height:100%;display:block}
+.bloc-illu h3{margin:0 0 4px}
+/* Ouverture et cartes rares */
+.paquet.dechire{animation:dechire .55s ease-in}
+@keyframes dechire{0%{transform:rotate(-2deg)}20%{transform:rotate(-8deg) scale(1.05)}40%{transform:rotate(8deg) scale(1.08)}60%{transform:rotate(-6deg) scale(1.1)}100%{transform:scale(.6) translateY(40px);opacity:.2}}
+.slot{position:relative;isolation:isolate}
+.slot.tremble .tourne:not(.revele){animation:tremble .35s ease-in-out infinite}
+.slot.tremble .tourne:not(.revele) .verso{box-shadow:0 0 26px 6px var(--rc)}
+@keyframes tremble{0%,100%{transform:rotate(0)}25%{transform:rotate(-2.5deg) translateY(-2px)}75%{transform:rotate(2.5deg) translateY(-2px)}}
+.fx-rare{position:absolute;left:50%;top:42%;width:0;height:0;pointer-events:none;z-index:5}
+.fx-rayons{position:absolute;left:50%;top:42%;margin:-210px 0 0 -210px;width:420px;height:420px;border-radius:50%;z-index:-1;pointer-events:none;transition:opacity .8s;
+  background:repeating-conic-gradient(from 0deg,rgba(255,201,60,.75) 0 9deg,transparent 9deg 22deg);
+  -webkit-mask-image:radial-gradient(circle,#000 15%,transparent 68%);mask-image:radial-gradient(circle,#000 15%,transparent 68%);
+  animation:rayons 6s linear infinite,rayons-in .5s ease-out}
+.fx-rayons.fin{opacity:0}
+.fx-rayons.fx-mythique{background:repeating-conic-gradient(from 0deg,#FF4FA3 0 8deg,#FFC93C 8deg 16deg,#1ED6C9 16deg 24deg,#4D6BFF 24deg 32deg,transparent 32deg 40deg);opacity:.85;animation:rayons 3.5s linear infinite,rayons-in .5s ease-out,arc 2s linear infinite}
+@keyframes rayons{to{transform:rotate(360deg)}}
+@keyframes rayons-in{from{transform:scale(.2);opacity:0}}
+@keyframes arc{to{filter:hue-rotate(360deg)}}
+.fx-eclat{position:absolute;left:-5px;top:-5px;width:10px;height:10px;border-radius:2px;border:1.5px solid #1A1033;animation:eclat 1.3s cubic-bezier(.15,.7,.3,1) forwards;opacity:0}
+@keyframes eclat{0%{transform:translate(0,0) rotate(0) scale(.4);opacity:1}80%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) rotate(540deg) scale(1);opacity:0}}
+.fx-bandeau{position:absolute;left:50%;top:-22px;z-index:6;transform:translateX(-50%);white-space:nowrap;font-family:var(--display);font-weight:800;font-size:1.4rem;color:#fff;background:var(--r-legendaire);border:3px solid var(--ink);border-radius:999px;padding:4px 18px;box-shadow:4px 4px 0 var(--ink);animation:bandeau 2.6s ease-out forwards}
+.slot.r-mythique .fx-bandeau{background:linear-gradient(90deg,#FF4FA3,#FFC93C,#1ED6C9,#4D6BFF,#C452FF);font-size:1.6rem}
+@keyframes bandeau{0%{transform:translateX(-50%) scale(0) rotate(-10deg)}15%{transform:translateX(-50%) scale(1.25) rotate(4deg)}25%{transform:translateX(-50%) scale(1) rotate(0)}85%{opacity:1}100%{opacity:0;transform:translateX(-50%) translateY(-20px)}}
+.fx-flash{position:fixed;inset:0;z-index:60;pointer-events:none;animation:flash-ecran 1.1s ease-out forwards}
+.fx-flash-legendaire{background:radial-gradient(circle,rgba(255,236,170,.95),rgba(255,201,60,.4) 50%,transparent 80%)}
+.fx-flash-mythique{background:radial-gradient(circle,#fff,rgba(255,79,163,.55) 45%,rgba(77,107,255,.3) 70%,transparent 90%)}
+@keyframes flash-ecran{0%{opacity:0}12%{opacity:1}100%{opacity:0}}
+.tirage.secousse{animation:secousse .5s}
+@keyframes secousse{15%{transform:translate(-6px,2px)}30%{transform:translate(6px,-2px)}45%{transform:translate(-4px,1px)}60%{transform:translate(4px,0)}80%{transform:translate(-2px,0)}}
+.slot.lueur .tourne.revele .face{animation:pop-carte .6s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop-carte{0%{transform:rotateY(180deg) scale(.8)}60%{transform:rotateY(180deg) scale(1.12)}100%{transform:rotateY(180deg) scale(1)}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
 </style>
 </head>
@@ -931,6 +1037,7 @@ h3{font-family:var(--display);font-weight:800;font-size:1rem;margin:0 0 10px}
     <button class="fermer" id="r-fermer" type="button" aria-label="Fermer">×</button>
     <h2 id="r-titre">Réglages</h2>
     <div class="option"><label for="r-lexend">Police Lexend (lecture facilitée)</label><input type="checkbox" id="r-lexend" checked></div>
+    <div class="option"><label for="r-son">Sons (cartes, boosters, examens)</label><input type="checkbox" id="r-son" checked></div>
     <div class="option"><span>Mode prof : voir toutes les cartes (sans modifier la collection)</span></div>
     <div class="option"><input type="text" id="r-code" placeholder="Code prof" aria-label="Code prof" autocomplete="off"><button class="btn sec" id="r-prof" type="button">Valider</button></div>
     <p class="aide" id="r-msg" aria-live="polite"></p>
@@ -984,7 +1091,7 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
 
   /* ---------- État ---------- */
   var etat = charger();
-  function neuf() { return { cartes: {}, boosters: 2, pous: 0, pitie: 0, classe: '6e', theme: '', jourBonus: '', succes: [], stats: { series: 0, bonnes: 0, ouverts: 0 }, vus: [], lexend: true }; }
+  function neuf() { return { cartes: {}, boosters: 2, pous: 0, pitie: 0, classe: '6e', theme: '', jourBonus: '', succes: [], stats: { series: 0, bonnes: 0, ouverts: 0 }, vus: [], lexend: true, son: true, souvenirs: {}, cadeaux: [] }; }
   function charger() {
     var d = neuf();
     try {
@@ -1294,6 +1401,170 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
 
 
 
+  /* ---------- Illustrations légères (SVG dessinés) ---------- */
+  var K = 'stroke="#1A1033" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"';
+  var ICONES = {
+    bulles: '<circle cx="16" cy="30" r="8" fill="#BFE9FF" ' + K + '/><circle cx="31" cy="20" r="10" fill="#DDF4FF" ' + K + '/><circle cx="34" cy="36" r="5" fill="#BFE9FF" ' + K + '/><path d="M28 15a5 5 0 0 1 5-2" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>',
+    ballon: '<ellipse cx="24" cy="19" rx="12" ry="14" fill="#FF5A7A" ' + K + '/><path d="M24 33l-2 4h4z" fill="#FF5A7A" ' + K + '/><path d="M24 37c-3 4 3 6 0 10" fill="none" ' + K + '/><path d="M18 12a7 7 0 0 1 5-4" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>',
+    goutte: '<path d="M24 5C20 14 12 22 12 31a12 12 0 0 0 24 0c0-9-8-17-12-26z" fill="#4FC3F7" ' + K + '/><path d="M18 30a6 6 0 0 0 4 7" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>',
+    flamme: '<path d="M24 4c3 9 12 13 12 25a12 12 0 0 1-24 0c0-6 3-9 6-12 0 5 2 7 4 8-1-8 0-15 2-21z" fill="#FF7A3D" ' + K + '/><path d="M24 26c2 3 5 5 5 9a5 5 0 0 1-10 0c0-4 3-6 5-9z" fill="#FFD54F" ' + K + '/>',
+    lingot: '<path d="M6 34l6-14h24l6 14z" fill="#FFC93C" ' + K + '/><path d="M12 20l4-6h16l4 6" fill="#FFE08A" ' + K + '/><path d="M16 26h8" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>',
+    piece: '<circle cx="24" cy="24" r="16" fill="#D7DCE4" ' + K + '/><circle cx="24" cy="24" r="11" fill="none" ' + K + '/><path d="M21 19h5a3 3 0 0 1 0 6h-5v-6zm0 6h6a3 3 0 0 1 0 6h-6" fill="none" ' + K + '/>',
+    bague: '<circle cx="24" cy="30" r="11" fill="none" stroke="#1A1033" stroke-width="7"/><circle cx="24" cy="30" r="11" fill="none" stroke="#E0E6EE" stroke-width="3.5"/><path d="M18 14l6-8 6 8-6 6z" fill="#9BE7FF" ' + K + '/>',
+    cable: '<path d="M4 30c8 0 8-12 16-12s8 12 16 12" fill="none" stroke="#1A1033" stroke-width="7" stroke-linecap="round"/><path d="M4 30c8 0 8-12 16-12s8 12 16 12" fill="none" stroke="#E07B39" stroke-width="3.5" stroke-linecap="round"/><path d="M36 30h6" stroke="#C26A2E" stroke-width="3" stroke-linecap="round"/>',
+    ampoule: '<path d="M24 5a12 12 0 0 0-7 22c2 2 3 4 3 7h8c0-3 1-5 3-7a12 12 0 0 0-7-22z" fill="#FFF27A" ' + K + '/><rect x="19" y="34" width="10" height="7" rx="2" fill="#B8C0CC" ' + K + '/><path d="M21 22l3 4 3-4" fill="none" ' + K + '/>',
+    batterie: '<rect x="10" y="12" width="28" height="30" rx="5" fill="#5BE0AE" ' + K + '/><rect x="18" y="7" width="12" height="5" rx="1.5" fill="#B8C0CC" ' + K + '/><path d="M26 18l-6 10h6l-3 8" fill="none" ' + K + '/>',
+    puce: '<rect x="12" y="12" width="24" height="24" rx="3" fill="#3A3F55" ' + K + '/><rect x="18" y="18" width="12" height="12" rx="2" fill="#7FB2FF"/><path d="M16 8v4M24 8v4M32 8v4M16 36v4M24 36v4M32 36v4M8 16h4M8 24h4M8 32h4M36 16h4M36 24h4M36 32h4" ' + K + '/>',
+    solaire: '<circle cx="36" cy="10" r="5" fill="#FFC93C" ' + K + '/><path d="M6 36l6-16h26l-6 16z" fill="#2F5DE0" ' + K + '/><path d="M15 20l-4 16M21 20l-3 16M27 20l-2 16M33 20l-2 16M8 28h26" stroke="#9BC1FF" stroke-width="1.5"/><path d="M19 36v6h8" fill="none" ' + K + '/>',
+    aimant: '<path d="M10 8h9v18a5 5 0 0 0 10 0V8h9v18a14 14 0 0 1-28 0z" fill="#E5384F" ' + K + '/><path d="M10 8h9v7h-9zM29 8h9v7h-9z" fill="#E0E6EE" ' + K + '/>',
+    feu: '<circle cx="24" cy="20" r="3" fill="#FFC93C" ' + K + '/><path d="M24 12V4M24 28v6M16 20H8M32 20h8M18 14l-5-5M30 14l5-5M18 26l-5 5M30 26l5 5" stroke="#FF4FA3" stroke-width="3" stroke-linecap="round"/><path d="M24 34v10" stroke="#1A1033" stroke-width="2.5"/>',
+    fusee: '<path d="M24 4c7 6 9 15 7 26H17c-2-11 0-20 7-26z" fill="#E0E6EE" ' + K + '/><circle cx="24" cy="18" r="4" fill="#4FC3F7" ' + K + '/><path d="M17 26l-6 8h7zM31 26l6 8h-7z" fill="#E5384F" ' + K + '/><path d="M20 32c0 5 2 8 4 11 2-3 4-6 4-11z" fill="#FF7A3D" ' + K + '/>',
+    radioactif: '<circle cx="24" cy="24" r="18" fill="#FFD93D" ' + K + '/><circle cx="24" cy="24" r="3.5" fill="#1A1033"/><path d="M24 20l-6-11a16 16 0 0 1 12 0zM27.5 26l12-1a16 16 0 0 1-6 10zM20.5 26l-6 9a16 16 0 0 1-6-10z" fill="#1A1033"/>',
+    cristal: '<path d="M24 4l9 10-9 30-9-30z" fill="#C79BFF" ' + K + '/><path d="M15 14h18M24 4v40" fill="none" stroke="#1A1033" stroke-width="1.5"/><path d="M12 22l5 4-3 12-6-10z M36 22l-5 4 3 12 6-10z" fill="#E4CCFF" ' + K + '/>',
+    roche: '<path d="M6 36l5-14 9-6 10 3 8 8 4 9z" fill="#B8A07A" ' + K + '/><path d="M16 24l6 4 7-6M24 28l3 8" fill="none" stroke="#1A1033" stroke-width="1.8"/><path d="M30 30l5-3 3 5-5 2z" fill="#FFE15A" ' + K + '/>',
+    os: '<path d="M14 12a5 5 0 1 1 6 4l10 10a5 5 0 1 1 4 6 5 5 0 1 1-6-4L18 18a5 5 0 1 1-4-6z" fill="#FFF6E6" ' + K + '/>',
+    dent: '<path d="M12 10c4-4 8-2 12-1 4-1 8-3 12 1 3 4 1 10-1 16-1 4-1 14-4 14-3 0-3-10-7-10s-4 10-7 10c-3 0-3-10-4-14-2-6-4-12-1-16z" fill="#fff" ' + K + '/><path d="M18 14a4 4 0 0 0-3 4" fill="none" stroke="#9BE7FF" stroke-width="2.5" stroke-linecap="round"/>',
+    tube: '<path d="M8 28V18a6 6 0 0 1 12 0v12a6 6 0 0 0 12 0V18a6 6 0 0 1 12 0" fill="none" stroke="#1A1033" stroke-width="8" stroke-linecap="round"/><path d="M8 28V18a6 6 0 0 1 12 0v12a6 6 0 0 0 12 0V18a6 6 0 0 1 12 0" fill="none" stroke="#FF6B4A" stroke-width="4" stroke-linecap="round"/>',
+    avion: '<path d="M24 4c2 0 3 3 3 6v10l15 8v4l-15-4v8l5 4v3l-8-2-8 2v-3l5-4v-8l-15 4v-4l15-8V10c0-3 1-6 3-6z" fill="#E0E6EE" ' + K + '/>',
+    velo: '<circle cx="12" cy="31" r="8" fill="none" ' + K + '/><circle cx="36" cy="31" r="8" fill="none" ' + K + '/><path d="M12 31l8-14h12l4 14M20 17l6 14 6-14M18 13h6" fill="none" stroke="#4D6BFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>',
+    thermometre: '<path d="M20 8a4 4 0 0 1 8 0v20a8 8 0 1 1-8 0z" fill="#fff" ' + K + '/><circle cx="24" cy="34" r="5" fill="#E5384F"/><path d="M24 14v18" stroke="#E5384F" stroke-width="4" stroke-linecap="round"/>',
+    lentille: '<ellipse cx="24" cy="24" rx="9" ry="18" fill="#BFE9FF" ' + K + '/><path d="M4 18l20 6 20-6M4 30l20-6 20 6" fill="none" stroke="#FFC93C" stroke-width="2" stroke-linecap="round"/>',
+    sel: '<path d="M8 22l10-6 10 6-10 6z" fill="#fff" ' + K + '/><path d="M8 22v12l10 6V28zM28 22v12l-10 6V28z" fill="#E8EEF6" ' + K + '/><path d="M30 14l6-3 6 3-6 3zM30 14v6l6 3v-6zM42 14v6l-6 3" fill="#fff" ' + K + '/>',
+    plante: '<path d="M24 44V22" stroke="#1A1033" stroke-width="2.5"/><path d="M24 28c-10 0-14-8-14-14 8 0 14 4 14 14zM24 22c0-10 6-16 14-16 0 8-4 16-14 16z" fill="#5BE0AE" ' + K + '/><path d="M14 44h20" stroke="#8A6A33" stroke-width="4" stroke-linecap="round"/>',
+    atome: '<g fill="none" stroke="#1A1033" stroke-width="2.2"><ellipse cx="24" cy="24" rx="19" ry="7"/><ellipse cx="24" cy="24" rx="19" ry="7" transform="rotate(60 24 24)"/><ellipse cx="24" cy="24" rx="19" ry="7" transform="rotate(-60 24 24)"/></g><circle cx="24" cy="24" r="4.5" fill="#FF5A36" ' + K + '/>',
+    horloge: '<circle cx="24" cy="24" r="17" fill="#fff" ' + K + '/><path d="M24 13v11l7 5" fill="none" ' + K + '/><circle cx="24" cy="24" r="2" fill="#1A1033"/><path d="M24 8v3M24 37v3M8 24h3M37 24h3" ' + K + '/>',
+    medical: '<rect x="8" y="10" width="32" height="28" rx="6" fill="#fff" ' + K + '/><path d="M20 16h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#E5384F" ' + K + '/>',
+    telephone: '<rect x="14" y="4" width="20" height="40" rx="4" fill="#3A3F55" ' + K + '/><rect x="17" y="9" width="14" height="26" rx="1.5" fill="#7FB2FF"/><circle cx="24" cy="39" r="1.8" fill="#fff"/>',
+    allumette: '<path d="M14 40L34 14" stroke="#1A1033" stroke-width="6" stroke-linecap="round"/><path d="M14 40L34 14" stroke="#F2D29B" stroke-width="3" stroke-linecap="round"/><ellipse cx="35" cy="12" rx="4" ry="5" transform="rotate(38 35 12)" fill="#E5384F" ' + K + '/>',
+    canette: '<rect x="13" y="8" width="22" height="34" rx="5" fill="#C8D0DC" ' + K + '/><path d="M13 14h22M13 36h22" ' + K + '/><path d="M18 20h12v10H18z" fill="#E5384F"/>',
+    cle: '<circle cx="15" cy="15" r="8" fill="none" stroke="#1A1033" stroke-width="5"/><circle cx="15" cy="15" r="8" fill="none" stroke="#B8C0CC" stroke-width="2"/><path d="M21 21l17 17M30 30l4-4M34 34l4-4" stroke="#1A1033" stroke-width="5" stroke-linecap="round"/><path d="M21 21l17 17" stroke="#B8C0CC" stroke-width="2" stroke-linecap="round"/>',
+    flacon: '<path d="M19 6h10v12l9 18a4 4 0 0 1-4 6H14a4 4 0 0 1-4-6l9-18z" fill="#fff" ' + K + '/><path d="M14 30h20l3 6a3 3 0 0 1-3 4H14a3 3 0 0 1-3-4z" fill="#4D8BFF"/><path d="M17 6h14" ' + K + '/>',
+    voiture: '<path d="M6 30v-6l5-8h20l7 8h4v6z" fill="#4D6BFF" ' + K + '/><path d="M14 18h7v6h-10zM24 18h6l5 6H24z" fill="#BFE9FF"/><circle cx="14" cy="32" r="4.5" fill="#3A3F55" ' + K + '/><circle cx="34" cy="32" r="4.5" fill="#3A3F55" ' + K + '/><path d="M40 26h3" stroke="#FFE45C" stroke-width="3" stroke-linecap="round"/>',
+    cloche: '<path d="M24 6a3 3 0 0 1 3 3c8 2 10 10 10 18l4 7H7l4-7c0-8 2-16 10-18a3 3 0 0 1 3-3z" fill="#D9A441" ' + K + '/><circle cx="24" cy="38" r="4" fill="#D9A441" ' + K + '/>',
+    billet: '<rect x="4" y="12" width="40" height="24" rx="3" fill="#8FD9B6" ' + K + '/><circle cx="24" cy="24" r="6" fill="none" ' + K + '/><path d="M8 16h6M34 32h6" ' + K + '/><path d="M20 24h8" stroke="#E5384F" stroke-width="2.5"/>',
+    laser: '<rect x="4" y="18" width="18" height="12" rx="3" fill="#3A3F55" ' + K + '/><path d="M22 24h22" stroke="#E5384F" stroke-width="3" stroke-linecap="round"/><circle cx="44" cy="24" r="2.5" fill="#FF8FA8"/>',
+    meteorite: '<path d="M6 8l18 14M10 4l16 14M4 14l16 12" stroke="#FF7A3D" stroke-width="3" stroke-linecap="round"/><path d="M24 22l9-3 8 5 1 9-7 7-10-1-4-8z" fill="#8A7A6A" ' + K + '/><circle cx="31" cy="30" r="2.5" fill="#5F5245"/>',
+    planete: '<circle cx="24" cy="24" r="12" fill="#4D8BFF" ' + K + '/><ellipse cx="24" cy="24" rx="21" ry="6" fill="none" stroke="#1A1033" stroke-width="2.5" transform="rotate(-18 24 24)"/><path d="M17 19a8 8 0 0 1 6-4" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>',
+    satellite: '<rect x="19" y="19" width="10" height="10" rx="2" fill="#E0E6EE" ' + K + ' transform="rotate(45 24 24)"/><path d="M6 12l10 10-6 6L0 18z" fill="#2F5DE0" ' + K + ' transform="translate(2 0)"/><path d="M42 36L32 26l6-6 10 10z" fill="#2F5DE0" ' + K + ' transform="translate(-2 0)"/><path d="M28 32l6 6M33 41l3-3" ' + K + '/>',
+    detecteur: '<circle cx="24" cy="24" r="16" fill="#fff" ' + K + '/><circle cx="24" cy="24" r="7" fill="#E8EEF6" ' + K + '/><circle cx="33" cy="15" r="2" fill="#E5384F"/><path d="M14 24h3M31 24h3M24 14v3M24 31v3" stroke="#B8C0CC" stroke-width="2"/>'
+  };
+  var ILLU = {
+    1: ['fusee', 'Carburant des fusées (dihydrogène liquide)'], 2: ['ballon', 'Ballons qui flottent dans l’air'], 3: ['batterie', 'Batteries des téléphones et des voitures électriques'],
+    4: ['lentille', 'Miroirs du télescope spatial James Webb'], 5: ['flacon', 'Verre des plats qui vont au four'], 6: ['cristal', 'Diamant et mine de crayon'],
+    7: ['bulles', 'Près de 78 % de l’air'], 8: ['flamme', 'Indispensable aux combustions et à la respiration'], 9: ['dent', 'Dentifrice au fluor'],
+    10: ['tube', 'Enseignes lumineuses'], 11: ['sel', 'Sel de cuisine (chlorure de sodium)'], 12: ['feu', 'Étincelles blanches des feux d’artifice'],
+    13: ['canette', 'Canettes et papier aluminium'], 14: ['puce', 'Puces électroniques (et le sable !)'], 15: ['allumette', 'Grattoir des boîtes d’allumettes'],
+    16: ['roche', 'Cristaux jaunes près des volcans'], 17: ['goutte', 'Désinfection de l’eau des piscines'], 18: ['ampoule', 'Gaz de remplissage des ampoules'],
+    19: ['plante', 'Engrais pour les plantes (potasse)'], 20: ['os', 'Os, dents, craie et coquillages'], 21: ['velo', 'Cadres de vélo légers'],
+    22: ['avion', 'Avions et prothèses de hanche'], 23: ['cle', 'Outils en acier chrome-vanadium'], 24: ['lingot', 'Pièces chromées et acier inoxydable'],
+    25: ['batterie', 'Piles alcalines'], 26: ['aimant', 'Acier, attiré par les aimants'], 27: ['flacon', 'Verre bleu cobalt'],
+    28: ['piece', 'Pièces de monnaie'], 29: ['cable', 'Fils électriques'], 30: ['lingot', 'Toits de Paris et acier galvanisé'],
+    31: ['ampoule', 'Lampes LED'], 32: ['puce', 'Premiers transistors'], 33: ['flacon', 'Poison célèbre des romans policiers'],
+    34: ['lentille', 'Cellules sensibles à la lumière'], 35: ['goutte', 'Liquide rouge-brun à l’odeur forte'], 36: ['ampoule', 'Lampes et flashs puissants'],
+    37: ['horloge', 'Horloges atomiques'], 38: ['feu', 'Rouge des feux d’artifice'], 39: ['telephone', 'Couleurs de certains écrans et lasers'],
+    40: ['radioactif', 'Gaines du combustible nucléaire'], 41: ['aimant', 'Aimants supraconducteurs des IRM'], 42: ['cle', 'Aciers des moteurs'],
+    43: ['medical', 'Imagerie médicale'], 44: ['puce', 'Composants électroniques'], 45: ['voiture', 'Pots catalytiques des voitures'],
+    46: ['voiture', 'Pots catalytiques des voitures'], 47: ['bague', 'Bijoux et couverts en argent'], 48: ['batterie', 'Anciennes batteries rechargeables'],
+    49: ['telephone', 'Écrans tactiles'], 50: ['cloche', 'Bronze des cloches et soudure électronique'], 51: ['flacon', 'Khôl des Égyptiennes de l’Antiquité'],
+    52: ['solaire', 'Panneaux solaires'], 53: ['medical', 'Désinfectant des plaies'], 54: ['voiture', 'Phares de voiture très lumineux'],
+    55: ['horloge', 'Définition de la seconde'], 56: ['feu', 'Vert des feux d’artifice'], 57: ['lentille', 'Objectifs d’appareils photo'],
+    58: ['flamme', 'Pierres à briquet'], 59: ['lentille', 'Lunettes des souffleurs de verre'], 60: ['aimant', 'Aimants surpuissants (écouteurs, éoliennes)'],
+    61: ['radioactif', 'Piles nucléaires miniatures'], 62: ['aimant', 'Aimants qui résistent à la chaleur'], 63: ['billet', 'Encre de sécurité des billets en euros'],
+    64: ['medical', 'Produit de contraste pour l’IRM'], 65: ['telephone', 'Couleur verte de certains écrans'], 66: ['voiture', 'Moteurs des voitures électriques'],
+    67: ['laser', 'Lasers médicaux'], 68: ['cable', 'Fibres optiques d’Internet'], 69: ['medical', 'Radiographie portable'],
+    70: ['horloge', 'Horloges atomiques ultra-précises'], 71: ['cristal', 'Minerai rare, nommé d’après Lutèce (Paris)'], 72: ['radioactif', 'Barres de contrôle des réacteurs'],
+    73: ['telephone', 'Condensateurs des téléphones'], 74: ['ampoule', 'Filament des anciennes ampoules'], 75: ['avion', 'Moteurs d’avion à réaction'],
+    76: ['lingot', 'L’élément le plus dense'], 77: ['meteorite', 'Trace de la météorite des dinosaures'], 78: ['bague', 'Bijoux et pots catalytiques'],
+    79: ['lingot', 'Lingots et bijoux'], 80: ['thermometre', 'Anciens thermomètres'], 81: ['medical', 'Imagerie du cœur'],
+    82: ['medical', 'Protection contre les rayons X'], 83: ['cristal', 'Cristaux en escalier aux reflets arc-en-ciel'], 84: ['radioactif', 'Découvert par Marie et Pierre Curie'],
+    85: ['radioactif', 'Le plus rare des éléments naturels'], 86: ['bulles', 'Gaz radioactif qui s’accumule dans les caves'], 87: ['radioactif', 'Découvert par Marguerite Perey'],
+    88: ['horloge', 'Anciens cadrans de montre lumineux'], 89: ['radioactif', 'Lueur bleue dans le noir'], 90: ['radioactif', 'Combustible nucléaire possible'],
+    91: ['radioactif', 'L’un des éléments naturels les plus rares'], 92: ['radioactif', 'Combustible des centrales nucléaires'], 93: ['planete', 'Nommé d’après la planète Neptune'],
+    94: ['satellite', 'Énergie des sondes spatiales'], 95: ['detecteur', 'Certains détecteurs de fumée'], 96: ['satellite', 'Analyse du sol de Mars'],
+    97: ['atome', 'Fabriqué à Berkeley, en Californie'], 98: ['atome', 'Puissante source de neutrons'], 99: ['atome', 'En l’honneur d’Albert Einstein'],
+    100: ['atome', 'En l’honneur d’Enrico Fermi'], 101: ['atome', 'En l’honneur de Mendeleïev'], 102: ['atome', 'En l’honneur d’Alfred Nobel'],
+    103: ['atome', 'En l’honneur d’Ernest Lawrence']
+  };
+  function illustration(z) {
+    var d = ILLU[z] || ['atome', 'Quelques atomes fabriqués dans un accélérateur de particules'];
+    return { svg: '<svg viewBox="0 0 48 48" aria-hidden="true">' + ICONES[d[0]] + '</svg>', legende: d[1] };
+  }
+  /* ---------- Sons synthétisés (aucun fichier audio) ---------- */
+  var ctxSon = null;
+  function audioOK() {
+    if (etat.son === false) { return null; }
+    try {
+      if (!ctxSon) { var C = window.AudioContext || window.webkitAudioContext; if (!C) { return null; } ctxSon = new C(); }
+      if (ctxSon.state === 'suspended' && ctxSon.resume) { ctxSon.resume(); }
+      return ctxSon;
+    } catch (e) { return null; }
+  }
+  function note(f, debut, duree, type, vol) {
+    var ac = audioOK(); if (!ac) { return; }
+    try {
+      var t = ac.currentTime + debut, o = ac.createOscillator(), g = ac.createGain();
+      o.type = type || 'triangle'; o.frequency.setValueAtTime(f, t);
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol || 0.08, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + duree);
+      o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t + duree + 0.05);
+    } catch (e) { }
+  }
+  function souffle(debut, duree, f0, f1, vol) {
+    var ac = audioOK(); if (!ac) { return; }
+    try {
+      var t = ac.currentTime + debut, n = Math.floor(ac.sampleRate * duree), buf = ac.createBuffer(1, n, ac.sampleRate), d = buf.getChannelData(0);
+      for (var i = 0; i < n; i++) { d[i] = (Math.random() * 2 - 1) * (1 - i / n); }
+      var src = ac.createBufferSource(), fl = ac.createBiquadFilter(), g = ac.createGain();
+      src.buffer = buf; fl.type = 'bandpass'; fl.Q.value = 1.2;
+      fl.frequency.setValueAtTime(f0, t); fl.frequency.exponentialRampToValueAtTime(f1, t + duree);
+      g.gain.value = vol || 0.12;
+      src.connect(fl); fl.connect(g); g.connect(ac.destination); src.start(t);
+    } catch (e) { }
+  }
+  var GAMME = [523.3, 659.3, 784, 1046.5, 1318.5, 1568, 2093];
+  function sonOuvrir() { souffle(0, 0.35, 600, 3500, 0.16); note(392, 0.05, 0.25, 'sine', 0.05); note(587.3, 0.15, 0.3, 'sine', 0.05); }
+  function sonRetourne() { souffle(0, 0.16, 2400, 700, 0.1); }
+  function sonRarete(r) {
+    var n = { commune: 1, peu_commune: 2, rare: 3, epique: 4, legendaire: 6, mythique: 7 }[r] || 1;
+    for (var i = 0; i < n; i++) { note(GAMME[i], 0.08 + i * 0.075, 0.35, 'triangle', 0.06); }
+    if (r === 'legendaire' || r === 'mythique') {
+      note(523.3, 0.62, 1.1, 'sawtooth', 0.025); note(659.3, 0.62, 1.1, 'sawtooth', 0.02); note(784, 0.62, 1.1, 'sawtooth', 0.02);
+      for (var k = 0; k < 10; k++) { note(2000 + Math.random() * 2500, 0.65 + k * 0.07, 0.15, 'sine', 0.025); }
+    }
+    if (r === 'mythique') { note(1046.5, 1.3, 1.3, 'triangle', 0.05); note(1568, 1.3, 1.3, 'triangle', 0.04); souffle(0.6, 1.2, 300, 6000, 0.06); }
+  }
+  function sonReussite() { [523.3, 659.3, 784, 1046.5].forEach(function (f, i) { note(f, i * 0.1, 0.4, 'triangle', 0.07); }); }
+  function sonEchec() { note(330, 0, 0.25, 'sine', 0.06); note(262, 0.18, 0.35, 'sine', 0.06); }
+
+  /* ---------- Effets spectaculaires pour les cartes rares ---------- */
+  function effetRare(slot, r) {
+    var fx = el('div', 'fx-rare fx-' + r);
+    var ray = el('div', 'fx-rayons fx-' + r);
+    slot.insertBefore(ray, slot.firstChild);
+    setTimeout(function () { ray.classList.add('fin'); }, 3800);
+    setTimeout(function () { if (ray.parentNode) { ray.parentNode.removeChild(ray); } }, 4600);
+    setTimeout(function () { if (fx.parentNode) { fx.parentNode.removeChild(fx); } }, 2700);
+    var nb = r === 'mythique' ? 46 : 30;
+    var couleurs = r === 'mythique' ? ['#FF4FA3', '#FFC93C', '#1ED6C9', '#4D6BFF', '#C452FF', '#fff'] : ['#FFC93C', '#FFE08A', '#FF9F1C', '#fff'];
+    for (var i = 0; i < nb; i++) {
+      var p = el('i', 'fx-eclat');
+      var ang = Math.random() * Math.PI * 2, dist = 90 + Math.random() * (r === 'mythique' ? 230 : 160);
+      p.style.setProperty('--dx', (Math.cos(ang) * dist).toFixed(0) + 'px');
+      p.style.setProperty('--dy', (Math.sin(ang) * dist).toFixed(0) + 'px');
+      p.style.background = couleurs[i % couleurs.length];
+      p.style.animationDelay = (Math.random() * 0.25).toFixed(2) + 's';
+      fx.appendChild(p);
+    }
+    var bandeau = el('div', 'fx-bandeau', r === 'mythique' ? 'MYTHIQUE !' : 'LÉGENDAIRE !');
+    slot.appendChild(bandeau);
+    slot.appendChild(fx);
+    var flash = el('div', 'fx-flash fx-flash-' + r);
+    document.body.appendChild(flash);
+    setTimeout(function () { if (flash.parentNode) { flash.parentNode.removeChild(flash); } }, 1200);
+    var zone = $('tirage');
+    zone.classList.remove('secousse'); void zone.offsetWidth; zone.classList.add('secousse');
+    setTimeout(function () { if (bandeau.parentNode) { bandeau.parentNode.removeChild(bandeau); } }, 2600);
+  }
+
   /* ---------- Position dans le tableau ---------- */
   function position(z) {
     if (z === 1) { return [1, 1]; }
@@ -1331,6 +1602,7 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
     var o = el('div', 'orbe');
     o.appendChild(el('b', null, c ? e.s : '?'));
     ct.appendChild(o);
+    if (c) { var il = el('div', 'illu'); il.innerHTML = illustration(e.z).svg; o.appendChild(il); }
     ct.appendChild(el('div', 'nom', c ? e.n : 'Élément mystère'));
     ct.appendChild(el('div', 'fam', c ? FAMILLES[e.f] : 'Nº ' + e.z));
     if (c && c.niv >= 2) {
@@ -1421,6 +1693,8 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
     if (etat.boosters < 1) { toast('Plus de booster : gagne-en dans « Gagner des boosters ».'); montrerVue('labo'); return; }
     etat.boosters--;
     etat.stats.ouverts++;
+    sonOuvrir();
+    var pq = $('paquet'); pq.classList.remove('dechire'); void pq.offsetWidth; pq.classList.add('dechire');
     var zs = tirerBooster();
     var resultats = [];
     for (var i = 0; i < zs.length; i++) { resultats.push(ajouterCarte(zs[i])); }
@@ -1429,7 +1703,7 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
     afficherTirage(resultats);
     verifierSucces();
   }
-  function afficherTirage(resultats) {
+  function afficherTirage(resultats, message) {
     var zone = $('tirage');
     zone.innerHTML = '';
     var restants = resultats.length;
@@ -1450,12 +1724,17 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
       t.style.width = largeur;
       var badges = el('div', 'badges');
       slot.appendChild(t); slot.appendChild(badges);
+      if (e.r === 'legendaire' || e.r === 'mythique') { slot.classList.add('tremble'); }
       zone.appendChild(slot);
       function retourner() {
         if (t.classList.contains('revele')) { ouvrirModale(res.z); return; }
         t.classList.add('revele');
+        sonRetourne();
+        setTimeout(function () { sonRarete(e.r); }, 180);
+        if (e.r === 'legendaire' || e.r === 'mythique') { slot.classList.remove('tremble'); setTimeout(function () { effetRare(slot, e.r); }, 250); }
         t.setAttribute('aria-label', 'Voir la carte ' + e.n);
         var b = el('span', 'badge rarete r-' + e.r, rarete(e.r).nom); badges.appendChild(b);
+        if (res.souvenir) { badges.appendChild(el('span', 'badge souvenir', 'Souvenir')); }
         if (res.nouveau) { badges.appendChild(el('span', 'badge nouveau', 'Nouveau !')); }
         if (res.niveau) { badges.appendChild(el('span', 'badge niveau', 'Niveau ' + res.niveau + ' !')); }
         if (res.examen) { badges.appendChild(el('span', 'badge niveau', 'Examen débloqué')); }
@@ -1469,14 +1748,36 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
       retournes.push(retourner);
     });
     $('b-tout').onclick = function () { for (var i = 0; i < retournes.length; i++) { var s = zone.children[i].querySelector('.tourne'); if (!s.classList.contains('revele')) { retournes[i](); } } };
-    $('b-info').textContent = 'Touche les cartes pour les retourner.';
+    $('b-info').textContent = message || 'Touche les cartes pour les retourner.';
     if (zone.scrollIntoView) { zone.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
     function finTirage() {
       $('b-ouvrir').disabled = false;
       $('b-tout').hidden = true;
       $('b-info').textContent = etat.boosters ? 'Encore ' + etat.boosters + ' booster' + (etat.boosters > 1 ? 's' : '') + ' à ouvrir.' : 'Plus de booster pour l’instant. Va en gagner dans le labo !';
       rendreTableau();
+      if (etat.cadeaux && etat.cadeaux.length) { setTimeout(traiterCadeaux, 1200); }
     }
+  }
+
+  /* ---------- Cartes souvenirs (envoyées par l’appli) ---------- */
+  function traiterCadeaux() {
+    if (!etat.cadeaux || !etat.cadeaux.length) { return; }
+    var liste = etat.cadeaux.slice(0, 6), reste = etat.cadeaux.slice(6), res = [], noms = [];
+    etat.cadeaux = reste;
+    for (var i = 0; i < liste.length; i++) {
+      var c = liste[i];
+      if (!c || !element(c.z)) { continue; }
+      var r = ajouterCarte(c.z); r.souvenir = true; res.push(r);
+      if (!etat.souvenirs[c.z]) { etat.souvenirs[c.z] = []; }
+      var deja = false;
+      for (var k = 0; k < etat.souvenirs[c.z].length; k++) { if (etat.souvenirs[c.z][k].o === c.o) { deja = true; } }
+      if (!deja) { etat.souvenirs[c.z].push({ o: c.o, p: c.p }); }
+      noms.push(element(c.z).n);
+    }
+    sauver(); majCompteurs(); verifierSucces();
+    if (!res.length) { return; }
+    montrerVue('boosters');
+    afficherTirage(res, 'Carte' + (res.length > 1 ? 's' : '') + ' souvenir' + (res.length > 1 ? 's' : '') + ' gagnée' + (res.length > 1 ? 's' : '') + ' grâce à ton travail : ' + noms.join(', ') + '. Touche-les pour les retourner.' + (reste.length ? ' (D’autres souvenirs t’attendent ensuite.)' : ''));
   }
 
   /* ---------- Vue Tableau ---------- */
@@ -1569,6 +1870,10 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
       ajouterInfo(g, 'Ligne (période)', periode(e.z));
       b1.appendChild(g);
       f.appendChild(b1);
+      var ill = illustration(e.z), bi = el('div', 'bloc bloc-illu');
+      var fig = el('div', 'grande-illu'); fig.innerHTML = ill.svg; bi.appendChild(fig);
+      var bt = el('div'); bt.appendChild(el('h3', null, 'Dans la vie')); bt.appendChild(el('p', null, ill.legende)); bi.appendChild(bt);
+      f.appendChild(bi);
       var b2 = el('div', 'bloc' + (c.niv >= 2 ? '' : ' verrouille'));
       var h2 = el('h3', null, 'L’atome');
       if (c.niv < 2) { h2.appendChild(el('small', null, '2 exemplaires (' + c.n + '/2)')); }
@@ -1582,6 +1887,13 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
         b2.appendChild(g2);
       } else { b2.appendChild(el('p', 'aide', 'Obtiens un deuxième exemplaire pour analyser son atome.')); }
       f.appendChild(b2);
+      var sv = !prof && etat.souvenirs && etat.souvenirs[z];
+      if (sv && sv.length) {
+        var bs0 = el('div', 'bloc souvenir-bloc');
+        bs0.appendChild(el('h3', null, 'Carte souvenir'));
+        for (var si = 0; si < sv.length; si++) { var ps = el('p'); ps.appendChild(el('b', null, sv[si].o + ' : ')); ps.appendChild(document.createTextNode(sv[si].p)); bs0.appendChild(ps); }
+        f.appendChild(bs0);
+      }
       var b3 = el('div', 'bloc' + (c.niv >= 3 ? '' : ' verrouille'));
       var h3 = el('h3', null, 'Le savais-tu ?');
       if (c.niv < 3) { h3.appendChild(el('small', null, '3 exemplaires + examen (' + Math.min(c.n, 3) + '/3)')); }
@@ -1622,22 +1934,66 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
 
   /* ---------- Examen de maîtrise ---------- */
   function deEl(n) { var m = n.toLowerCase(); return /^[aeiouyhéèêâîôœ]/.test(m) ? 'd’' + m : 'de ' + m; }
-  function questionsExamen(e) {
-    var qs = [];
+  var IONS = {
+    1: [['H⁺', 1]], 3: [['Li⁺', 1]], 9: [['F⁻', -1]], 11: [['Na⁺', 1]], 12: [['Mg²⁺', 2]], 13: [['Al³⁺', 3]], 17: [['Cl⁻', -1]],
+    19: [['K⁺', 1]], 20: [['Ca²⁺', 2]], 26: [['Fe²⁺', 2], ['Fe³⁺', 3]], 29: [['Cu²⁺', 2]], 30: [['Zn²⁺', 2]], 47: [['Ag⁺', 1]]
+  };
+  var MOLECULES = {
+    1: [['H₂O', 'l’eau', { H: 2, O: 1 }], ['CH₄', 'le méthane', { C: 1, H: 4 }], ['H₂', 'le dihydrogène', { H: 2 }]],
+    6: [['CO₂', 'le dioxyde de carbone', { C: 1, O: 2 }], ['CH₄', 'le méthane', { C: 1, H: 4 }]],
+    7: [['N₂', 'le diazote', { N: 2 }]],
+    8: [['O₂', 'le dioxygène', { O: 2 }], ['H₂O', 'l’eau', { H: 2, O: 1 }], ['CO₂', 'le dioxyde de carbone', { C: 1, O: 2 }]],
+    16: [['SO₂', 'le dioxyde de soufre', { S: 1, O: 2 }]],
+    17: [['Cl₂', 'le dichlore', { Cl: 2 }]]
+  };
+  function qExamen(texte, bonne, fausses, expl) { return qcmTexte(texte, String(bonne), fausses, expl); }
+  function questionsAtome(e) {
     var z = e.z;
     var faux = [z + 1, z - 1 > 0 ? z - 1 : z + 2, e.m ? Math.round(e.m) : z * 2, z * 2];
-    qs.push(qcmTexte('Combien de protons y a-t-il dans le noyau d’un atome ' + deEl(e.n) + ' ?', String(z), uniques(faux.concat([z + 2, z + 10]), z), 'Le numéro atomique, ' + z + ', est le nombre de protons du noyau.'));
-    qs.push(qcmTexte('Combien d’électrons possède un atome ' + deEl(e.n) + ' (atome neutre) ?', String(z), uniques([z + 1, z * 2, Math.max(1, z - 1), z + 2, z + 10], z), 'Un atome est neutre : il a autant d’électrons que de protons, soit ' + z + '.'));
-    var fams = [];
-    for (var k in FAMILLES) { if (FAMILLES.hasOwnProperty(k) && k !== e.f) { fams.push(FAMILLES[k]); } }
-    qs.push(qcmTexte('À quelle famille appartient l’élément « ' + e.n + ' » ?', FAMILLES[e.f], melanger(fams).slice(0, 2), e.n + ' fait partie de la famille « ' + FAMILLES[e.f].toLowerCase() + ' ».'));
-    if (e.e !== '?') {
-      var ets = ['Solide', 'Liquide', 'Gaz'];
-      qs.push(qcmTexte('Dans quel état est l’élément « ' + e.n + ' » à 20 °C ?', ETATS[e.e], ets.filter(function (x) { return x !== ETATS[e.e]; }), 'À 20 °C, l’élément « ' + e.n + ' » est à l’état ' + ETATS[e.e].toLowerCase() + (e.e === 'g' ? 'eux' : '') + '.'));
-    } else {
-      qs.push(qcmTexte('Comment obtient-on l’élément « ' + e.n + ' » ?', 'Uniquement en laboratoire, quelques atomes à la fois', ['On l’extrait de roches courantes', 'Il est présent dans l’air'], 'Les éléments super-lourds sont fabriqués dans des accélérateurs et disparaissent en une fraction de seconde.'));
+    return [
+      qExamen('Combien de protons y a-t-il dans le noyau d’un atome ' + deEl(e.n) + ' ?', z, uniques(faux.concat([z + 2, z + 10]), z), 'Le numéro atomique, ' + z + ', est le nombre de protons du noyau.'),
+      qExamen('Combien d’électrons possède un atome ' + deEl(e.n) + ' (atome neutre) ?', z, uniques([z + 1, z * 2, Math.max(1, z - 1), z + 2, z + 10], z), 'Un atome est neutre : il a autant d’électrons que de protons, soit ' + z + '.')
+    ];
+  }
+  function questionsPosition(e) {
+    var qs = [], fams = [], k;
+    for (k in FAMILLES) { if (FAMILLES.hasOwnProperty(k) && k !== e.f) { fams.push(FAMILLES[k]); } }
+    qs.push(qExamen('À quelle famille appartient l’élément « ' + e.n + ' » ?', FAMILLES[e.f], melanger(fams).slice(0, 2), e.n + ' fait partie de la famille « ' + FAMILLES[e.f].toLowerCase() + ' ».'));
+    var p = periode(e.z);
+    qs.push(qExamen('Dans quelle ligne (période) du tableau se trouve l’élément « ' + e.n + ' » ?', p, uniques([p + 1, p - 1, p + 2, p - 2].filter(function (x) { return x <= 7; }), p), 'Les éléments sont rangés par numéro atomique croissant : ' + e.n + ' est sur la ligne ' + p + '.'));
+    if (e.f !== 'lan' && e.f !== 'act') {
+      var c = position(e.z)[1];
+      qs.push(qExamen('Dans quelle colonne du tableau se trouve l’élément « ' + e.n + ' » ?', c, uniques([c + 1, c - 1, c + 2, 19 - c, c - 2].filter(function (x) { return x <= 18; }), c), e.n + ' est dans la colonne ' + c + '. Les éléments d’une même colonne ont des propriétés chimiques voisines.'));
     }
-    qs = melanger(qs).slice(0, 3);
+    return qs;
+  }
+  function questionsChimie(e, classe) {
+    var qs = [], z = e.z;
+    if (classe === '3e' && IONS[z]) {
+      var ion = choisir(IONS[z]), q = ion[1], ne = z - q, n = Math.abs(q);
+      qs.push(qExamen('Combien d’électrons possède l’ion ' + ion[0] + ' ?', ne, uniques([z, z + q, ne + 1, ne - 1], ne), 'L’atome ' + deEl(e.n) + ' a ' + z + ' électrons. Pour former ' + ion[0] + ', il en ' + (q > 0 ? 'perd ' : 'gagne ') + n + ' : il lui en reste ' + ne + '.'));
+      qs.push(qcmTexte('Comment l’atome ' + deEl(e.n) + ' devient-il l’ion ' + ion[0] + ' ?', (q > 0 ? 'Il perd ' : 'Il gagne ') + n + ' électron' + (n > 1 ? 's' : ''),
+        [(q > 0 ? 'Il gagne ' : 'Il perd ') + n + ' électron' + (n > 1 ? 's' : ''), (q > 0 ? 'Il perd ' : 'Il gagne ') + n + ' proton' + (n > 1 ? 's' : ''), 'Il gagne ' + n + ' neutron' + (n > 1 ? 's' : '')],
+        'Un ion ' + (q > 0 ? 'positif est un atome qui a perdu' : 'négatif est un atome qui a gagné') + ' des électrons. Le noyau, lui, ne change pas.'));
+    }
+    if ((classe === '3e' || classe === '4e') && MOLECULES[z]) {
+      var m = choisir(MOLECULES[z]), nb = m[2][e.s], tot = 0;
+      for (var a in m[2]) { if (m[2].hasOwnProperty(a)) { tot += m[2][a]; } }
+      qs.push(qExamen('Combien d’atomes ' + deEl(e.n) + ' y a-t-il dans une molécule ' + deEl(m[1].replace(/^(le |la |l’)/, '')) + ' (' + m[0] + ') ?', nb, uniques([nb + 1, nb - 1, tot, nb + 2], nb), 'Dans la formule ' + m[0] + ', le petit chiffre en bas à droite d’un symbole indique le nombre d’atomes (sans chiffre : 1 atome). Il y a ' + nb + ' atome' + (nb > 1 ? 's' : '') + ' ' + deEl(e.n) + '.'));
+    }
+    if (!qs.length) {
+      if (e.e !== '?') {
+        var ets = ['Solide', 'Liquide', 'Gaz'];
+        qs.push(qExamen('Dans quel état est l’élément « ' + e.n + ' » à 20 °C ?', ETATS[e.e], ets.filter(function (x) { return x !== ETATS[e.e]; }), 'À 20 °C, l’élément « ' + e.n + ' » est à l’état ' + ETATS[e.e].toLowerCase() + (e.e === 'g' ? 'eux' : '') + '.'));
+      } else {
+        qs.push(qcmTexte('Comment obtient-on l’élément « ' + e.n + ' » ?', 'Uniquement en laboratoire, quelques atomes à la fois', ['On l’extrait de roches courantes', 'Il est présent dans l’air'], 'Les éléments super-lourds sont fabriqués dans des accélérateurs et disparaissent en une fraction de seconde.'));
+      }
+    }
+    return qs;
+  }
+  function questionsExamen(e) {
+    var classe = etat.classe;
+    var qs = [choisir(questionsAtome(e)), choisir(questionsPosition(e)), choisir(questionsChimie(e, classe))];
     for (var q = 0; q < qs.length; q++) { qs[q] = preparer(qs[q]); qs[q].calc = false; }
     return qs;
   }
@@ -1658,6 +2014,7 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
       var ok = score === total;
       var fin = el('div', 'bilan');
       fin.appendChild(el('p', 'score', score + ' / ' + total));
+      if (ok) { sonReussite(); } else { sonEchec(); }
       if (ok) {
         etat.cartes[z].niv = 3; sauver();
         fin.appendChild(el('p', null, 'Bravo ! ' + e.n + ' est maîtrisé : sa carte devient holographique.'));
@@ -1842,11 +2199,12 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
   }
 
   /* ---------- Réglages ---------- */
-  function appliquerReglages() { document.body.classList.toggle('police-standard', !etat.lexend); $('r-lexend').checked = etat.lexend; }
+  function appliquerReglages() { document.body.classList.toggle('police-standard', !etat.lexend); $('r-lexend').checked = etat.lexend; $('r-son').checked = etat.son !== false; }
   function initReglages() {
     $('btn-reg').onclick = function () { $('reglages').hidden = false; document.body.classList.add('modal'); $('r-fermer').focus(); };
     $('r-fermer').onclick = function () { $('reglages').hidden = true; document.body.classList.remove('modal'); };
     $('r-lexend').onchange = function () { etat.lexend = this.checked; appliquerReglages(); sauver(); };
+    $('r-son').onchange = function () { etat.son = this.checked; sauver(); if (etat.son) { sonReussite(); } };
     $('r-prof').onclick = function () {
       if ($('r-code').value.replace(/\s/g, '').toLowerCase() === CODE_PROF) { prof = !prof; $('r-msg').textContent = prof ? 'Mode prof actif : toutes les cartes sont visibles (la collection n’est pas modifiée).' : 'Mode prof désactivé.'; $('r-code').value = ''; rendreTableau(); }
       else { $('r-msg').textContent = 'Code incorrect.'; }
@@ -1878,15 +2236,18 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
     });
     appliquerReglages();
     rendreTableau();
+    if (etat.cadeaux && etat.cadeaux.length) { setTimeout(traiterCadeaux, 300); return; }
     if (!nbCartes() && etat.stats.ouverts === 0) { toast('Bienvenue ! Tes boosters t’attendent dans l’onglet « Boosters ».'); }
   }
   init();
   window.__collection = {
     ajouterBoosters: function (n) { etat.boosters += n; sauver(); majCompteurs(); if (!$('vue-tableau').hidden) { rendreTableau(); } },
-    recharger: function () { etat = charger(); appliquerReglages(); rendreTableau(); majCompteurs(); },
+    recharger: function () { etat = charger(); appliquerReglages(); rendreTableau(); majCompteurs(); traiterCadeaux(); },
+    recevoirCartes: function (liste) { etat.cadeaux = (etat.cadeaux || []).concat(liste); sauver(); traiterCadeaux(); },
+    enAttente: function () { return etat.boosters + (etat.cadeaux ? etat.cadeaux.length : 0); },
     boosters: function () { return etat.boosters; }
   };
-  window.__test = { etat: function () { return etat; }, tirerBooster: tirerBooster, ajouterCarte: ajouterCarte, questionsExamen: questionsExamen, construireSerieLabo: construireSerieLabo, element: element, GENERATEURS: GENERATEURS };
+  window.__test = { afficherTirage: afficherTirage, montrerVue: montrerVue, illustration: illustration, etat: function () { return etat; }, tirerBooster: tirerBooster, ajouterCarte: ajouterCarte, questionsExamen: questionsExamen, construireSerieLabo: construireSerieLabo, element: element, GENERATEURS: GENERATEURS };
 })();
 
 <\/script>
@@ -2204,6 +2565,9 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
       etat.prog = s.prog || {};
       etat.carnet = s.carnet || [];
       etat.defis = s.defis || {};
+      etat.derniereSauvegarde = s.derniereSauvegarde || null;
+      etat.souvenirsDonnes = s.souvenirsDonnes || null;
+      etat.rappelSauv = s.rappelSauv || null;
       etat.boostTests = s.boostTests || null;
       if (s.reglages) {
         for (var k in s.reglages) { if (s.reglages.hasOwnProperty(k)) { etat.reglages[k] = s.reglages[k]; } }
@@ -2275,7 +2639,13 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
       if (!a.de && estDebloque(id)) { ouverts.push(id); }
     }
     rendreTableau(); construireLegende();
-    if (nouvelles.length) { donnerBoosters(2 * nouvelles.length, 'notion stabilisée'); }
+    if (nouvelles.length) {
+      sonStable();
+      donnerBoosters(2 * nouvelles.length, 'notion stabilisée');
+      var cartesN = [];
+      for (var cn = 0; cn < nouvelles.length; cn++) { var cc = carteDeNotion(nouvelles[cn]); if (cc) { cartesN.push(cc); } }
+      if (cartesN.length) { sauver(); donnerCartes(cartesN); }
+    }
     if (brillantes.length) { setTimeout(function () { donnerBoosters(brillantes.length, 'carte de notion brillante'); }, nouvelles.length ? 3800 : 0); }
     if (nouvelles.length) { montrerRevelation(nouvelles[0], false, ouverts); }
     else if (brillantes.length) { montrerRevelation(brillantes[0], true, ouverts); }
@@ -2374,7 +2744,7 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
   }
   function fermerModal(id) {
     $(id).hidden = true;
-    if ($('fiche').hidden && $('reglages').hidden && $('zoom').hidden && $('revelation').hidden) { document.body.classList.remove('modal-ouvert'); }
+    if ($('fiche').hidden && $('reglages').hidden && $('zoom').hidden && $('revelation').hidden && $('sauvegarde').hidden) { document.body.classList.remove('modal-ouvert'); }
     if (dernierFocus && dernierFocus.focus) { try { dernierFocus.focus(); } catch (e) { } }
   }
   function ouvrirZoom(id) {
@@ -2595,6 +2965,7 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
           }
           expl.textContent = (juste ? 'Exact. ' : 'La bonne réponse : ' + q.o[q.a] + '. ') + (q.e || '');
           expl.hidden = false;
+          if (juste) { sonJuste(); } else { sonFaux(); }
           rappel(juste);
         };
         boutons.push(b);
@@ -3048,6 +3419,12 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
       })(EXPERIENCES[xi]);
     }
     corps.appendChild(bl);
+    var cn0 = CARTES_NOTION[n.id];
+    if (cn0) {
+      var bcs = bloc('Carte d’élément souvenir');
+      bcs.appendChild(el('p', 'exp-souvenir' + (estStable(n.id) ? ' obtenu' : ''), texteSouvenir(cn0, estStable(n.id), 'stabilisant cette notion')));
+      corps.appendChild(bcs);
+    }
 
     $('fiche').hidden = false;
     $('fiche').scrollTop = 0;
@@ -3597,6 +3974,7 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
         else if (!$('zoom').hidden) { fermerModal('zoom'); }
         else if (!$('fiche').hidden) { fermerNotion(); }
         else if (!$('reglages').hidden) { fermerReglages(); }
+        else if (!$('sauvegarde').hidden) { fermerModal('sauvegarde'); }
         else if (document.body.classList.contains('plein')) { basculerPlein(); }
       }
     });
@@ -3732,8 +4110,8 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
   var CLE_COLL = 'elementaire-collection-v1';
   function boostersEnAttente() {
     var f = $('pt-frame'), w = f && f.contentWindow;
-    try { if (w && w.__collection) { return w.__collection.boosters(); } } catch (e) { }
-    try { var s = JSON.parse(localStorage.getItem(CLE_COLL) || 'null'); return s && typeof s.boosters === 'number' ? s.boosters : 2; } catch (e) { return 0; }
+    try { if (w && w.__collection) { return w.__collection.enAttente ? w.__collection.enAttente() : w.__collection.boosters(); } } catch (e) { }
+    try { var s = JSON.parse(localStorage.getItem(CLE_COLL) || 'null'); return (s && typeof s.boosters === 'number' ? s.boosters : 2) + (s && s.cadeaux ? s.cadeaux.length : 0); } catch (e) { return 0; }
   }
   function majBadgeBoosters() {
     var b = $('tab-boosters'); if (!b) { return; }
@@ -4430,7 +4808,593 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
         maj();
         return null;
       } }
+,
+    /* ---- 13. Mélanges : le marais salant ---- */
+    { id: 'marais', fam: 's6', titre: 'Le marais salant', notions: ['melanges', 'corps-purs'], mat: ['Entonnoir', 'NaCl'],
+      intro: 'Dans le bécher : 100 g d’eau, 10 g de sel et 20 g de sable, bien mélangés. Trouve la bonne suite d’opérations pour récupérer du sel pur.',
+      defis: [{ id: 'filtre', txt: 'Sépare le sable de l’eau salée' }, { id: 'sel', txt: 'Récupère du sel pur, sans sable' }],
+      conclusion: 'Le sable ne se dissout pas : la filtration le retient. Le sel est dissous : il traverse le filtre, et seule l’évaporation de l’eau permet de le récupérer.',
+      monter: function (zone, api) {
+        var S = { etat: 'melange' };
+        var ctrl = h('div', { 'class': 'exp-ctrl' });
+        var bD = bouton('Laisser décanter'), bF = bouton('Filtrer'), bE = bouton('Chauffer pour évaporer'), bR = bouton('Recommencer');
+        ctrl.appendChild(bD); ctrl.appendChild(bF); ctrl.appendChild(bE); ctrl.appendChild(bR);
+        zone.appendChild(ctrl);
+        var scene = h('div', { 'class': 'exp-scene' });
+        scene.innerHTML = '<svg viewBox="0 0 360 220" class="exp-svg"><g class="becher-g"></g><g class="residu-g"></g></svg><p class="lecture large"></p>';
+        zone.appendChild(scene);
+        var gB = scene.querySelector('.becher-g'), gR = scene.querySelector('.residu-g'), lec = scene.querySelector('.lecture');
+        function grains(n, x0, x1, y0, y1, coul, r) {
+          var s = '';
+          for (var i = 0; i < n; i++) { s += '<circle cx="' + (x0 + ((i * 37) % 100) / 100 * (x1 - x0)).toFixed(1) + '" cy="' + (y0 + ((i * 53) % 100) / 100 * (y1 - y0)).toFixed(1) + '" r="' + r + '" fill="' + coul + '"/>'; }
+          return s;
+        }
+        function dessiner() {
+          var b = '<text x="80" y="16" text-anchor="middle" class="ax">Bécher</text><path d="M30 26 V190 Q30 202 42 202 H118 Q130 202 130 190 V26" fill="#fff" stroke="#1A1033" stroke-width="4"/>';
+          var r = '';
+          if (S.etat === 'melange') { b += '<rect x="34" y="80" width="92" height="118" rx="6" fill="#C9A66B"/>' + grains(40, 40, 120, 90, 192, '#8A6A33', 2.2); }
+          else if (S.etat === 'decante') { b += '<rect x="34" y="80" width="92" height="118" rx="6" fill="#D9C79F"/><rect x="34" y="176" width="92" height="22" rx="4" fill="#B08A4A"/>' + grains(25, 38, 122, 178, 196, '#7A5A26', 2); }
+          else if (S.etat === 'filtrat') { b += '<rect x="34" y="80" width="92" height="118" rx="6" fill="#BFE9FF"/>'; }
+          else if (S.etat === 'sec-pur' || S.etat === 'sec-sale') { b += '<text x="80" y="140" text-anchor="middle" class="ax">vide (l’eau s’est évaporée)</text>'; }
+          if (S.etat === 'filtrat' || S.etat === 'sec-pur') {
+            r += '<text x="260" y="16" text-anchor="middle" class="ax">Filtre</text><path d="M210 30 H310 L270 90 V120 H250 V90 Z" fill="#fff" stroke="#1A1033" stroke-width="3.5"/><path d="M220 38 H300 L266 84 H254 Z" fill="#B08A4A"/>' + grains(18, 228, 292, 40, 70, '#7A5A26', 2) + '<text x="260" y="140" text-anchor="middle" class="ax">20 g de sable</text>';
+          }
+          if (S.etat === 'sec-pur') {
+            r += '<path d="M200 186 Q260 214 320 186" fill="#fff" stroke="#1A1033" stroke-width="3.5"/>';
+            for (var i = 0; i < 16; i++) { r += '<rect x="' + (222 + (i * 23) % 76) + '" y="' + (184 + (i * 7) % 10) + '" width="7" height="7" fill="#fff" stroke="#4FC3F7" stroke-width="1.5" transform="rotate(' + (i * 25) + ' ' + (225 + (i * 23) % 76) + ' ' + (188 + (i * 7) % 10) + ')"/>'; }
+            r += '<text x="260" y="168" text-anchor="middle" class="ax">10 g de sel pur</text>';
+          }
+          if (S.etat === 'sec-sale') {
+            r += '<path d="M200 186 Q260 214 320 186" fill="#fff" stroke="#1A1033" stroke-width="3.5"/>' + grains(30, 214, 306, 184, 196, '#8A6A33', 2.4) + grains(14, 214, 306, 184, 196, '#fff', 2.4) + '<text x="260" y="168" text-anchor="middle" class="ax">30 g de sel et de sable mêlés</text>';
+          }
+          gB.innerHTML = b; gR.innerHTML = r;
+          var txt = {
+            melange: 'Le mélange est hétérogène : on voit les grains de sable. Masse totale : 130 g.',
+            decante: 'Le sable est tombé au fond, mais l’eau reste un peu trouble et le sel est toujours dissous.',
+            filtrat: 'Le filtre a retenu le sable. L’eau est limpide… mais elle est salée : le sel dissous traverse le filtre. Masse : 110 g d’eau salée + 20 g de sable = 130 g.',
+            'sec-pur': 'L’eau s’est évaporée : il reste 10 g de cristaux de sel pur. Les marais salants fonctionnent ainsi, avec le soleil et le vent.',
+            'sec-sale': 'Raté : en évaporant avant de filtrer, le sel et le sable restent mêlés. Recommence et filtre d’abord !'
+          };
+          lec.textContent = txt[S.etat];
+          bD.disabled = S.etat !== 'melange';
+          bF.disabled = S.etat !== 'melange' && S.etat !== 'decante';
+          bE.disabled = S.etat === 'sec-pur' || S.etat === 'sec-sale';
+        }
+        bD.onclick = function () { api.touche(); S.etat = 'decante'; dessiner(); };
+        bF.onclick = function () { api.touche(); S.etat = 'filtrat'; api.defi('filtre'); dessiner(); };
+        bE.onclick = function () { api.touche(); if (S.etat === 'filtrat') { S.etat = 'sec-pur'; api.defi('sel'); } else { S.etat = 'sec-sale'; api.dire('Hum… le sable est resté avec le sel. Il fallait séparer le sable d’abord.'); } dessiner(); };
+        bR.onclick = function () { S.etat = 'melange'; dessiner(); };
+        dessiner();
+        return null;
+      } },
+
+    /* ---- 14. Signaux : le code lumineux ---- */
+    { id: 'morse', fam: 'sig', titre: 'Le code lumineux', notions: ['signaux6', 'lumiere'], mat: ['Lampe de signalisation', '···'],
+      intro: 'Une lampe envoie des messages en code morse : des éclats courts (·) et longs (—). Décode les messages reçus, puis envoie toi-même un appel au secours.',
+      defis: [{ id: 'decode', txt: 'Décode 3 messages lumineux' }, { id: 'sos', txt: 'Envoie le message SOS' }],
+      conclusion: 'Pour communiquer, il faut un émetteur (la lampe), un récepteur (l’œil) et un code commun aux deux. Sans le code, le signal ne transmet aucune information.',
+      monter: function (zone, api) {
+        var MORSE = { A: '.-', B: '-...', C: '-.-.', D: '-..', E: '.', F: '..-.', G: '--.', H: '....', I: '..', J: '.---', K: '-.-', L: '.-..', M: '--', N: '-.', O: '---', P: '.--.', Q: '--.-', R: '.-.', S: '...', T: '-', U: '..-', V: '...-', W: '.--', X: '-..-', Y: '-.--', Z: '--..' };
+        var MOTS = ['OUI', 'NON', 'EAU', 'SON', 'FEU', 'AIR', 'LUNE', 'TOI', 'AMI'];
+        var S = { mot: null, lecture: false, minuteurs: [], reussis: 0, envoi: [], lettre: '' };
+        function sym(c) { return c === '.' ? '·' : '—'; }
+        var table = h('div', { 'class': 'morse-table' });
+        Object.keys(MORSE).forEach(function (l) { table.appendChild(h('span', null, '<b>' + l + '</b> ' + MORSE[l].split('').map(sym).join(''))); });
+        var recep = h('div', { 'class': 'exp-scene' });
+        recep.innerHTML = '<h4 class="sous-exp">1. Recevoir</h4><div class="morse-lampe"><span class="ampoule"></span><span class="role">Émetteur : la lampe · Récepteur : ton œil</span></div>' +
+          '<div class="exp-ctrl"><button type="button" class="btn">Recevoir un message</button><button type="button" class="btn sec" disabled>Rejouer</button></div>' +
+          '<div class="exp-ctrl"><input type="text" class="saisie" maxlength="8" placeholder="Ton décodage" aria-label="Ton décodage" autocomplete="off"><button type="button" class="btn sec">Vérifier</button></div><p class="lecture"></p>';
+        zone.appendChild(recep);
+        zone.appendChild(h('p', { 'class': 'etiq' }, 'Le code morse (le code commun) :'));
+        zone.appendChild(table);
+        var amp = recep.querySelector('.ampoule'), bts = recep.querySelectorAll('.btn'), saisie = recep.querySelector('.saisie'), lec = recep.querySelector('.lecture');
+        function stop() { S.minuteurs.forEach(clearTimeout); S.minuteurs = []; amp.classList.remove('on'); }
+        function jouer() {
+          stop();
+          var t = 300, u = 260;
+          S.mot.split('').forEach(function (l, i) {
+            MORSE[l].split('').forEach(function (c) {
+              var d = c === '.' ? u : u * 3;
+              S.minuteurs.push(setTimeout(function () { amp.classList.add('on'); }, t));
+              S.minuteurs.push(setTimeout(function () { amp.classList.remove('on'); }, t + d));
+              t += d + u;
+            });
+            t += u * 2;
+          });
+          lec.textContent = 'Observe bien la lampe…';
+          S.minuteurs.push(setTimeout(function () { lec.textContent = 'Message terminé : écris ce que tu as décodé.'; }, t));
+        }
+        bts[0].onclick = function () { api.touche(); S.mot = choisir(MOTS.filter(function (m) { return m !== S.mot; })); saisie.value = ''; bts[1].disabled = false; jouer(); };
+        bts[1].onclick = function () { if (S.mot) { jouer(); } };
+        bts[2].onclick = function () {
+          if (!S.mot) { lec.textContent = 'Reçois d’abord un message.'; return; }
+          var rep = saisie.value.toUpperCase().replace(/[^A-Z]/g, '');
+          var code = S.mot.split('').map(function (l) { return MORSE[l].split('').map(sym).join(''); }).join('   ');
+          if (rep === S.mot) {
+            S.reussis++; lec.textContent = 'Bravo, c’était « ' + S.mot + ' » (' + code + '). Messages décodés : ' + S.reussis + '.';
+            if (S.reussis >= 3) { api.defi('decode'); }
+            S.mot = null; bts[1].disabled = true;
+          } else { lec.textContent = 'Pas tout à fait. Rejoue le message et compare avec le tableau du code.'; }
+        };
+        var envoi = h('div', { 'class': 'exp-scene' });
+        envoi.innerHTML = '<h4 class="sous-exp">2. Envoyer</h4><div class="exp-ctrl"><button type="button" class="btn sec">Court ·</button><button type="button" class="btn sec">Long —</button><button type="button" class="btn sec">Fin de lettre</button><button type="button" class="btn sec">Effacer</button></div><p class="lecture large envoi-txt"></p>';
+        zone.appendChild(envoi);
+        var be = envoi.querySelectorAll('.btn'), txtEnvoi = envoi.querySelector('.envoi-txt');
+        function inverse(code) { for (var l in MORSE) { if (MORSE.hasOwnProperty(l) && MORSE[l] === code) { return l; } } return '?'; }
+        function majEnvoi() {
+          var lettres = S.envoi.join('');
+          txtEnvoi.innerHTML = '<b>Message envoyé : ' + (lettres || '…') + '</b>Lettre en cours : ' + (S.lettre ? S.lettre.split('').map(sym).join('') : '(vide)');
+          if (lettres === 'SOS') { api.defi('sos'); api.dire('SOS reçu cinq sur cinq ! C’est le signal de détresse le plus célèbre.'); }
+        }
+        be[0].onclick = function () { api.touche(); if (S.lettre.length < 5) { S.lettre += '.'; } majEnvoi(); };
+        be[1].onclick = function () { api.touche(); if (S.lettre.length < 5) { S.lettre += '-'; } majEnvoi(); };
+        be[2].onclick = function () { if (S.lettre) { S.envoi.push(inverse(S.lettre)); S.lettre = ''; if (S.envoi.length > 8) { S.envoi.shift(); } } majEnvoi(); };
+        be[3].onclick = function () { S.envoi = []; S.lettre = ''; majEnvoi(); };
+        majEnvoi();
+        return stop;
+      } },
+
+    /* ---- 15. Gravitation : le canon de Newton ---- */
+    { id: 'orbite', fam: 'mvt', titre: 'Mise en orbite', notions: ['gravitation', 'poids'], mat: ['Satellite', 'g'],
+      intro: 'Imagine, comme Newton, un canon au sommet d’une montagne immense. Règle la vitesse de lancement : le boulet retombe, tourne autour de la Terre ou s’échappe dans l’espace.',
+      defis: [{ id: 'orbite', txt: 'Fais faire un tour complet de la Terre au satellite' }, { id: 'fuite', txt: 'Lance-le assez vite pour qu’il s’échappe de l’attraction terrestre' }],
+      conclusion: 'La Terre attire le satellite en permanence (interaction gravitationnelle). S’il va assez vite (environ 7,9 km/s près du sol), il « tombe » autour de la Terre sans jamais la toucher. Au-delà d’environ 11,2 km/s, il s’échappe.',
+      monter: function (zone, api) {
+        var R = 60, r0 = 74, GM = r0, S = { v: 0.8, mt: null };
+        var lab = h('label', null, 'Vitesse de lancement : <b class="vv"></b>'); var rg = h('input', { type: 'range', min: '0.40', max: '1.60', step: '0.02', value: '0.80' });
+        zone.appendChild(lab); zone.appendChild(rg);
+        var ctrl = h('div', { 'class': 'exp-ctrl' }); var bL = bouton('Lancer', ''); ctrl.appendChild(bL); zone.appendChild(ctrl);
+        var scene = h('div', { 'class': 'exp-scene' });
+        scene.innerHTML = '<svg viewBox="0 0 340 340" class="exp-svg espace"><rect width="340" height="340" rx="14" fill="#0E0A2A"/><circle cx="170" cy="170" r="' + R + '" fill="#3F7FE0" stroke="#1A1033" stroke-width="3"/><path d="M135 140 q20 -18 40 -4 q12 14 30 6 q6 22 -16 30 q-20 4 -30 18 q-18 -8 -24 -24 z" fill="#5BBF6A"/><path d="M160 112 L170 96 L180 112 Z" fill="#B08A4A" stroke="#1A1033" stroke-width="2"/><polyline class="traj" fill="none" stroke="#FFC93C" stroke-width="2.5" stroke-dasharray="4 3"/><circle class="sat" r="5" fill="#fff" stroke="#FFC93C" stroke-width="2"/></svg><p class="lecture large"></p>';
+        zone.appendChild(scene);
+        var traj = scene.querySelector('.traj'), sat = scene.querySelector('.sat'), lec = scene.querySelector('.lecture');
+        function maj() { lab.querySelector('.vv').textContent = virgule(S.v * 7.9, 1) + ' km/s'; }
+        function placer(x, y) { sat.setAttribute('cx', (170 + x).toFixed(1)); sat.setAttribute('cy', (170 + y).toFixed(1)); }
+        function arreter() { clearInterval(S.mt); S.mt = null; bL.textContent = 'Lancer'; }
+        function lancer() {
+          arreter();
+          var x = 0, y = -r0, vx = S.v, vy = 0, ang = 0, angPrec = Math.atan2(y, x), pts = [(170).toFixed(1) + ',' + (170 - r0)], n = 0, dt = 0.5;
+          bL.textContent = 'Arrêter';
+          lec.textContent = 'Lancement…';
+          S.mt = setInterval(function () {
+            for (var k = 0; k < 20; k++) {
+              var r = Math.sqrt(x * x + y * y), a = GM / (r * r * r);
+              vx -= a * x * dt; vy -= a * y * dt; x += vx * dt; y += vy * dt; n++;
+              var an = Math.atan2(y, x), d = an - angPrec;
+              if (d > Math.PI) { d -= 2 * Math.PI; } if (d < -Math.PI) { d += 2 * Math.PI; }
+              ang += d; angPrec = an;
+              r = Math.sqrt(x * x + y * y);
+              if (n % 3 === 0) { pts.push((170 + x).toFixed(1) + ',' + (170 + y).toFixed(1)); }
+              if (r <= R) { arreter(); lec.textContent = 'Le boulet retombe sur Terre : il n’allait pas assez vite. La Terre l’a attiré vers son centre.'; break; }
+              if (r > 420) { arreter(); lec.textContent = 'Il s’échappe ! À cette vitesse, l’attraction de la Terre ne suffit plus à le retenir (vitesse de libération : environ 11,2 km/s).'; api.defi('fuite'); break; }
+              if (Math.abs(ang) >= 2 * Math.PI && !S.tour) { S.tour = true; api.defi('orbite'); lec.textContent = 'Un tour complet ! Le satellite est en orbite : il tombe sans cesse autour de la Terre.'; }
+              if (n > 12000) { arreter(); break; }
+            }
+            traj.setAttribute('points', pts.join(' '));
+            placer(x, y);
+            if (S.mt && !S.tour) { lec.textContent = 'En vol… altitude : ' + fmt(Math.round((Math.sqrt(x * x + y * y) - R) / R * 6371 / 10) * 10) + ' km' + (Math.sqrt(x * x + y * y) > 165 ? ' (il sort du cadre, attends son retour)' : '') + '.'; }
+          }, 30);
+          S.tour = false;
+        }
+        rg.oninput = function () { S.v = +rg.value; api.touche(); maj(); };
+        bL.onclick = function () { api.touche(); if (S.mt) { arreter(); } else { lancer(); } };
+        placer(0, -r0); maj();
+        lec.textContent = 'Indice : la vitesse de satellisation est d’environ 7,9 km/s.';
+        return function () { clearInterval(S.mt); };
+      } },
+
+    /* ---- 16. Puissance : la multiprise ---- */
+    { id: 'multiprise', fam: 'ene', titre: 'Attention à la multiprise !', notions: ['puissance', 'tension-intensite'], mat: ['Compteur électrique', 'W'],
+      intro: 'Branche des appareils sur une multiprise (230 V, 16 A au maximum). Observe la puissance totale, l’intensité, puis l’énergie consommée selon la durée.',
+      defis: [{ id: 'saute', txt: 'Provoque une surcharge : la protection coupe le courant' }, { id: 'kwh', txt: 'Consomme exactement 2 kWh' }],
+      conclusion: 'Les puissances des appareils branchés s’additionnent, et l’intensité aussi (I = P / U). Au-delà de l’intensité maximale, les fils chauffent : un disjoncteur ou un fusible coupe le courant. L’énergie consommée vaut E = P × t.',
+      monter: function (zone, api) {
+        var APP = [['LED', 'Lampe LED', 8], ['tel', 'Chargeur de téléphone', 10], ['pc', 'Ordinateur portable', 60], ['tv', 'Télévision', 100], ['sc', 'Sèche-cheveux', 1800], ['bo', 'Bouilloire', 2000], ['ra', 'Radiateur', 2000]];
+        var S = { on: {}, t: 1, coupe: false };
+        var grille = h('div', { 'class': 'appareils' });
+        APP.forEach(function (a) {
+          var b = h('button', { 'class': 'puce', type: 'button', 'aria-pressed': 'false' });
+          b.innerHTML = a[1] + ' <small>' + fmt(a[2]) + ' W</small>';
+          b.onclick = function () { api.touche(); if (S.coupe) { S.coupe = false; S.on = {}; majBoutons(); } S.on[a[0]] = !S.on[a[0]]; b.setAttribute('aria-pressed', S.on[a[0]] ? 'true' : 'false'); calculer(); };
+          a.b = b; grille.appendChild(b);
+        });
+        zone.appendChild(grille);
+        var lab = h('label', null, 'Durée de fonctionnement : <b class="tv"></b>'); var rg = h('input', { type: 'range', min: '0.5', max: '5', step: '0.5', value: '1' });
+        zone.appendChild(lab); zone.appendChild(rg);
+        var scene = h('div', { 'class': 'exp-scene deux-col' });
+        scene.innerHTML = '<div class="jauge-i"><div class="ji-barre"><span></span><i style="left:80%"></i></div><p class="lecture"></p></div><div class="multi"><span class="ecran"></span><small>Énergie consommée</small></div>';
+        zone.appendChild(scene);
+        var msg = h('p', { 'class': 'lecture large' }); zone.appendChild(msg);
+        function majBoutons() { APP.forEach(function (a) { a.b.setAttribute('aria-pressed', S.on[a[0]] ? 'true' : 'false'); }); }
+        function calculer() {
+          var P = 0; APP.forEach(function (a) { if (S.on[a[0]]) { P += a[2]; } });
+          var I = P / 230;
+          lab.querySelector('.tv').textContent = virgule(S.t) + ' h';
+          var sp = scene.querySelector('.ji-barre span');
+          sp.style.width = Math.min(100, I / 20 * 100) + '%';
+          sp.style.background = I > 16 ? 'var(--ko)' : (I > 12 ? 'var(--or)' : 'var(--ok)');
+          scene.querySelector('.jauge-i .lecture').innerHTML = '<b>P = ' + fmt(P) + ' W</b>I = P / U = ' + fmt(P) + ' / 230 ≈ ' + virgule(I, 1) + ' A (maximum : 16 A)';
+          if (I > 16) {
+            S.coupe = true; S.on = {}; majBoutons();
+            scene.querySelector('.ecran').textContent = '0 kWh';
+            msg.textContent = 'Surcharge ! ' + virgule(I, 1) + ' A, c’est plus que 16 A : les fils chauffent dangereusement et la protection coupe tout. Rebranche moins d’appareils.';
+            api.defi('saute');
+            return;
+          }
+          var E = P * S.t;
+          scene.querySelector('.ecran').textContent = virgule(E / 1000, 3) + ' kWh';
+          msg.textContent = P ? 'E = P × t = ' + fmt(P) + ' W × ' + virgule(S.t) + ' h = ' + fmt(E) + ' Wh, soit ' + virgule(E / 1000, 3) + ' kWh.' : 'Touche des appareils pour les brancher.';
+          if (E === 2000) { api.defi('kwh'); }
+        }
+        rg.oninput = function () { S.t = +rg.value; api.touche(); calculer(); };
+        calculer();
+        return null;
+      } }
+,
+    /* ---- 17. Dissolution et saturation (repris de la V4.4) ---- */
+    { id: 'dissout', fam: 's6', titre: 'Le sel a disparu ?', notions: ['melanges', 'particules'], mat: ['Agitateur', 'g/L'],
+      intro: 'Verse de l’eau, ajoute du sel, puis agite. Le sel disparaît-il vraiment ? Peut-on en dissoudre autant qu’on veut ?',
+      defis: [{ id: 'dix', txt: 'Dissous entièrement au moins 10 g de sel dans 100 mL d’eau ou moins' }, { id: 'sature', txt: 'Fabrique une solution saturée (du sel reste au fond)' }],
+      conclusion: 'Le sel dissous est toujours là : la masse totale se conserve. Mais un volume d’eau ne peut dissoudre qu’une quantité limitée de sel (environ 36 g pour 100 mL à 20 °C) : au-delà, la solution est saturée.',
+      monter: function (zone, api) {
+        var S = { V: 100, m: 0, agite: true };
+        var l1 = h('label', null, 'Eau versée : <b class="vv"></b>'), r1 = h('input', { type: 'range', min: '20', max: '200', step: '10', value: '100' });
+        var l2 = h('label', null, 'Sel ajouté : <b class="mv"></b>'), r2 = h('input', { type: 'range', min: '0', max: '80', step: '1', value: '0' });
+        zone.appendChild(l1); zone.appendChild(r1); zone.appendChild(l2); zone.appendChild(r2);
+        var ctrl = h('div', { 'class': 'exp-ctrl' }); var bA = bouton('Agiter', ''); ctrl.appendChild(bA); zone.appendChild(ctrl);
+        var scene = h('div', { 'class': 'exp-scene deux-col' });
+        scene.innerHTML = '<svg viewBox="0 0 200 220" class="exp-svg becher-d"><path d="M40 20 V196 Q40 208 52 208 H148 Q160 208 160 196 V20" fill="#fff" stroke="#1A1033" stroke-width="4"/><rect class="eau" x="44" width="112" rx="6" fill="#BFE9FF"/><g class="depot"></g><g class="grains"></g></svg>' +
+          '<div class="balance-d"><span class="ecran"></span><small>Balance (bécher taré)</small><p class="lecture"></p></div>';
+        zone.appendChild(scene);
+        var msg = h('p', { 'class': 'lecture large' }); zone.appendChild(msg);
+        function maj() {
+          var max = 0.36 * S.V, dissous = S.agite ? Math.min(S.m, max) : 0, reste = S.m - dissous;
+          l1.querySelector('.vv').textContent = S.V + ' mL'; l2.querySelector('.mv').textContent = S.m + ' g';
+          var haut = 30 + S.V * 0.8, y = 204 - haut;
+          var eau = scene.querySelector('.eau'); eau.setAttribute('y', y.toFixed(1)); eau.setAttribute('height', haut.toFixed(1));
+          eau.setAttribute('fill', dissous > 0 ? '#C9EEF7' : '#BFE9FF');
+          var dep = '', hd = Math.min(40, reste * 0.6);
+          if (reste > 0) { dep = '<path d="M46 204 Q100 ' + (204 - hd * 2).toFixed(0) + ' 154 204 Z" fill="#fff" stroke="#9BB4C8" stroke-width="2"/>'; }
+          scene.querySelector('.depot').innerHTML = dep;
+          var gr = '';
+          if (!S.agite && S.m > 0) { for (var i = 0; i < Math.min(40, S.m); i++) { gr += '<rect x="' + (50 + (i * 37) % 100) + '" y="' + (y + 6 + (i * 53) % Math.max(10, haut - 14)).toFixed(0) + '" width="4" height="4" fill="#fff" stroke="#7FA6C0" stroke-width="1"/>'; } }
+          scene.querySelector('.grains').innerHTML = gr;
+          scene.querySelector('.ecran').textContent = (S.V + S.m) + ' g';
+          scene.querySelector('.balance-d .lecture').innerHTML = '<b>' + S.V + ' g d’eau + ' + S.m + ' g de sel</b>La masse totale ne change pas quand le sel se dissout.';
+          if (!S.agite) { msg.textContent = 'Le sel vient d’être versé : agite pour le dissoudre.'; }
+          else if (S.m === 0) { msg.textContent = 'De l’eau pure : ajoute du sel.'; }
+          else if (reste > 0) { msg.textContent = 'Solution saturée : ' + virgule(dissous, 0) + ' g sont dissous, mais ' + virgule(reste, 0) + ' g restent au fond. Ajoute de l’eau pour les dissoudre.'; api.defi('sature'); }
+          else { msg.textContent = 'Tout le sel est dissous : le mélange est homogène. On ne voit plus le sel, mais il est toujours là (goût salé, masse conservée). On peut encore en dissoudre ' + virgule(max - S.m, 0) + ' g.'; if (S.m >= 10 && S.V <= 100) { api.defi('dix'); } }
+        }
+        r1.oninput = function () { S.V = +r1.value; api.touche(); maj(); };
+        r2.oninput = function () { S.m = +r2.value; S.agite = false; api.touche(); maj(); };
+        bA.onclick = function () { api.touche(); var s = scene.querySelector('.becher-d'); s.classList.remove('agite'); void s.getBoundingClientRect(); s.classList.add('agite'); setTimeout(function () { S.agite = true; maj(); }, 500); };
+        maj();
+        return null;
+      } },
+
+    /* ---- 18. Chute libre (repris de la V4.4) ---- */
+    { id: 'chute', fam: 'mvt', titre: 'Chute libre', notions: ['poids', 'gravitation', 'vitesse'], mat: ['Tube à vide', 'm/s²'],
+      intro: 'Lâche deux objets de la même hauteur, dans l’air ou dans un tube où l’on a fait le vide. Le plus lourd tombe-t-il toujours plus vite ?',
+      defis: [{ id: 'vide', txt: 'Dans le vide, fais tomber la plume et la bille ensemble' }, { id: 'air', txt: 'Dans l’air, compare la bille et la plume' }],
+      conclusion: 'Dans le vide, tous les objets tombent de la même façon, quelle que soit leur masse : la durée de chute vaut t = √(2h/g). Dans l’air, les frottements freinent davantage les objets légers et étalés, comme la plume. En 1971, un astronaute l’a montré sur la Lune avec un marteau et une plume.',
+      monter: function (zone, api) {
+        var OBJ = { bille: ['Bille de plomb', 60, '#7B8794'], balle: ['Balle de ping-pong', 9, '#FFF6E6'], papier: ['Boule de papier', 5, '#E8EEF6'], plume: ['Plume', 0.6, '#FFC93C'] };
+        var S = { a: 'bille', b: 'plume', milieu: 'air', h: 10, mt: null };
+        function choixObj(lib, cle) {
+          var c = h('div', { 'class': 'exp-ctrl' }); c.appendChild(h('span', { 'class': 'etiq' }, lib));
+          c.appendChild(puces([['bille', 'Bille de plomb'], ['balle', 'Balle de ping-pong'], ['papier', 'Boule de papier'], ['plume', 'Plume']], S[cle], function (v) { S[cle] = v; api.touche(); prep(); }));
+          zone.appendChild(c);
+        }
+        choixObj('Objet A :', 'a'); choixObj('Objet B :', 'b');
+        var cm = h('div', { 'class': 'exp-ctrl' }); cm.appendChild(h('span', { 'class': 'etiq' }, 'Milieu :'));
+        cm.appendChild(puces([['air', 'Dans l’air'], ['vide', 'Dans le vide']], 'air', function (v) { S.milieu = v; api.touche(); prep(); }));
+        zone.appendChild(cm);
+        var lh = h('label', null, 'Hauteur : <b class="hv"></b>'), rh = h('input', { type: 'range', min: '2', max: '20', step: '1', value: '10' });
+        zone.appendChild(lh); zone.appendChild(rh);
+        var c2 = h('div', { 'class': 'exp-ctrl' }); var bL = bouton('Lâcher', ''); c2.appendChild(bL); zone.appendChild(c2);
+        var scene = h('div', { 'class': 'exp-scene' });
+        scene.innerHTML = '<svg viewBox="0 0 320 300" class="exp-svg"><rect class="tube" x="60" y="10" width="200" height="270" rx="16" fill="#EAF6FF" stroke="#1A1033" stroke-width="3"/><path d="M60 280 H260" stroke="#1A1033" stroke-width="5"/><g class="oa"></g><g class="ob"></g><text class="ta ax" x="110" y="296" text-anchor="middle"></text><text class="tb ax" x="210" y="296" text-anchor="middle"></text></svg><p class="lecture large"></p>';
+        zone.appendChild(scene);
+        var lec = scene.querySelector('.lecture');
+        function dessinObj(cle, x, y) {
+          if (cle === 'plume') { return '<g transform="translate(' + x + ',' + y + ') rotate(-25)"><path d="M0 -14 C10 -8 10 8 0 14 C-10 8 -10 -8 0 -14 Z" fill="#FFC93C" stroke="#1A1033" stroke-width="2"/><path d="M0 -14 V18" stroke="#1A1033" stroke-width="1.5"/></g>'; }
+          var r = cle === 'bille' ? 9 : (cle === 'balle' ? 10 : 9);
+          return '<circle cx="' + x + '" cy="' + y + '" r="' + r + '" fill="' + OBJ[cle][2] + '" stroke="#1A1033" stroke-width="2.5"/>';
+        }
+        function prep() {
+          clearInterval(S.mt); S.mt = null; bL.textContent = 'Lâcher';
+          lh.querySelector('.hv').textContent = S.h + ' m';
+          scene.querySelector('.tube').setAttribute('fill', S.milieu === 'vide' ? '#F4F0FF' : '#EAF6FF');
+          scene.querySelector('.oa').innerHTML = dessinObj(S.a, 110, 30);
+          scene.querySelector('.ob').innerHTML = dessinObj(S.b, 210, 30);
+          scene.querySelector('.ta').textContent = OBJ[S.a][0]; scene.querySelector('.tb').textContent = OBJ[S.b][0];
+          lec.textContent = S.milieu === 'vide' ? 'Le tube est vide d’air : aucun frottement.' : 'Dans l’air, les frottements freinent la chute.';
+        }
+        function tempsChute(cle) {
+          var g = 9.8, vt = S.milieu === 'vide' ? Infinity : OBJ[cle][1], y = 0, v = 0, t = 0, dt = 0.002, traj = [];
+          while (y < S.h && t < 120) { var a = vt === Infinity ? g : g * (1 - (v * v) / (vt * vt)); v += a * dt; y += v * dt; t += dt; traj.push(y); }
+          return { t: t, traj: traj, dt: dt };
+        }
+        bL.onclick = function () {
+          api.touche(); prep();
+          var A = tempsChute(S.a), B = tempsChute(S.b), tmax = Math.max(A.t, B.t), acc = Math.max(1, tmax / 5), debut = Date.now();
+          bL.textContent = 'En chute…';
+          S.mt = setInterval(function () {
+            var tr = (Date.now() - debut) / 1000 * acc;
+            function pos(R) { var i = Math.min(R.traj.length - 1, Math.floor(tr / R.dt)); return 30 + (R.traj[i] || 0) / S.h * 238; }
+            scene.querySelector('.oa').innerHTML = dessinObj(S.a, 110, pos(A));
+            scene.querySelector('.ob').innerHTML = dessinObj(S.b, 210, pos(B));
+            if (tr >= tmax) {
+              clearInterval(S.mt); S.mt = null; bL.textContent = 'Lâcher';
+              var txt = OBJ[S.a][0] + ' : ' + virgule(A.t, 2) + ' s · ' + OBJ[S.b][0] + ' : ' + virgule(B.t, 2) + ' s' + (acc > 1.05 ? ' (animation accélérée ×' + virgule(acc, 0) + ')' : '') + '. ';
+              var memes = Math.abs(A.t - B.t) < 0.01;
+              txt += memes ? 'Ils touchent le sol en même temps !' : 'Le plus freiné arrive après.';
+              lec.textContent = txt;
+              var paire = (S.a === 'bille' && S.b === 'plume') || (S.a === 'plume' && S.b === 'bille');
+              if (paire && S.milieu === 'vide') { api.defi('vide'); }
+              if (paire && S.milieu === 'air') { api.defi('air'); }
+            }
+          }, 30);
+        };
+        rh.oninput = function () { S.h = +rh.value; api.touche(); prep(); };
+        prep();
+        return function () { clearInterval(S.mt); };
+      } },
+
+    /* ---- 19. Modèles moléculaires (repris de la V4.4) ---- */
+    { id: 'molecules', fam: 'mat', titre: 'L’atelier moléculaire', notions: ['particules', 'transformation', 'atomes'], mat: ['Modèles moléculaires', 'H₂O'],
+      intro: 'Assemble le modèle de la molécule demandée avec les bons atomes. Convention : H blanc, O rouge, C noir, N bleu.',
+      defis: [{ id: 'eau', txt: 'Construis une molécule d’eau, H₂O' }, { id: 'cinq', txt: 'Construis 5 molécules différentes' }],
+      conclusion: 'Une molécule est un assemblage d’atomes. Sa formule indique la nature et le nombre de chaque atome : H₂O contient 2 atomes d’hydrogène et 1 atome d’oxygène. Les modèles ne respectent pas l’échelle réelle.',
+      monter: function (zone, api) {
+        var AT = { H: ['#FFFFFF', 'Hydrogène'], O: ['#FF4A4A', 'Oxygène'], C: ['#2B2B2B', 'Carbone'], N: ['#4D8BFF', 'Azote'] };
+        var MOL = [['H₂O', 'eau', { H: 2, O: 1 }], ['O₂', 'dioxygène', { O: 2 }], ['CO₂', 'dioxyde de carbone', { C: 1, O: 2 }], ['CH₄', 'méthane', { C: 1, H: 4 }], ['N₂', 'diazote', { N: 2 }], ['H₂', 'dihydrogène', { H: 2 }], ['NH₃', 'ammoniac', { N: 1, H: 3 }]];
+        var S = { i: 0, plan: [], faites: {} };
+        var cible = h('p', { 'class': 'eq-titre' }); zone.appendChild(cible);
+        var ctrl = h('div', { 'class': 'exp-ctrl' });
+        Object.keys(AT).forEach(function (a) {
+          var b = h('button', { 'class': 'atome-btn', type: 'button', 'aria-label': 'Ajouter un atome ' + AT[a][1] });
+          b.innerHTML = '<i style="background:' + AT[a][0] + '"></i>' + a;
+          b.onclick = function () { api.touche(); if (S.plan.length < 8) { S.plan.push(a); } rendre(); };
+          ctrl.appendChild(b);
+        });
+        var bV = bouton('Vérifier', ''), bE = bouton('Vider'), bS = bouton('Molécule suivante');
+        ctrl.appendChild(bV); ctrl.appendChild(bE); ctrl.appendChild(bS);
+        zone.appendChild(ctrl);
+        var scene = h('div', { 'class': 'exp-scene' }); scene.innerHTML = '<div class="plan-travail"></div><p class="lecture large"></p>'; zone.appendChild(scene);
+        var plan = scene.querySelector('.plan-travail'), lec = scene.querySelector('.lecture');
+        function rendre() {
+          var m = MOL[S.i];
+          cible.textContent = 'Construis : ' + m[1] + ' (' + m[0] + ')' + (S.faites[m[0]] ? ' ✔' : '');
+          plan.innerHTML = '';
+          if (!S.plan.length) { plan.appendChild(h('span', { 'class': 'vide' }, 'Touche les atomes pour les poser ici. Touche un atome posé pour l’enlever.')); }
+          S.plan.forEach(function (a, k) {
+            var b = h('button', { 'class': 'atome-pose', type: 'button', 'aria-label': 'Retirer ' + AT[a][1] });
+            b.style.background = AT[a][0]; b.style.color = a === 'C' ? '#fff' : '#1A1033'; b.textContent = a;
+            b.onclick = function () { S.plan.splice(k, 1); rendre(); };
+            plan.appendChild(b);
+          });
+        }
+        bV.onclick = function () {
+          api.touche();
+          var m = MOL[S.i], c = {}, ok = true, k;
+          S.plan.forEach(function (a) { c[a] = (c[a] || 0) + 1; });
+          for (k in m[2]) { if (m[2].hasOwnProperty(k) && c[k] !== m[2][k]) { ok = false; } }
+          for (k in c) { if (c.hasOwnProperty(k) && !m[2][k]) { ok = false; } }
+          if (ok) {
+            S.faites[m[0]] = true; plan.classList.remove('assemble'); void plan.offsetWidth; plan.classList.add('assemble');
+            lec.textContent = 'Bravo ! La molécule ' + (/^[aeiouyhé]/.test(m[1]) ? 'd’' : 'de ') + m[1] + ' (' + m[0] + ') est assemblée.';
+            if (m[0] === 'H₂O') { api.defi('eau'); }
+            if (Object.keys(S.faites).length >= 5) { api.defi('cinq'); }
+            rendre();
+          } else {
+            var det = []; for (k in m[2]) { if (m[2].hasOwnProperty(k)) { det.push(m[2][k] + ' ' + AT[k][1].toLowerCase()); } }
+            lec.textContent = 'Pas encore. Lis la formule : le petit chiffre indique le nombre d’atomes (sans chiffre : 1). Il faut ' + det.join(' et ') + '.';
+          }
+        };
+        bE.onclick = function () { S.plan = []; rendre(); };
+        bS.onclick = function () { S.i = (S.i + 1) % MOL.length; S.plan = []; lec.textContent = ''; rendre(); };
+        rendre();
+        return null;
+      } },
+
+    /* ---- 20. Éolienne (repris de la V4.4) ---- */
+    { id: 'eolienne', fam: 'ene', titre: 'Du vent dans les pales', notions: ['energie6', 'puissance', 'cinetique'], mat: ['Anémomètre', 'km/h'],
+      intro: 'Règle la vitesse du vent et la longueur des pales. L’éolienne convertit l’énergie cinétique du vent en énergie électrique.',
+      defis: [{ id: 'cube', txt: 'Double la vitesse du vent et compare : la puissance est multipliée par 8' }, { id: 'stop', txt: 'Trouve à partir de quelle vitesse l’éolienne se met à l’arrêt' }],
+      conclusion: 'Le vent est une source d’énergie renouvelable. La puissance d’une éolienne augmente très vite avec la vitesse du vent (elle est multipliée par 8 quand la vitesse double) et avec la longueur des pales. Par grand vent, elle s’arrête pour ne pas être abîmée.',
+      monter: function (zone, api) {
+        var S = { v: 8, L: 40, memo: null };
+        var l1 = h('label', null, 'Vitesse du vent : <b class="vv"></b>'), r1 = h('input', { type: 'range', min: '0', max: '30', step: '1', value: '8' });
+        var l2 = h('label', null, 'Longueur des pales : <b class="lv"></b>'), r2 = h('input', { type: 'range', min: '10', max: '60', step: '5', value: '40' });
+        zone.appendChild(l1); zone.appendChild(r1); zone.appendChild(l2); zone.appendChild(r2);
+        var ctrl = h('div', { 'class': 'exp-ctrl' }); var bM = bouton('Mémoriser cette puissance'); ctrl.appendChild(bM); zone.appendChild(ctrl);
+        var scene = h('div', { 'class': 'exp-scene deux-col' });
+        scene.innerHTML = '<svg viewBox="0 0 200 240" class="exp-svg"><path d="M96 100 L90 236 H110 L104 100 Z" fill="#E8EEF6" stroke="#1A1033" stroke-width="3"/><g class="rotor"><g class="pales"><path d="M100 96 L94 20 Q100 12 106 20 Z" fill="#fff" stroke="#1A1033" stroke-width="3"/><path d="M100 96 L94 20 Q100 12 106 20 Z" fill="#fff" stroke="#1A1033" stroke-width="3" transform="rotate(120 100 96)"/><path d="M100 96 L94 20 Q100 12 106 20 Z" fill="#fff" stroke="#1A1033" stroke-width="3" transform="rotate(240 100 96)"/></g><circle cx="100" cy="96" r="9" fill="#FFC93C" stroke="#1A1033" stroke-width="3"/></g><g class="vent"></g></svg>' +
+          '<div class="multi"><span class="ecran"></span><small>Puissance électrique</small><p class="lecture"></p></div>';
+        zone.appendChild(scene);
+        var msg = h('p', { 'class': 'lecture large' }); zone.appendChild(msg);
+        var angle = 0, raf = setInterval(function () {
+          var arret = S.v > 25 || S.v < 3, w = arret ? 0 : S.v * 1.6;
+          angle = (angle + w) % 360;
+          var p = scene.querySelector('.pales'); if (p) { p.setAttribute('transform', 'rotate(' + angle.toFixed(1) + ' 100 96)'); }
+        }, 40);
+        function puissance() { if (S.v < 3 || S.v > 25) { return 0; } return 0.5 * 1.2 * Math.PI * S.L * S.L * Math.pow(S.v, 3) * 0.4; }
+        function txtP(P) { return P >= 1e6 ? virgule(P / 1e6, 2) + ' MW' : (P >= 1e3 ? virgule(P / 1e3, 0) + ' kW' : virgule(P, 0) + ' W'); }
+        function maj() {
+          var P = puissance();
+          l1.querySelector('.vv').textContent = S.v + ' m/s (' + virgule(S.v * 3.6, 0) + ' km/h)';
+          l2.querySelector('.lv').textContent = S.L + ' m';
+          scene.querySelector('.ecran').textContent = txtP(P);
+          var lignes = ''; for (var i = 0; i < Math.min(6, Math.ceil(S.v / 5)); i++) { lignes += '<path d="M' + (8 + (i % 2) * 10) + ' ' + (40 + i * 26) + ' h' + (20 + S.v * 1.5) + '" stroke="#4FC3F7" stroke-width="3" stroke-linecap="round" class="souffle"/>'; }
+          scene.querySelector('.vent').innerHTML = lignes;
+          var info = S.v < 3 ? 'Pas assez de vent : l’éolienne ne démarre pas.' : (S.v > 25 ? 'Tempête ! Au-delà de 25 m/s (90 km/h), l’éolienne se met en sécurité et s’arrête.' : 'L’énergie cinétique du vent est convertie en énergie électrique.');
+          scene.querySelector('.multi .lecture').textContent = info;
+          if (S.v > 25) { api.defi('stop'); }
+          if (S.memo && S.memo.P > 0 && P > 0) {
+            var rapport = P / S.memo.P;
+            msg.textContent = 'Puissance mémorisée : ' + txtP(S.memo.P) + ' à ' + S.memo.v + ' m/s. Maintenant : ' + txtP(P) + ', soit ' + virgule(rapport, 1) + ' fois plus.';
+            if (S.v === 2 * S.memo.v && S.L === S.memo.L) { msg.textContent += ' La vitesse a doublé : la puissance est multipliée par 2 × 2 × 2 = 8 !'; api.defi('cube'); }
+          } else { msg.textContent = 'Astuce : mémorise une puissance, puis double la vitesse du vent.'; }
+        }
+        r1.oninput = function () { S.v = +r1.value; api.touche(); maj(); };
+        r2.oninput = function () { S.L = +r2.value; api.touche(); maj(); };
+        bM.onclick = function () { api.touche(); S.memo = { P: puissance(), v: S.v, L: S.L }; maj(); };
+        maj();
+        return function () { clearInterval(raf); };
+      } },
+
+    /* ---- 21. Amplitude et fréquence (repris de la V4.4) ---- */
+    { id: 'oscillo', fam: 'sig', titre: 'Fort n’est pas aigu', notions: ['son'], mat: ['Oscilloscope', '∿'],
+      intro: 'Règle l’amplitude et la fréquence du signal, observe l’oscilloscope et écoute (volume de l’appareil assez bas).',
+      defis: [{ id: 'la', txt: 'Accorde le signal sur le LA du diapason : 440 Hz (à 5 Hz près), en le jouant' }, { id: 'ampl', txt: 'Change seulement l’amplitude pendant que le son est joué' }],
+      conclusion: 'La fréquence (en hertz) fixe la hauteur du son : plus elle est grande, plus le son est aigu. L’amplitude fixe le niveau sonore : plus elle est grande, plus le son est fort. Ce sont deux grandeurs indépendantes. La période T = 1 / f est la durée d’une vibration.',
+      monter: function (zone, api) {
+        var S = { A: 0.5, f: 300, osc: null, gain: null, fJeu: null };
+        var l1 = h('label', null, 'Amplitude : <b class="av"></b>'), r1 = h('input', { type: 'range', min: '0.1', max: '1', step: '0.05', value: '0.5' });
+        var l2 = h('label', null, 'Fréquence : <b class="fv"></b>'), r2 = h('input', { type: 'range', min: '100', max: '1000', step: '1', value: '300' });
+        zone.appendChild(l1); zone.appendChild(r1); zone.appendChild(l2); zone.appendChild(r2);
+        var ctrl = h('div', { 'class': 'exp-ctrl' }); var bJ = bouton('Jouer le son', ''); ctrl.appendChild(bJ); zone.appendChild(ctrl);
+        var scene = h('div', { 'class': 'exp-scene' });
+        scene.innerHTML = '<svg viewBox="0 0 320 160" class="exp-svg oscillo"><rect width="320" height="160" rx="10" fill="#0B2A14"/><g stroke="#2E6B3F" stroke-width="1"><path d="M0 80H320M64 0V160M128 0V160M192 0V160M256 0V160M0 40H320M0 120H320"/></g><path class="signal" fill="none" stroke="#7CFF9A" stroke-width="2.5"/><text x="8" y="152" fill="#7CFF9A" class="ax">10 ms au total</text></svg><p class="lecture large"></p>';
+        zone.appendChild(scene);
+        var lec = scene.querySelector('.lecture');
+        function maj() {
+          l1.querySelector('.av').textContent = virgule(S.A, 2); l2.querySelector('.fv').textContent = S.f + ' Hz';
+          var d = 'M0 80', cycles = S.f * 0.01;
+          for (var x = 0; x <= 320; x += 1) { d += ' L' + x + ' ' + (80 - 70 * S.A * Math.sin(x / 320 * cycles * 2 * Math.PI)).toFixed(1); }
+          scene.querySelector('.signal').setAttribute('d', d);
+          lec.innerHTML = '<b>Période : T = 1 / ' + S.f + ' ≈ ' + virgule(1000 / S.f, 2) + ' ms</b>' + (S.f < 300 ? 'Son plutôt grave.' : (S.f < 700 ? 'Son médium.' : 'Son plutôt aigu.')) + ' Amplitude ' + (S.A < 0.35 ? 'faible : son doux.' : (S.A < 0.7 ? 'moyenne.' : 'grande : son fort.'));
+          if (S.osc) {
+            S.osc.frequency.value = S.f; S.gain.gain.setTargetAtTime(0.05 * S.A, audio().currentTime, 0.03);
+            if (Math.abs(S.f - 440) <= 5) { api.defi('la'); }
+          }
+        }
+        function stop() { if (S.osc) { try { S.gain.gain.setTargetAtTime(0, audio().currentTime, 0.03); var o = S.osc; setTimeout(function () { try { o.stop(); } catch (e) { } }, 150); } catch (e) { } S.osc = null; } bJ.textContent = 'Jouer le son'; }
+        bJ.onclick = function () {
+          api.touche();
+          if (S.osc) { stop(); return; }
+          var ac = audio();
+          if (!ac) { lec.textContent = 'Le son n’est pas disponible sur cet appareil : observe l’oscilloscope.'; return; }
+          if (ac.resume) { ac.resume(); }
+          S.osc = ac.createOscillator(); S.gain = ac.createGain(); S.osc.type = 'sine'; S.osc.frequency.value = S.f; S.gain.gain.value = 0;
+          S.osc.connect(S.gain); S.gain.connect(ac.destination); S.osc.start();
+          S.fJeu = S.f; bJ.textContent = 'Arrêter'; maj();
+        };
+        r1.oninput = function () { var avant = S.A; S.A = +r1.value; api.touche(); maj(); if (S.osc && S.f === S.fJeu && avant !== S.A) { api.defi('ampl'); } };
+        r2.oninput = function () { S.f = +r2.value; S.fJeu = S.osc ? S.f : S.fJeu; api.touche(); maj(); };
+        maj();
+        return stop;
+      } }
   ];
+
+  /* ---------- Sons de l’appli ---------- */
+  function jouerNotes(liste) {
+    if (etat.reglages.son === false) { return; }
+    var ac = audio(); if (!ac) { return; }
+    try {
+      if (ac.resume) { ac.resume(); }
+      liste.forEach(function (n) {
+        var t = ac.currentTime + n[1], o = ac.createOscillator(), g = ac.createGain();
+        o.type = n[3] || 'triangle'; o.frequency.setValueAtTime(n[0], t);
+        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(n[4] || 0.07, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + n[2]);
+        o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t + n[2] + 0.05);
+      });
+    } catch (e) { }
+  }
+  function sonDefi() { jouerNotes([[659.3, 0, 0.18], [784, 0.09, 0.18], [1046.5, 0.18, 0.45]]); }
+  function sonStable() { jouerNotes([[523.3, 0, 0.3], [659.3, 0.1, 0.3], [784, 0.2, 0.3], [1046.5, 0.3, 0.6], [1318.5, 0.42, 0.7, 'sine', 0.05]]); }
+  function sonJuste() { jouerNotes([[880, 0, 0.12, 'sine', 0.05], [1318.5, 0.07, 0.2, 'sine', 0.05]]); }
+  function sonFaux() { jouerNotes([[220, 0, 0.22, 'sine', 0.05]]); }
+
+  /* ---------- Cartes souvenirs : liens avec la collection d’éléments ---------- */
+  var CARTES_EXP = {
+    particules: [8, 'Oxygène', 'O', 'Chaque molécule d’eau contient un atome d’oxygène.'],
+    palier: [80, 'Mercure', 'Hg', 'Le mercure remplissait autrefois les thermomètres.'],
+    flotte: [3, 'Lithium', 'Li', 'Le lithium est si peu dense (0,53 g/cm³) qu’il flotte sur l’eau.'],
+    ph: [1, 'Hydrogène', 'H', 'L’acidité d’une solution vient des ions hydrogène H⁺.'],
+    equations: [6, 'Carbone', 'C', 'Le carbone brûle dans le dioxygène : C + O₂ → CO₂.'],
+    chrono: [22, 'Titane', 'Ti', 'Le titane allège vélos et avions pour aller plus vite.'],
+    astres: [2, 'Hélium', 'He', 'Jupiter est surtout faite d’hydrogène et d’hélium.'],
+    circuit: [29, 'Cuivre', 'Cu', 'Le cuivre est dans presque tous les fils électriques.'],
+    ohm: [24, 'Chrome', 'Cr', 'Les fils chauffants des grille-pain sont en alliage nickel-chrome.'],
+    skate: [13, 'Aluminium', 'Al', 'Les planches et les axes de skate sont souvent en aluminium.'],
+    son: [50, 'Étain', 'Sn', 'Le bronze des cloches contient de l’étain.'],
+    ombre: [74, 'Tungstène', 'W', 'Le filament des anciennes ampoules était en tungstène.'],
+    marais: [17, 'Chlore', 'Cl', 'Le sel des marais salants est du chlorure de sodium.'],
+    morse: [10, 'Néon', 'Ne', 'Les enseignes au néon envoient des signaux lumineux.'],
+    orbite: [77, 'Iridium', 'Ir', 'Une couche d’iridium dans les roches témoigne de la chute d’une météorite géante, attirée par la Terre.'],
+    multiprise: [14, 'Silicium', 'Si', 'Le silicium des panneaux solaires produit de l’électricité.'],
+    dissout: [19, 'Potassium', 'K', 'Le sel de régime, du chlorure de potassium, se dissout lui aussi dans l’eau.'],
+    chute: [82, 'Plomb', 'Pb', 'Dans le vide, une bille de plomb et une plume tombent ensemble.'],
+    molecules: [7, 'Azote', 'N', 'Le diazote N₂, deux atomes d’azote liés, forme 78 % de l’air.'],
+    eolienne: [66, 'Dysprosium', 'Dy', 'Le dysprosium rend résistants à la chaleur les aimants des génératrices d’éoliennes.'],
+    oscillo: [4, 'Béryllium', 'Be', 'Le béryllium sert à fabriquer des membranes de haut-parleurs très rigides.']
+  };
+  var CARTES_NOTION = {
+    etats: [7, 'Azote', 'N', 'L’azote, gaz principal de l’air, est un bel exemple d’état gazeux.'],
+    changements: [8, 'Oxygène', 'O', 'L’eau (H₂O) est le corps pur dont on étudie les changements d’état.'],
+    melanges: [11, 'Sodium', 'Na', 'Le sel de cuisine (chlorure de sodium) se dissout dans l’eau.'],
+    'masse-volume': [82, 'Plomb', 'Pb', 'Le plomb : une grande masse pour un petit volume.'],
+    mouvement: [22, 'Titane', 'Ti', 'Le titane allège vélos et avions pour aller plus vite.'],
+    energie6: [92, 'Uranium', 'U', 'L’uranium est la source d’énergie non renouvelable des centrales nucléaires.'],
+    signaux6: [38, 'Strontium', 'Sr', 'Les fusées de détresse rouges, des signaux lumineux, contiennent du strontium.'],
+    'corps-purs': [31, 'Gallium', 'Ga', 'Le gallium pur fond à 29,8 °C : chaque corps pur a sa température de fusion.'],
+    'masse-volumique': [76, 'Osmium', 'Os', 'L’osmium est l’élément qui a la plus grande masse volumique.'],
+    particules: [2, 'Hélium', 'He', 'Dans un ballon d’hélium, des milliards d’atomes s’agitent sans cesse.'],
+    transformation: [12, 'Magnésium', 'Mg', 'Le magnésium brûle avec une flamme éblouissante : une transformation chimique.'],
+    atomes: [1, 'Hydrogène', 'H', 'L’atome d’hydrogène est le plus simple : 1 proton et 1 électron.'],
+    ph: [16, 'Soufre', 'S', 'L’acide sulfurique des batteries de voiture est un acide très fort.'],
+    univers: [26, 'Fer', 'Fe', 'Les étoiles fabriquent les éléments dans leur cœur, jusqu’au fer.'],
+    vitesse: [55, 'Césium', 'Cs', 'Le césium définit la seconde : sans lui, pas de mesure précise de la vitesse.'],
+    forces: [60, 'Néodyme', 'Nd', 'Les aimants au néodyme exercent des forces à distance très intenses.'],
+    poids: [78, 'Platine', 'Pt', 'L’ancien kilogramme étalon était un cylindre de platine iridié.'],
+    gravitation: [28, 'Nickel', 'Ni', 'Les météorites métalliques, en fer et nickel, tombent attirées par la Terre.'],
+    circuits: [47, 'Argent', 'Ag', 'L’argent est le meilleur conducteur électrique de tous les métaux.'],
+    'tension-intensite': [30, 'Zinc', 'Zn', 'La pile de Volta empilait des disques de zinc et de cuivre.'],
+    ohm: [6, 'Carbone', 'C', 'Les résistances des circuits électroniques contiennent souvent du carbone.'],
+    puissance: [74, 'Tungstène', 'W', 'Une ampoule à filament de tungstène gaspille beaucoup d’énergie en chaleur.'],
+    cinetique: [13, 'Aluminium', 'Al', 'Les voitures allégées à l’aluminium ont moins d’énergie cinétique à freiner.'],
+    lumiere: [63, 'Europium', 'Eu', 'L’europium brille en rouge sous les ultraviolets et protège les billets en euros.'],
+    son: [50, 'Étain', 'Sn', 'Le bronze des cloches contient de l’étain.']
+  };
+  function souvenirsDonnes() { if (!etat.souvenirsDonnes) { etat.souvenirsDonnes = { exp: {}, notion: {} }; } return etat.souvenirsDonnes; }
+  function donnerCartes(liste) {
+    if (!liste.length) { return; }
+    var f = $('pt-frame'), w = f && f.contentWindow, fait = false;
+    try { if (w && w.__collection && w.__collection.recevoirCartes) { w.__collection.recevoirCartes(liste); fait = true; } } catch (e) { }
+    if (!fait) {
+      try {
+        var s = JSON.parse(localStorage.getItem(CLE_COLL) || 'null') || {};
+        s.cadeaux = (s.cadeaux || []).concat(liste);
+        localStorage.setItem(CLE_COLL, JSON.stringify(s));
+      } catch (e2) { }
+    }
+    majBadgeBoosters();
+  }
+  function carteDeNotion(id) {
+    var c = CARTES_NOTION[id], sd = souvenirsDonnes();
+    if (!c || sd.notion[id]) { return null; }
+    sd.notion[id] = true;
+    return { z: c[0], o: 'Notion « ' + notion(id).nom + ' »', p: c[3] };
+  }
+  function carteDExperience(e) {
+    var c = CARTES_EXP[e.id], sd = souvenirsDonnes();
+    if (!c || sd.exp[e.id]) { return null; }
+    sd.exp[e.id] = true;
+    return { z: c[0], o: 'Expérience « ' + e.titre + ' »', p: c[3] };
+  }
+  function rattraperSouvenirs() {
+    var liste = [], i, c;
+    for (i = 0; i < NOTIONS.length; i++) { if (estStable(NOTIONS[i].id)) { c = carteDeNotion(NOTIONS[i].id); if (c) { liste.push(c); } } }
+    for (i = 0; i < EXPERIENCES.length; i++) { if (expFinie(EXPERIENCES[i])) { c = carteDExperience(EXPERIENCES[i]); if (c) { liste.push(c); } } }
+    if (liste.length) { sauver(); donnerCartes(liste); }
+  }
+  function texteSouvenir(c, obtenu, quoi) {
+    return obtenu ? 'Carte souvenir obtenue : ' + c[1] + ' (' + c[2] + '). ' + c[3] : 'Carte souvenir à gagner : ' + c[1] + ' (' + c[2] + '), en ' + quoi + '. ' + c[3];
+  }
+  function majSouvenirExp(e) { var c = CARTES_EXP[e.id], p = $('exp-souvenir'); if (!c || !p) { return; } p.textContent = texteSouvenir(c, expFinie(e), 'réussissant tous les défis'); p.className = 'exp-souvenir' + (expFinie(e) ? ' obtenu' : ''); }
   function experience(id) { for (var i = 0; i < EXPERIENCES.length; i++) { if (EXPERIENCES[i].id === id) { return EXPERIENCES[i]; } } return null; }
   function expOuverte(e) {
     if (etat.reglages.prof) { return true; }
@@ -4485,6 +5449,7 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
     rendreDefis();
     $('exp-conclusion').textContent = e.conclusion;
     $('exp-conclusion-bloc').hidden = !expFinie(e);
+    majSouvenirExp(e);
     var zone = $('exp-zone'); zone.innerHTML = '';
     var touche = false;
     var api = {
@@ -4494,9 +5459,15 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
         jeu().defis[cle] = true; sauver();
         var d = null; e.defis.forEach(function (x) { if (x.id === did) { d = x; } });
         api.dire('Défi réussi ! ' + choisir(['Quelle expérimentatrice ou quel expérimentateur !', 'C’est ça, la démarche scientifique.', 'Bien observé !']));
+        sonDefi();
         donnerBoosters(2, 'défi réussi (« ' + d.txt + ' »)');
         rendreDefis();
-        if (expFinie(e)) { $('exp-conclusion-bloc').hidden = false; }
+        if (expFinie(e)) {
+          $('exp-conclusion-bloc').hidden = false;
+          var cs = carteDExperience(e);
+          if (cs) { sauver(); setTimeout(function () { donnerCartes([cs]); toast('Expérience terminée ! Carte souvenir gagnée : ' + CARTES_EXP[e.id][1] + '. À découvrir dans « Tableau périodique ».'); }, 1800); }
+          majSouvenirExp(e);
+        }
       },
       dire: function (txt) { $('exp-bulle').textContent = txt; var g = $('exp-guide'); g.classList.remove('hop'); void g.offsetWidth; g.classList.add('hop'); },
       touche: function () { if (!touche) { touche = true; avancer('labo', 1, e.id); } }
@@ -4507,8 +5478,172 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
 
   $('exp-retour').onclick = rendreLabo;
   window.addEventListener('storage', function (ev) { if (!ev.key || ev.key === CLE_COLL) { majBadgeBoosters(); } });
+  /* =====================================================================
+     SAUVEGARDE : export et import de toute la progression
+     ===================================================================== */
+  var CODE_PREFIXE = 'ELEM1.';
+  function empreinte(txt) {
+    var h = 5381;
+    for (var i = 0; i < txt.length; i++) { h = ((h * 33) ^ txt.charCodeAt(i)) >>> 0; }
+    return h.toString(16);
+  }
+  function lireCle(cle) { try { return JSON.parse(localStorage.getItem(cle) || 'null'); } catch (e) { return null; } }
+  function resumeDe(principal, collection) {
+    var stables = 0, cartes = 0, maitrises = 0, defis = 0, k;
+    var prog = principal && principal.prog ? principal.prog : {};
+    for (var i = 0; i < NOTIONS.length; i++) {
+      var p = prog[NOTIONS[i].id];
+      if (p && p.predis && p.best >= 2) { stables++; }
+    }
+    if (principal && principal.defis) { for (k in principal.defis) { if (principal.defis.hasOwnProperty(k) && principal.defis[k]) { defis++; } } }
+    if (collection && collection.cartes) { for (k in collection.cartes) { if (collection.cartes.hasOwnProperty(k)) { cartes++; if (collection.cartes[k].niv === 3) { maitrises++; } } } }
+    return { stables: stables, cartes: cartes, maitrises: maitrises, defis: defis, boosters: collection && typeof collection.boosters === 'number' ? collection.boosters : 0, carnet: principal && principal.carnet ? principal.carnet.length : 0 };
+  }
+  function texteResume(r) {
+    return r.stables + '/' + NOTIONS.length + ' notions stables · ' + r.defis + '/' + totalDefis() + ' défis du labo · ' + r.cartes + '/118 cartes (dont ' + r.maitrises + ' maîtrisée' + (r.maitrises > 1 ? 's' : '') + ') · ' + r.boosters + ' booster' + (r.boosters > 1 ? 's' : '') + ' à ouvrir · ' + r.carnet + ' fiche' + (r.carnet > 1 ? 's' : '') + ' de carnet';
+  }
+  function construireSauvegarde() {
+    sauver();
+    var principal = lireCle(CLE) || {};
+    var collection = lireCle(CLE_COLL);
+    if (collection) { collection = JSON.parse(JSON.stringify(collection)); delete collection.vus; }
+    var donnees = { principal: principal, collection: collection };
+    var corps = JSON.stringify(donnees);
+    return { app: 'elementaire', v: 1, date: new Date().toISOString(), h: empreinte(corps), donnees: donnees };
+  }
+  function versCode(obj) { return CODE_PREFIXE + btoa(unescape(encodeURIComponent(JSON.stringify(obj)))); }
+  function depuisTexte(txt) {
+    txt = String(txt || '').replace(/^\uFEFF/, '').replace(/^\s+|\s+$/g, '');
+    var obj = null;
+    if (txt.indexOf(CODE_PREFIXE) === 0) {
+      txt = txt.replace(/\s+/g, '');
+      try { obj = JSON.parse(decodeURIComponent(escape(atob(txt.slice(CODE_PREFIXE.length))))); } catch (e) { return { erreur: 'Ce code est incomplet ou abîmé. Vérifie que tu l’as copié en entier.' }; }
+    } else if (txt.charAt(0) === '{') {
+      try { obj = JSON.parse(txt); } catch (e) { return { erreur: 'Ce fichier n’est pas une sauvegarde valide.' }; }
+    } else { return { erreur: 'Ce n’est pas un code de sauvegarde Élémentaire (il doit commencer par ELEM1.).' }; }
+    if (!obj || obj.app !== 'elementaire' || !obj.donnees) { return { erreur: 'Ce n’est pas une sauvegarde de l’appli Élémentaire.' }; }
+    if (empreinte(JSON.stringify(obj.donnees)) !== obj.h) { return { erreur: 'La sauvegarde a été modifiée ou abîmée : elle ne peut pas être importée.' }; }
+    return { obj: obj };
+  }
+  function dateFr(iso) {
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) { return 'date inconnue'; }
+    return d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }) + ' à ' + d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+  }
+  function noterSauvegarde() { etat.derniereSauvegarde = new Date().toISOString(); sauver(); majStatutSauvegarde(); }
+  function majStatutSauvegarde() {
+    var r = resumeDe(lireCle(CLE) || etat, lireCle(CLE_COLL));
+    $('sv-actuel').textContent = texteResume(r);
+    $('sv-derniere').textContent = etat.derniereSauvegarde ? 'Dernière sauvegarde : le ' + dateFr(etat.derniereSauvegarde) + '.' : 'Tu n’as encore jamais sauvegardé ta progression.';
+  }
+  var importEnAttente = null;
+  function preparerImport(txt) {
+    var res = depuisTexte(txt);
+    var z = $('sv-apercu');
+    z.hidden = false;
+    z.innerHTML = '';
+    importEnAttente = null;
+    if (res.erreur) { z.className = 'sv-apercu erreur-bloc'; z.appendChild(el('p', null, res.erreur)); return; }
+    importEnAttente = res.obj;
+    z.className = 'sv-apercu';
+    z.appendChild(el('p', null, 'Sauvegarde du ' + dateFr(res.obj.date) + ' :'));
+    z.appendChild(el('p', 'sv-resume', texteResume(resumeDe(res.obj.donnees.principal, res.obj.donnees.collection))));
+    z.appendChild(el('p', 'secu', 'L’import remplace toute la progression actuelle de cet appareil.'));
+    var a = el('div', 'actions');
+    var ok = el('button', 'btn', 'Remplacer ma progression'); ok.type = 'button';
+    var non = el('button', 'btn sec', 'Annuler'); non.type = 'button';
+    ok.onclick = appliquerImport;
+    non.onclick = function () { z.hidden = true; importEnAttente = null; };
+    a.appendChild(ok); a.appendChild(non); z.appendChild(a);
+    ok.focus();
+  }
+  function appliquerImport() {
+    if (!importEnAttente) { return; }
+    var d = importEnAttente.donnees;
+    try {
+      var p = d.principal || {};
+      p.derniereSauvegarde = importEnAttente.date;
+      localStorage.setItem(CLE, JSON.stringify(p));
+      if (d.collection) { localStorage.setItem(CLE_COLL, JSON.stringify(d.collection)); } else { localStorage.removeItem(CLE_COLL); }
+      try { sessionStorage.setItem('elementaire-import', '1'); } catch (e2) { }
+    } catch (e) { toast('Impossible d’écrire la sauvegarde sur cet appareil (stockage plein ou bloqué).'); return; }
+    location.reload();
+  }
+  function telecharger() {
+    var obj = construireSauvegarde();
+    var nom = 'elementaire-sauvegarde-' + new Date().toISOString().slice(0, 10) + '.json';
+    try {
+      var blob = new Blob([JSON.stringify(obj)], { type: 'application/json' });
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) { window.navigator.msSaveOrOpenBlob(blob, nom); }
+      else {
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url; a.download = nom;
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+      }
+      noterSauvegarde();
+      toast('Fichier de sauvegarde téléchargé : ' + nom);
+    } catch (e) { toast('Le téléchargement n’est pas possible ici : utilise plutôt le code de sauvegarde.'); }
+  }
+  function afficherCode() {
+    var code = versCode(construireSauvegarde());
+    var t = $('sv-code');
+    t.value = code;
+    $('sv-code-bloc').hidden = false;
+    $('sv-taille').textContent = code.length + ' caractères.';
+    t.focus(); t.select();
+    noterSauvegarde();
+  }
+  function copierCode() {
+    var t = $('sv-code');
+    t.focus(); t.select();
+    var ok = false;
+    try { if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(t.value); ok = true; } } catch (e) { }
+    if (!ok) { try { ok = document.execCommand('copy'); } catch (e2) { ok = false; } }
+    toast(ok ? 'Code copié. Colle-le dans un message, un document ou l’ENT pour le garder.' : 'Copie automatique impossible : sélectionne le code et copie-le à la main.');
+  }
+  function ouvrirSauvegarde() {
+    majStatutSauvegarde();
+    $('sv-code-bloc').hidden = true;
+    $('sv-apercu').hidden = true;
+    $('sv-coller').value = '';
+    ouvrirModal('sauvegarde', 'sv-fermer');
+  }
+  function initSauvegarde() {
+    $('btn-sauvegarde').onclick = ouvrirSauvegarde;
+    $('sv-fermer').onclick = function () { fermerModal('sauvegarde'); };
+    $('sv-telecharger').onclick = telecharger;
+    $('sv-afficher').onclick = afficherCode;
+    $('sv-copier').onclick = copierCode;
+    $('sv-importer-code').onclick = function () { preparerImport($('sv-coller').value); };
+    $('sv-choisir').onclick = function () { $('sv-fichier').click(); };
+    $('sv-fichier').onchange = function () {
+      var f = this.files && this.files[0];
+      if (!f) { return; }
+      var lecteur = new FileReader();
+      lecteur.onload = function () { preparerImport(String(lecteur.result)); };
+      lecteur.onerror = function () { toast('Impossible de lire ce fichier.'); };
+      lecteur.readAsText(f);
+      this.value = '';
+    };
+    var importe = false;
+    try { importe = sessionStorage.getItem('elementaire-import') === '1'; if (importe) { sessionStorage.removeItem('elementaire-import'); } } catch (e) { }
+    if (importe) { setTimeout(function () { toast('Sauvegarde importée : ta progression est restaurée.'); }, 400); return; }
+    var r = resumeDe(lireCle(CLE) || etat, lireCle(CLE_COLL));
+    var travail = r.stables >= 2 || r.cartes >= 8 || r.defis >= 3;
+    var vieux = !etat.derniereSauvegarde || (Date.now() - new Date(etat.derniereSauvegarde).getTime()) > 7 * 864e5;
+    if (travail && vieux && etat.rappelSauv !== aujourdhui()) {
+      etat.rappelSauv = aujourdhui(); sauver();
+      setTimeout(function () { toast(etat.derniereSauvegarde ? 'Ta dernière sauvegarde date de plus d’une semaine : pense à en refaire une (bouton « Sauvegarde »).' : 'Pense à sauvegarder ta progression avec le bouton « Sauvegarde » !'); }, 1500);
+    }
+  }
   init();
   majBadgeBoosters();
+  initSauvegarde();
+  rattraperSouvenirs();
+  $('r-son').checked = etat.reglages.son !== false;
+  $('r-son').onchange = function () { etat.reglages.son = this.checked; sauver(); if (this.checked) { sonDefi(); } };
 })();
 </script>
 </body>
