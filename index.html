@@ -546,7 +546,7 @@ table.compte th,table.compte td{padding:5px 10px;border-bottom:1px solid rgba(26
   <section id="vue-elements" hidden>
     <h2>Le tableau périodique</h2>
     <p class="intro">Ta collection de cartes d’éléments. Tu gagnes des boosters en stabilisant des notions (2 boosters), en obtenant une carte de notion brillante (1 booster), en faisant un sans-faute à un test (1 booster, 5 par jour au maximum) et en réussissant les défis du labo (2 boosters).</p>
-    <iframe id="pt-frame" class="pt-frame" title="Collection des 118 éléments du tableau périodique"></iframe>
+    <iframe id="pt-frame" class="pt-frame" allow="autoplay" title="Collection des 118 éléments du tableau périodique"></iframe>
   </section>
 
   <section id="vue-carnet" hidden>
@@ -631,7 +631,8 @@ table.compte th,table.compte td{padding:5px 10px;border-bottom:1px solid rgba(26
     </div>
     <div class="option"><label for="r-lexend" style="margin:0">Police Lexend (lecture facilitée)</label><input type="checkbox" id="r-lexend"></div>
     <div class="option"><label for="r-espace" style="margin:0">Espacement augmenté</label><input type="checkbox" id="r-espace"></div>
-    <div class="option"><label for="r-son" style="margin:0">Sons (défis réussis, notions stabilisées)</label><input type="checkbox" id="r-son"></div>
+    <div class="option"><label for="r-son" style="margin:0">Sons (réponses, défis réussis, notions stabilisées)</label><input type="checkbox" id="r-son"></div>
+    <div class="option"><span class="consigne" style="margin:0">Pas de son ? Monte le volume, et sur iPhone ou iPad vérifie que le mode silencieux est désactivé.</span><button class="btn sec" type="button" id="r-test-son">Tester le son</button></div>
     <div class="option" style="display:block">
       <span>Mode prof : tout déverrouiller</span>
       <div id="prof-form" class="ligne" style="margin-top:8px"><div><input type="text" id="prof-code" placeholder="Code prof" autocomplete="off" aria-label="Code prof"></div><button class="btn sec" type="button" id="prof-ok">Valider</button></div>
@@ -776,42 +777,78 @@ h3{font-family:var(--display);font-weight:800;font-size:1rem;margin:0 0 10px}
 .legende.rar span{background:var(--rc);color:#fff;text-shadow:1px 1px 0 rgba(0,0,0,.35)}
 .legende.rar i{display:none}
 
-/* Cartes */
+/* Cartes : style « cristal » accordé aux cadres de rareté */
+.r-commune{--c1:#EEF5FD;--c2:#8AA3C4;--c3:#121B2B;--glow:rgba(190,220,255,.85)}
+.r-peu_commune{--c1:#D2FFE7;--c2:#22B36D;--c3:#03170D;--glow:rgba(90,255,170,.75)}
+.r-rare{--c1:#D6EAFF;--c2:#3A75FF;--c3:#040D2E;--glow:rgba(100,170,255,.85)}
+.r-epique{--c1:#F4E0FF;--c2:#A247F2;--c3:#14042A;--glow:rgba(205,130,255,.85)}
+.r-legendaire{--c1:#FFF4C9;--c2:#F2A100;--c3:#261200;--glow:rgba(255,205,70,.9)}
+.r-mythique{--c1:#FFDDF4;--c2:#F0379E;--c3:#26053A;--glow:rgba(255,120,215,.9)}
 .carte{--w:220px;position:relative;width:var(--w);aspect-ratio:2/3;font-size:calc(var(--w) / 15);flex:none;border-radius:6%;color:#fff;user-select:none}
-.carte .fond{position:absolute;left:12%;right:12%;top:11%;bottom:14%;border-radius:4%;background:radial-gradient(circle at 50% 32%,color-mix(in srgb,var(--fc) 70%,#fff 0%) 0%,color-mix(in srgb,var(--fc) 45%,#071022) 45%,#071022 100%)}
+.carte .fond{position:absolute;left:12%;right:12%;top:11%;bottom:14%;border-radius:4%;overflow:hidden;
+  background:
+    radial-gradient(1px 1px at 18% 22%,rgba(255,255,255,.9),transparent 60%),radial-gradient(1px 1px at 72% 14%,rgba(255,255,255,.8),transparent 60%),
+    radial-gradient(1.5px 1.5px at 84% 46%,rgba(255,255,255,.85),transparent 60%),radial-gradient(1px 1px at 30% 70%,rgba(255,255,255,.7),transparent 60%),
+    radial-gradient(1.5px 1.5px at 62% 82%,rgba(255,255,255,.8),transparent 60%),radial-gradient(1px 1px at 10% 52%,rgba(255,255,255,.7),transparent 60%),
+    radial-gradient(circle at 50% 36%,var(--c1) 0%,var(--c2) 26%,color-mix(in srgb,var(--c2) 45%,var(--c3)) 52%,var(--c3) 100%);
+  box-shadow:inset 0 0 1.6em rgba(0,0,0,.65)}
+.carte .fond::after{content:"";position:absolute;inset:0;opacity:.18;background:repeating-linear-gradient(60deg,transparent 0 .9em,rgba(255,255,255,.35) .9em calc(.9em + 1px)),repeating-linear-gradient(-60deg,transparent 0 .9em,rgba(255,255,255,.35) .9em calc(.9em + 1px));-webkit-mask-image:radial-gradient(circle at 50% 36%,transparent 25%,#000 75%);mask-image:radial-gradient(circle at 50% 36%,transparent 25%,#000 75%)}
+.r-mythique .fond::before{content:"";position:absolute;inset:-20%;background:conic-gradient(from 0deg,rgba(255,79,163,.35),rgba(255,201,60,.3),rgba(30,214,201,.3),rgba(77,107,255,.35),rgba(196,82,255,.35),rgba(255,79,163,.35));mix-blend-mode:screen;animation:tourne-fond 12s linear infinite}
+@keyframes tourne-fond{to{transform:rotate(360deg)}}
 .carte .contenu{position:absolute;left:19%;right:19%;top:17.5%;bottom:24.5%;display:flex;flex-direction:column;align-items:center;text-align:center;z-index:3}
-.carte .ligne-haut{width:100%;display:flex;justify-content:space-between;font-weight:700;font-size:.62em;opacity:.95}
-.carte .rar{margin-top:.25em;font-size:.48em;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--rc);text-shadow:0 0 6px rgba(0,0,0,.8)}
-.carte .orbe{position:relative;margin:auto auto .3em;width:4.4em;height:4.4em;border-radius:50%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.55),color-mix(in srgb,var(--fc) 80%,#000) 55%,rgba(0,0,0,.6));box-shadow:0 0 1.2em color-mix(in srgb,var(--fc) 70%,transparent),inset 0 0 .6em rgba(0,0,0,.4)}
-.carte .orbe::before,.carte .orbe::after{content:"";position:absolute;inset:-.35em;border:1.5px solid rgba(255,255,255,.35);border-radius:50%;transform:rotate(60deg) scaleY(.38)}
-.carte .orbe::after{transform:rotate(-60deg) scaleY(.38)}
-.carte .orbe b{font-family:var(--display);font-weight:800;font-size:1.8em;text-shadow:0 2px 8px rgba(0,0,0,.6);position:relative;z-index:1}
-.carte .nom{font-family:var(--display);font-weight:800;font-size:.85em;line-height:1.15;margin-top:.15em}
-.carte .fam{font-size:.5em;opacity:.85;margin-top:.15em}
+.carte .ligne-haut{width:100%;display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-weight:800;font-size:.55em}
+.carte .ligne-haut span:first-child{min-width:2.1em;height:2.1em;display:flex;align-items:center;justify-content:center;transform:rotate(45deg);border:1px solid rgba(255,255,255,.75);background:linear-gradient(135deg,rgba(255,255,255,.35),rgba(0,0,0,.35));box-shadow:0 0 .6em var(--glow)}
+.carte .ligne-haut span:first-child b{transform:rotate(-45deg)}
+.carte .ligne-haut span:last-child{opacity:.9;text-shadow:0 0 .4em rgba(0,0,0,.8)}
+.carte .rar{margin-top:.35em;font-family:var(--display);font-size:.42em;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--c1);text-shadow:0 0 .6em var(--glow),0 1px 2px rgba(0,0,0,.8)}
+.carte .orbe{position:relative;margin:auto auto .35em;width:4.4em;height:4.4em;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 34% 26%,#fff 0,rgba(255,255,255,.85) 7%,rgba(255,255,255,0) 24%),radial-gradient(circle at 60% 75%,rgba(255,255,255,.35),rgba(255,255,255,0) 35%),radial-gradient(circle at 50% 55%,var(--c1) 0%,var(--c2) 45%,var(--c3) 100%);
+  border:.1em solid rgba(255,255,255,.75);box-shadow:0 0 1.3em var(--glow),0 0 .3em rgba(255,255,255,.6),inset 0 -.5em .9em rgba(0,0,0,.45)}
+.carte .orbe::before,.carte .orbe::after{content:"";position:absolute;inset:-.45em;border:1.5px solid rgba(255,255,255,.55);border-radius:50%;transform:rotate(60deg) scaleY(.36);box-shadow:0 0 .4em var(--glow)}
+.carte .orbe::after{transform:rotate(-60deg) scaleY(.36)}
+.carte .orbe b{font-family:var(--display);font-weight:800;font-size:1.8em;color:#fff;text-shadow:0 0 .35em var(--glow),0 .08em .2em rgba(0,0,0,.7);position:relative;z-index:1}
+.carte .nom{margin-top:.25em;font-family:var(--display);font-weight:800;font-size:.8em;line-height:1.15;letter-spacing:.04em;text-transform:uppercase;
+  background:linear-gradient(180deg,#fff 30%,var(--c1) 60%,color-mix(in srgb,var(--c2) 60%,#fff) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 .06em .12em rgba(0,0,0,.8))}
+.carte .fam{margin-top:.3em;font-size:.44em;font-weight:700;letter-spacing:.06em;padding:.15em .8em;border-radius:999px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.35);display:inline-flex;align-items:center;gap:.4em}
+.carte .fam::before{content:"";width:.7em;height:.7em;border-radius:50%;background:var(--fc);box-shadow:0 0 .4em var(--fc)}
+.carte.mystere .fam::before{display:none}
 .carte.mystere .contenu{justify-content:flex-start}
 .carte.mystere .orbe{margin-top:auto}
 .carte.mystere .fam{margin-bottom:auto}
-.carte .infos{margin-top:.6em;width:100%;display:flex;justify-content:center;gap:.5em;font-size:.48em;font-weight:700}
-.carte .infos span{background:rgba(0,0,0,.45);border-radius:999px;padding:.15em .6em}
-.carte .etoiles{margin-top:auto;padding-top:.3em;text-align:center;font-size:.7em;letter-spacing:.15em;color:var(--rc);text-shadow:0 0 6px rgba(0,0,0,.9)}
-.carte .etoiles i{font-style:normal;opacity:.25}
-.carte .etoiles i.on{opacity:1}
-.carte .cadre{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
-.carte.niv3 .holo{position:absolute;left:12%;right:12%;top:11%;bottom:14%;border-radius:4%;z-index:1;mix-blend-mode:color-dodge;opacity:.45;pointer-events:none;
+.carte .infos{margin-top:.55em;width:100%;display:flex;justify-content:center;gap:.4em;font-size:.44em;font-weight:700}
+.carte .infos span{background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:.18em .7em;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.carte .etoiles{margin-top:auto;padding-top:.3em;text-align:center;font-size:.72em;letter-spacing:.2em}
+.carte .etoiles i{font-style:normal;color:rgba(255,255,255,.25)}
+.carte .etoiles i.on{color:#FFE27A;text-shadow:0 0 .4em rgba(255,200,60,.9),0 0 .1em #fff}
+.carte .cadre{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;filter:drop-shadow(0 .25em .4em rgba(0,0,0,.35))}
+.carte.niv3 .holo{position:absolute;left:12%;right:12%;top:11%;bottom:14%;border-radius:4%;z-index:1;mix-blend-mode:color-dodge;opacity:.5;pointer-events:none;
   background:linear-gradient(115deg,transparent 20%,rgba(255,80,200,.7),rgba(80,255,255,.7),rgba(255,255,110,.7),transparent 80%);background-size:260% 260%;animation:holo 6s linear infinite}
 @keyframes holo{from{background-position:0% 50%}to{background-position:260% 50%}}
-.carte.mystere .fond{background:radial-gradient(circle at 50% 35%,#1d2b45,#060c18)}
-.carte.mystere .orbe{background:radial-gradient(circle at 35% 30%,#33415c,#0b1322);box-shadow:none}
-.carte.mystere .orbe b{color:rgba(255,255,255,.35)}
-.carte.dos{background:repeating-linear-gradient(45deg,#FF8A3D 0 12px,#FF6F4F 12px 24px);border:3px solid var(--ink);box-shadow:var(--ombre-s);border-radius:6%;display:flex;align-items:center;justify-content:center}
-.carte.dos::before{content:"";width:52%;aspect-ratio:1;border-radius:50%;background:var(--y);border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink)}
-.carte.dos::after{content:"É!";position:absolute;font-family:var(--display);font-weight:800;font-size:2em;color:var(--ink)}
+.carte.mystere .fond{filter:saturate(.35) brightness(.55)}
+.carte.mystere .orbe{background:radial-gradient(circle at 34% 26%,rgba(255,255,255,.35) 0,rgba(255,255,255,0) 24%),radial-gradient(circle at 50% 55%,#33415c,#0b1322);box-shadow:0 0 .8em rgba(0,0,0,.6),inset 0 -.5em .9em rgba(0,0,0,.45)}
+.carte.mystere .orbe b{color:rgba(255,255,255,.45);text-shadow:0 0 .4em var(--glow)}
+.carte.mystere .nom{background:none;color:rgba(255,255,255,.75)}
+/* Dos des cartes */
+.carte.dos{border-radius:6%}
+.carte.dos .fond-dos{position:absolute;left:11%;right:11%;top:10%;bottom:13%;border-radius:5%;overflow:hidden;
+  background:radial-gradient(1px 1px at 20% 18%,#fff,transparent 60%),radial-gradient(1.5px 1.5px at 78% 26%,#fff,transparent 60%),radial-gradient(1px 1px at 66% 72%,#fff,transparent 60%),radial-gradient(1px 1px at 28% 80%,#fff,transparent 60%),radial-gradient(1.5px 1.5px at 86% 60%,#fff,transparent 60%),
+    radial-gradient(circle at 50% 46%,#5B7CFF 0%,#2A2F8F 30%,#151446 58%,#070818 100%);box-shadow:inset 0 0 1.8em rgba(0,0,0,.7)}
+.carte.dos .fond-dos::after{content:"";position:absolute;inset:-30%;background:conic-gradient(from 0deg,transparent 0 20deg,rgba(255,215,120,.16) 20deg 26deg,transparent 26deg 60deg,rgba(255,215,120,.12) 60deg 64deg,transparent 64deg 110deg,rgba(150,180,255,.16) 110deg 116deg,transparent 116deg 360deg);animation:tourne-fond 20s linear infinite}
+.carte.dos .embleme{position:absolute;left:24%;right:24%;top:30%;aspect-ratio:1;filter:drop-shadow(0 0 .6em rgba(255,200,80,.75))}
+.carte.dos .embleme svg{width:100%;height:100%;display:block}
+.carte.dos .titre-dos{position:absolute;left:0;right:0;top:66%;text-align:center;font-family:var(--display);font-weight:800;font-size:.62em;letter-spacing:.2em;background:linear-gradient(180deg,#FFF3C4,#F2B23A 60%,#B87410);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 .05em .1em rgba(0,0,0,.8))}
+.carte.dos .cadre{z-index:2}
 
 /* Boosters */
 .zone-booster{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
-.paquet{width:150px;aspect-ratio:2/3;border-radius:16px;position:relative;background:linear-gradient(160deg,#FFD66B,#FF8A3D 45%,#C452FF);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#1A1205;font-family:var(--display);font-weight:800;animation:flotte 3s ease-in-out infinite}
-.paquet small{font-family:var(--font);font-weight:700;font-size:.8rem}
-.paquet .gros-sym{font-size:3rem;line-height:1}
+.paquet{width:150px;aspect-ratio:2/3;border-radius:14px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:16px;color:#FFE9A8;font-family:var(--display);font-weight:800;letter-spacing:.12em;
+  background:radial-gradient(circle at 50% 38%,#5B7CFF 0%,#2A2F8F 32%,#151446 62%,#070818 100%);border:3px solid #E8B547;box-shadow:0 0 0 2px #1A1033,6px 6px 0 #1A1033,0 0 30px rgba(255,200,80,.45);animation:flotte 3s ease-in-out infinite}
+.paquet::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.45) 45%,transparent 60%);background-size:250% 100%;animation:reflet 3.5s linear infinite}
+.paquet::after{content:"";position:absolute;left:0;right:0;top:10px;height:8px;background:repeating-linear-gradient(90deg,#E8B547 0 6px,transparent 6px 10px);opacity:.8}
+.paquet .embleme-p{position:absolute;left:22%;right:22%;top:18%;aspect-ratio:1;filter:drop-shadow(0 0 10px rgba(255,200,80,.8))}
+.paquet .embleme-p svg{width:100%;height:100%}
+.paquet small{font-family:var(--font);font-weight:700;font-size:.8rem;letter-spacing:0;color:#fff}
+.paquet .gros-sym{display:none}
 .paquet.vide-p{filter:grayscale(1) brightness(.5);animation:none}
 @keyframes flotte{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
 .tirage{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;perspective:1200px;min-height:20px}
@@ -829,8 +866,8 @@ h3{font-family:var(--display);font-weight:800;font-size:1rem;margin:0 0 10px}
 .badge.souvenir{background:var(--y);color:var(--ink)}
 .souvenir-bloc{background:#FFF6D6}
 .souvenir-bloc p{margin:0 0 4px}
-.slot.lueur .face{box-shadow:0 0 28px 4px var(--rc);border-radius:6%;animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{50%{box-shadow:0 0 40px 10px var(--rc)}}
+.slot.lueur .face .cadre{filter:drop-shadow(0 0 10px var(--glow)) drop-shadow(0 0 22px var(--glow))}
+
 
 /* Labo d'entraînement */
 .choix-ligne{display:flex;gap:12px;flex-wrap:wrap}
@@ -908,7 +945,7 @@ h3{font-family:var(--display);font-weight:800;font-size:1rem;margin:0 0 10px}
   .tableau{min-width:1000px;gap:4px}
 }
 /* Illustrations */
-.carte .illu{position:absolute;right:-.9em;bottom:-.4em;width:1.9em;height:1.9em;border-radius:50%;background:#fff;border:2px solid #1A1033;box-shadow:.12em .12em 0 #1A1033;padding:.2em;z-index:2}
+.carte .illu{position:absolute;right:-.95em;bottom:-.35em;width:2em;height:2em;border-radius:50%;padding:.22em;z-index:2;background:radial-gradient(circle at 35% 30%,#fff,#E6EEF8 70%,#C9D6E6);border:.09em solid rgba(255,255,255,.95);box-shadow:0 0 .7em var(--glow),0 .1em .25em rgba(0,0,0,.5)}
 .carte .illu svg{width:100%;height:100%;display:block}
 .bloc-illu{display:flex;align-items:center;gap:14px}
 .grande-illu{width:72px;height:72px;flex:none;border-radius:16px;background:var(--bg);border:2.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);padding:8px}
@@ -919,7 +956,7 @@ h3{font-family:var(--display);font-weight:800;font-size:1rem;margin:0 0 10px}
 @keyframes dechire{0%{transform:rotate(-2deg)}20%{transform:rotate(-8deg) scale(1.05)}40%{transform:rotate(8deg) scale(1.08)}60%{transform:rotate(-6deg) scale(1.1)}100%{transform:scale(.6) translateY(40px);opacity:.2}}
 .slot{position:relative;isolation:isolate}
 .slot.tremble .tourne:not(.revele){animation:tremble .35s ease-in-out infinite}
-.slot.tremble .tourne:not(.revele) .verso{box-shadow:0 0 26px 6px var(--rc)}
+.slot.tremble .tourne:not(.revele) .verso .cadre{filter:drop-shadow(0 0 10px var(--glow)) drop-shadow(0 0 20px var(--glow))}
 @keyframes tremble{0%,100%{transform:rotate(0)}25%{transform:rotate(-2.5deg) translateY(-2px)}75%{transform:rotate(2.5deg) translateY(-2px)}}
 .fx-rare{position:absolute;left:50%;top:42%;width:0;height:0;pointer-events:none;z-index:5}
 .fx-rayons{position:absolute;left:50%;top:42%;margin:-210px 0 0 -210px;width:420px;height:420px;border-radius:50%;z-index:-1;pointer-events:none;transition:opacity .8s;
@@ -990,7 +1027,7 @@ h3{font-family:var(--display);font-weight:800;font-size:1rem;margin:0 0 10px}
     <h2>Ouvrir des boosters</h2>
     <p class="intro">Chaque booster contient 3 cartes, dont au moins une peu commune ou mieux. Les doublons font monter tes cartes de niveau. Au-delà du 3<sup>e</sup> exemplaire, ils se transforment en poussière d’étoile, qui permet de synthétiser la carte de ton choix.</p>
     <div class="panneau zone-booster">
-      <div class="paquet" id="paquet"><span class="gros-sym">É!</span><span>BOOSTER</span><small id="paquet-nb">x0</small></div>
+      <div class="paquet" id="paquet"><span class="embleme-p" id="embleme-p"></span><span>BOOSTER</span><small id="paquet-nb">x0</small></div>
       <div class="actions"><button class="btn gros" id="b-ouvrir" type="button">Ouvrir un booster</button><button class="btn sec" id="b-tout" type="button" hidden>Tout révéler</button></div>
       <p class="aide" id="b-info"></p>
       <div class="tirage" id="tirage"></div>
@@ -1038,6 +1075,7 @@ h3{font-family:var(--display);font-weight:800;font-size:1rem;margin:0 0 10px}
     <h2 id="r-titre">Réglages</h2>
     <div class="option"><label for="r-lexend">Police Lexend (lecture facilitée)</label><input type="checkbox" id="r-lexend" checked></div>
     <div class="option"><label for="r-son">Sons (cartes, boosters, examens)</label><input type="checkbox" id="r-son" checked></div>
+    <div class="option"><span class="aide" style="margin:0">Pas de son ? Monte le volume, et sur iPhone ou iPad vérifie que le mode silencieux est désactivé.</span><button class="btn sec" id="r-test-son" type="button">Tester le son</button></div>
     <div class="option"><span>Mode prof : voir toutes les cartes (sans modifier la collection)</span></div>
     <div class="option"><input type="text" id="r-code" placeholder="Code prof" aria-label="Code prof" autocomplete="off"><button class="btn sec" id="r-prof" type="button">Valider</button></div>
     <p class="aide" id="r-msg" aria-live="polite"></p>
@@ -1490,22 +1528,40 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
     return { svg: '<svg viewBox="0 0 48 48" aria-hidden="true">' + ICONES[d[0]] + '</svg>', legende: d[1] };
   }
   /* ---------- Sons synthétisés (aucun fichier audio) ---------- */
-  var ctxSon = null;
+  var ctxSon = null, sortieSon = null;
+  function creerAudio() {
+    if (ctxSon) { return ctxSon; }
+    try {
+      if (navigator.audioSession) { try { navigator.audioSession.type = 'playback'; } catch (e0) { } }
+      var C = window.AudioContext || window.webkitAudioContext; if (!C) { return null; }
+      ctxSon = new C();
+      var comp = ctxSon.createDynamicsCompressor(); comp.threshold.value = -12; comp.ratio.value = 4;
+      sortieSon = ctxSon.createGain(); sortieSon.gain.value = 1;
+      sortieSon.connect(comp); comp.connect(ctxSon.destination);
+    } catch (e) { ctxSon = null; }
+    return ctxSon;
+  }
+  function deverrouillerSon() {
+    var ac = creerAudio(); if (!ac) { return; }
+    try {
+      if (ac.resume) { ac.resume(); }
+      var b = ac.createBuffer(1, 1, 22050), s = ac.createBufferSource(); s.buffer = b; s.connect(ac.destination); s.start(0);
+    } catch (e) { }
+  }
+  ['pointerdown', 'touchend', 'keydown', 'click'].forEach(function (t) { document.addEventListener(t, deverrouillerSon, { passive: true }); });
   function audioOK() {
     if (etat.son === false) { return null; }
-    try {
-      if (!ctxSon) { var C = window.AudioContext || window.webkitAudioContext; if (!C) { return null; } ctxSon = new C(); }
-      if (ctxSon.state === 'suspended' && ctxSon.resume) { ctxSon.resume(); }
-      return ctxSon;
-    } catch (e) { return null; }
+    var ac = creerAudio(); if (!ac) { return null; }
+    if (ac.state === 'suspended' && ac.resume) { try { ac.resume(); } catch (e) { } }
+    return ac;
   }
   function note(f, debut, duree, type, vol) {
     var ac = audioOK(); if (!ac) { return; }
     try {
       var t = ac.currentTime + debut, o = ac.createOscillator(), g = ac.createGain();
       o.type = type || 'triangle'; o.frequency.setValueAtTime(f, t);
-      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol || 0.08, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + duree);
-      o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t + duree + 0.05);
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(Math.min(0.6, (vol || 0.08) * 3.5), t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + duree);
+      o.connect(g); g.connect(sortieSon); o.start(t); o.stop(t + duree + 0.05);
     } catch (e) { }
   }
   function souffle(debut, duree, f0, f1, vol) {
@@ -1516,8 +1572,8 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
       var src = ac.createBufferSource(), fl = ac.createBiquadFilter(), g = ac.createGain();
       src.buffer = buf; fl.type = 'bandpass'; fl.Q.value = 1.2;
       fl.frequency.setValueAtTime(f0, t); fl.frequency.exponentialRampToValueAtTime(f1, t + duree);
-      g.gain.value = vol || 0.12;
-      src.connect(fl); fl.connect(g); g.connect(ac.destination); src.start(t);
+      g.gain.value = Math.min(0.8, (vol || 0.12) * 3);
+      src.connect(fl); fl.connect(g); g.connect(sortieSon); src.start(t);
     } catch (e) { }
   }
   var GAMME = [523.3, 659.3, 784, 1046.5, 1318.5, 1568, 2093];
@@ -1595,7 +1651,7 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
     if (c && c.niv >= 3) { d.appendChild(el('div', 'holo')); }
     var ct = el('div', 'contenu');
     var h = el('div', 'ligne-haut');
-    h.appendChild(el('span', null, String(e.z)));
+    var zb = el('span'); zb.appendChild(el('b', null, String(e.z))); h.appendChild(zb);
     h.appendChild(el('span', null, c && c.niv >= 2 && e.m ? fmt(e.m) : ''));
     ct.appendChild(h);
     ct.appendChild(el('div', 'rar', r.nom));
@@ -1624,7 +1680,18 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
     d.setAttribute('aria-label', c ? 'Carte ' + e.n + ', ' + r.nom + ', niveau ' + c.niv : 'Carte mystère numéro ' + e.z + ', ' + r.nom);
     return d;
   }
-  function dos(largeur) { var d = el('div', 'carte dos'); if (largeur) { d.style.setProperty('--w', largeur); } return d; }
+  var EMBLEME = '<svg viewBox="0 0 100 100"><defs><linearGradient id="or-e" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF3C4"/><stop offset=".55" stop-color="#F2B23A"/><stop offset="1" stop-color="#A8650C"/></linearGradient></defs>' +
+    '<path d="M50 3 L97 50 L50 97 L3 50 Z" fill="#0B0D2A" stroke="url(#or-e)" stroke-width="4"/><path d="M50 13 L87 50 L50 87 L13 50 Z" fill="none" stroke="url(#or-e)" stroke-width="1.5" opacity=".8"/>' +
+    '<g fill="none" stroke="#FFE7A0" stroke-width="2.4"><ellipse cx="50" cy="50" rx="27" ry="10"/><ellipse cx="50" cy="50" rx="27" ry="10" transform="rotate(60 50 50)"/><ellipse cx="50" cy="50" rx="27" ry="10" transform="rotate(-60 50 50)"/></g>' +
+    '<circle cx="50" cy="50" r="6.5" fill="url(#or-e)"/><circle cx="48" cy="48" r="2" fill="#fff"/></svg>';
+  function dos(largeur) {
+    var d = el('div', 'carte dos'); if (largeur) { d.style.setProperty('--w', largeur); }
+    d.appendChild(el('div', 'fond-dos'));
+    var em = el('div', 'embleme'); em.innerHTML = EMBLEME; d.appendChild(em);
+    d.appendChild(el('div', 'titre-dos', 'ÉLÉMENTAIRE'));
+    var img = el('img', 'cadre'); img.src = CADRES.commune; img.alt = ''; d.appendChild(img);
+    return d;
+  }
 
   /* ---------- Compteurs ---------- */
   function majCompteurs() {
@@ -2205,6 +2272,7 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
     $('r-fermer').onclick = function () { $('reglages').hidden = true; document.body.classList.remove('modal'); };
     $('r-lexend').onchange = function () { etat.lexend = this.checked; appliquerReglages(); sauver(); };
     $('r-son').onchange = function () { etat.son = this.checked; sauver(); if (etat.son) { sonReussite(); } };
+    $('r-test-son').onclick = function () { if (etat.son === false) { etat.son = true; $('r-son').checked = true; sauver(); } sonRarete('legendaire'); };
     $('r-prof').onclick = function () {
       if ($('r-code').value.replace(/\s/g, '').toLowerCase() === CODE_PROF) { prof = !prof; $('r-msg').textContent = prof ? 'Mode prof actif : toutes les cartes sont visibles (la collection n’est pas modifiée).' : 'Mode prof désactivé.'; $('r-code').value = ''; rendreTableau(); }
       else { $('r-msg').textContent = 'Code incorrect.'; }
@@ -2217,6 +2285,7 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
   /* ---------- Démarrage ---------- */
   function init() {
     remplirFiltres();
+    $('embleme-p').innerHTML = EMBLEME.replace(/or-e/g, 'or-p');
     var o = document.querySelectorAll('.onglet');
     for (var i = 0; i < o.length; i++) { o[i].onclick = function () { montrerVue(this.getAttribute('data-vue')); }; }
     $('b-ouvrir').onclick = ouvrirBooster;
@@ -4173,9 +4242,18 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
   var audioCtx = null;
   function audio() {
     if (audioCtx) { return audioCtx; }
-    try { var C = window.AudioContext || window.webkitAudioContext; if (C) { audioCtx = new C(); } } catch (e) { audioCtx = null; }
+    try {
+      if (navigator.audioSession) { try { navigator.audioSession.type = 'playback'; } catch (e0) { } }
+      var C = window.AudioContext || window.webkitAudioContext; if (C) { audioCtx = new C(); }
+    } catch (e) { audioCtx = null; }
     return audioCtx;
   }
+  function deverrouillerAudio() {
+    if (etat.reglages.son === false && audioCtx) { return; }
+    var ac = audio(); if (!ac) { return; }
+    try { if (ac.resume) { ac.resume(); } var b = ac.createBuffer(1, 1, 22050), src = ac.createBufferSource(); src.buffer = b; src.connect(ac.destination); src.start(0); } catch (e) { }
+  }
+  ['pointerdown', 'touchend', 'keydown', 'click'].forEach(function (t) { document.addEventListener(t, deverrouillerAudio, { passive: true }); });
 
   var EXPERIENCES = [
     /* ---- 1. Particules ---- */
@@ -5298,7 +5376,7 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
       liste.forEach(function (n) {
         var t = ac.currentTime + n[1], o = ac.createOscillator(), g = ac.createGain();
         o.type = n[3] || 'triangle'; o.frequency.setValueAtTime(n[0], t);
-        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(n[4] || 0.07, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + n[2]);
+        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(Math.min(0.5, (n[4] || 0.07) * 3.5), t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + n[2]);
         o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t + n[2] + 0.05);
       });
     } catch (e) { }
@@ -5644,6 +5722,7 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
   rattraperSouvenirs();
   $('r-son').checked = etat.reglages.son !== false;
   $('r-son').onchange = function () { etat.reglages.son = this.checked; sauver(); if (this.checked) { sonDefi(); } };
+  $('r-test-son').onclick = function () { if (etat.reglages.son === false) { etat.reglages.son = true; $('r-son').checked = true; sauver(); } sonStable(); };
 })();
 </script>
 </body>
