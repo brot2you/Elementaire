@@ -281,6 +281,82 @@ input[type=checkbox]{width:20px;height:20px;accent-color:var(--or)}
   .bloc{background:#fff;box-shadow:none;border:1px solid #999}
   textarea,input{border:1px solid #999;background:#fff;color:#000}
 }
+/* ---------- Sujet type brevet ---------- */
+.bv-reglages .actions{margin-top:10px}
+.bv-case{display:flex;align-items:flex-start;gap:8px;font-weight:400;font-size:.95rem;margin:8px 0;cursor:pointer}
+.bv-case input{flex:none;margin-top:3px}
+.bv-grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.bv-carte{text-align:left;display:flex;flex-direction:column;gap:6px;min-height:150px;padding:14px 16px;border-radius:18px;border:2.5px solid var(--ink);background:linear-gradient(var(--c),var(--c)) top/100% 8px no-repeat,var(--paper);box-shadow:var(--ombre);color:var(--ink);transition:transform .12s,box-shadow .12s}
+.bv-carte:hover{transform:translate(-2px,-2px) rotate(-.6deg);box-shadow:6px 6px 0 var(--ink)}
+.bv-carte.fait{background:linear-gradient(var(--c),var(--c)) top/100% 8px no-repeat,#FFF6D6}
+.bv-num{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-top:4px}
+.bv-titre{font-family:var(--display);font-weight:800;font-size:1.02rem;line-height:1.25}
+.bv-notions{font-size:.82rem;color:var(--muted)}
+.bv-score{margin-top:auto;font-size:.85rem;font-weight:700}
+.bv-barre{position:sticky;top:var(--bv-top,96px);z-index:4;display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--paper);border:2.5px solid var(--ink);border-radius:16px;box-shadow:var(--ombre-s);padding:10px 14px;margin-bottom:16px}
+.bv-barre-g{display:flex;flex-direction:column;flex:1 1 220px;line-height:1.25}
+.bv-barre-g strong{font-family:var(--display);font-size:1rem}
+.bv-barre .consigne{font-size:.82rem}
+.bv-temps{font-family:var(--display);font-weight:800;font-variant-numeric:tabular-nums;background:var(--ink);color:var(--y);border-radius:999px;padding:6px 14px;white-space:nowrap}
+.bv-temps.urgent{background:var(--ko);color:#fff;animation:pop 1s infinite}
+.bv-temps.note{background:var(--ok);color:#fff}
+.bv-barre .btn{padding:7px 13px}
+.bv-corps{display:grid;grid-template-columns:1fr;gap:18px;align-items:start}
+@media (min-width:980px){.bv-corps{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.bv-docs{position:sticky;top:calc(var(--bv-top,96px) + 76px);max-height:calc(100vh - var(--bv-top,96px) - 92px);overflow:auto;padding-right:6px}}
+.bv-docs{display:flex;flex-direction:column;gap:12px}
+.bv-intro{margin:0;font-weight:600;background:#FFF1C9;border:2px solid var(--ink);border-radius:14px;padding:10px 13px}
+.bv-doc{background:var(--paper);border:2px solid var(--ink);border-radius:14px;padding:10px 13px}
+.bv-doc h4{margin:0 0 8px;font-family:var(--display);font-size:.9rem}
+.bv-doc p{margin:8px 0 0;font-size:.93rem}
+.bv-fig{background:#fff;border-radius:10px}
+.bv-svg{display:block;width:100%;height:auto;font-family:var(--font)}
+.bv-tab-w{overflow-x:auto}
+.bv-tab{border-collapse:collapse;width:100%;font-size:.9rem}
+.bv-tab th,.bv-tab td{border:1.5px solid var(--ink);padding:5px 8px;text-align:center}
+.bv-tab th{background:#EFEAF8}
+.bv-questions{min-width:0}
+.bv-partie{display:table;background:var(--c,var(--y));border:2px solid var(--ink);border-radius:999px;padding:3px 13px;margin:6px 0 12px;font-size:.92rem;transform:rotate(-1deg)}
+.bv-q{background:var(--paper);border:2.5px solid var(--ink);border-radius:16px;box-shadow:var(--ombre-s);padding:13px 15px;margin-bottom:14px}
+.bv-q-tete{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}
+.bv-q-num{font-family:var(--display);font-weight:800;font-size:.88rem}
+.bv-q-pts{font-size:.8rem;font-weight:700;background:#EFEAF8;border:1.5px solid var(--ink);border-radius:999px;padding:1px 9px;white-space:nowrap}
+.bv-q.corrigee .bv-q-pts{background:var(--y)}
+.bv-consigne{margin:-4px 0 8px;font-size:.82rem}
+.bv-opt.choisi{background:#DCE3FF;box-shadow:2px 2px 0 var(--bl);font-weight:600}
+.bv-opt.choisi::before{content:"✓ ";font-weight:800}
+.bv-opt.juste.choisi{background:#BDF5D6}
+.bv-demarche{min-height:58px;margin-bottom:8px}
+.bv-redac{min-height:96px}
+.bv-num{display:flex;gap:8px}
+.bv-num input{flex:1 1 60%}
+.bv-num select{flex:0 1 40%;width:auto}
+.bv-verdict{margin:8px 0 0;font-weight:700;color:var(--ko)}
+.bv-verdict.ok{color:var(--ok)}
+.bv-corr p{margin:0 0 6px}
+.bv-auto-titre{font-weight:700;margin:10px 0 4px}
+.bv-notion{font-size:.8rem;color:var(--muted);margin:8px 0 0 !important}
+.bv-fin{align-items:center;flex-wrap:wrap}
+.bv-confirm{border-color:var(--ko)}
+.bv-note{font-family:var(--display);font-size:1.4rem;margin:0 0 6px}
+.bv-note b{font-size:2.6rem;color:var(--or);text-shadow:2px 2px 0 var(--ink)}
+.bv-comps{display:grid;gap:8px;margin:12px 0}
+.bv-comp{display:grid;grid-template-columns:minmax(150px,1.3fr) 2fr auto;gap:10px;align-items:center;font-size:.9rem}
+.bv-jauge{height:14px;border:2px solid var(--ink);border-radius:999px;background:#F3ECDD;overflow:hidden}
+.bv-jauge i{display:block;height:100%}
+.bv-jauge i.ok{background:var(--ok)}.bv-jauge i.moy{background:var(--y)}.bv-jauge i.ko{background:var(--ko)}
+.bv-comp-val{font-weight:700;white-space:nowrap}
+.bv-revoir{display:flex;flex-wrap:wrap;gap:8px}
+.bv-revoir .btn{background:var(--paper);border-left:8px solid var(--c)}
+@media (max-width:700px){.bv-barre{top:0;padding:8px 10px;gap:6px}.bv-barre-g{flex:1 1 100%}.bv-barre .btn{padding:5px 10px;font-size:.85rem}.bv-temps{padding:4px 11px;font-size:.9rem}.bv-comp{grid-template-columns:1fr auto}.bv-jauge{grid-column:1/-1;grid-row:2}}
+@media print{
+  body.impression-brevet section#vue-brevet{display:block !important}
+  body.impression-brevet #vue-carnet,body.impression-brevet .bv-barre .btn,body.impression-brevet .bv-fin,body.impression-brevet .bv-revoir,body.impression-brevet #bv-confirm,body.impression-brevet #bv-bilan .actions,body.impression-brevet .toast{display:none !important}
+  body.impression-brevet .bv-barre{position:static;box-shadow:none}
+  body.impression-brevet .bv-corps{display:block}
+  body.impression-brevet .bv-docs{position:static;max-height:none;overflow:visible}
+  body.impression-brevet .bv-doc,body.impression-brevet .bv-q{break-inside:avoid;box-shadow:none;margin-bottom:10px}
+  body.impression-brevet .bv-q textarea{min-height:110px}
+}
 /* ---------- Le labo : expériences ---------- */
 .labo-compte{font-family:var(--display);font-weight:800;margin:0 0 14px}
 .exp-grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
@@ -527,7 +603,7 @@ table.compte th,table.compte td{padding:5px 10px;border-bottom:1px solid rgba(26
 .carte.nc.rar-legendaire .nc-cadre{filter:drop-shadow(0 0 10px rgba(255,200,60,.7))}
 
 /* ---------- Menu à icônes ---------- */
-.nav .wrap{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;overflow:visible;padding-top:8px;padding-bottom:8px}
+.nav .wrap{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;overflow:visible;padding-top:8px;padding-bottom:8px}
 .nav .onglet{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:6px 4px 7px;border-radius:16px;white-space:normal;line-height:1.1;text-align:center}
 .nav .o-ico{width:34px;height:34px;display:block;transition:transform .2s}
 .nav .o-ico svg{width:100%;height:100%;display:block}
@@ -596,6 +672,7 @@ body.mode-collection .pt-frame{position:fixed;left:0;right:0;top:var(--pt-top,0p
     <button class="onglet" role="tab" data-vue="outils" aria-selected="false" aria-label="Outils de calcul" title="Outils de calcul"><span class="o-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="5" width="28" height="38" rx="5" fill="#fff" stroke="#1A1033" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><rect x="14" y="10" width="20" height="9" rx="2" fill="#B8F5C8" stroke="#1A1033" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><g fill="#4D6BFF"><circle cx="18" cy="26" r="2.5"/><circle cx="24" cy="26" r="2.5"/><circle cx="30" cy="26" r="2.5"/><circle cx="18" cy="33" r="2.5"/><circle cx="24" cy="33" r="2.5"/></g><rect x="27.5" y="30.5" width="5" height="9" rx="2" fill="#FF5A36"/></svg></span><span class="o-txt">Calculs</span><span class="o-long">Outils de calcul</span></button>
     <button class="onglet" role="tab" data-vue="carnet" aria-selected="false" aria-label="Carnet d’expérience" title="Carnet d’expérience"><span class="o-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="5" width="28" height="38" rx="3" fill="#FFF6D6" stroke="#1A1033" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><path d="M10 5h6v38h-6z" fill="#FF5A36" stroke="#1A1033" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><path d="M21 15h12M21 21h12M21 27h8" stroke="#1A1033" stroke-width="2" stroke-linecap="round"/><path d="M30 34l8-12 3 2-8 12-4 1z" fill="#FFC93C" stroke="#1A1033" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span class="o-txt">Carnet</span><span class="o-long">Carnet d’expérience</span></button>
     <button class="onglet" role="tab" data-vue="classe" aria-selected="false" aria-label="Mode classe" title="Mode classe"><span class="o-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="7" width="38" height="26" rx="3" fill="#2E6B4F" stroke="#1A1033" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><path d="M11 15h14M11 21h20M11 27h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><path d="M18 33l-4 10M30 33l4 10" stroke="#1A1033" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="37" cy="14" r="3" fill="#FFC93C"/></svg></span><span class="o-txt">Classe</span><span class="o-long">Mode classe</span></button>
+    <button class="onglet" role="tab" data-vue="brevet" aria-selected="false" aria-label="Sujet type brevet" title="Sujet type brevet"><span class="o-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="8" width="36" height="26" rx="3" fill="#fff" stroke="#1A1033" stroke-width="2.5" stroke-linejoin="round"/><path d="M12 15h24M12 21h18M12 27h10" stroke="#1A1033" stroke-width="2.2" stroke-linecap="round"/><circle cx="33" cy="31" r="7" fill="#FFC93C" stroke="#1A1033" stroke-width="2.5"/><path d="M29 36l-2 9 6-3 6 3-2-9" fill="#FF5A36" stroke="#1A1033" stroke-width="2.2" stroke-linejoin="round"/><path d="M30.5 31l2 2 3.5-4" fill="none" stroke="#1A1033" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="o-txt">Brevet</span><span class="o-long">Sujet brevet</span></button>
   </div>
 </nav>
 
@@ -676,7 +753,7 @@ body.mode-collection .pt-frame{position:fixed;left:0;right:0;top:var(--pt-top,0p
 
   <section id="vue-elements" hidden>
     <h2>Le tableau périodique</h2>
-    <p class="intro">Ta collection de cartes d’éléments. Tu gagnes des boosters en stabilisant des notions (2 boosters), en obtenant une carte de notion brillante (1 booster), en faisant un sans-faute à un test (1 booster, 5 par jour au maximum) et en réussissant les défis du labo (2 boosters).</p>
+    <p class="intro">Ta collection de cartes d’éléments. Tu gagnes des boosters en stabilisant des notions (2 boosters), en obtenant une carte de notion brillante (1 booster), en faisant un sans-faute à un test (1 booster, 5 par jour au maximum) en réussissant les défis du labo (2 boosters) et en obtenant au moins 12,5/25 à un sujet type brevet (2 boosters, puis 1 de plus à partir de 20/25).</p>
     <iframe id="pt-frame" class="pt-frame" allow="autoplay" title="Collection des 118 éléments du tableau périodique"></iframe>
   </section>
 
@@ -698,6 +775,11 @@ body.mode-collection .pt-frame{position:fixed;left:0;right:0;top:var(--pt-top,0p
       <h3>Mes fiches</h3>
       <ul class="liste" id="c-liste"></ul>
     </div>
+  </section>
+
+  <section id="vue-brevet" hidden>
+    <div id="bv-accueil"></div>
+    <div id="bv-copie" hidden></div>
   </section>
 
   <section id="vue-classe" hidden>
@@ -2622,6 +2704,7 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
       etat.souvenirsDonnes = s.souvenirsDonnes || null;
       etat.rappelSauv = s.rappelSauv || null;
       etat.boostTests = s.boostTests || null;
+      etat.brevet = s.brevet || {};
       if (s.reglages) {
         for (var k in s.reglages) { if (s.reglages.hasOwnProperty(k)) { etat.reglages[k] = s.reglages[k]; } }
       }
@@ -2857,7 +2940,7 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
     var mc = $('ma-classe');
     for (var i = 0; i < NIVEAUX.length; i++) { mc.appendChild(new Option(NIVEAUX[i], NIVEAUX[i])); }
     mc.value = etat.reglages.classe || '6e';
-    mc.onchange = function () { etat.reglages.classe = this.value; sauver(); rendreTableau(); construireLegende(); };
+    mc.onchange = function () { etat.reglages.classe = this.value; sauver(); rendreTableau(); construireLegende(); if (vueActive === 'brevet') { rendreBrevet(); } };
     $('prof-ok').onclick = function () {
       var saisi = $('prof-code').value.replace(/\s/g, '').toLowerCase();
       if (saisi === String(CONFIG.codeProf).toLowerCase()) {
@@ -2926,6 +3009,7 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
     if (nom === 'labo') { rendreLabo(); } else { fermerExperience(); }
     document.body.classList.toggle('mode-collection', nom === 'elements'); if (nom === 'elements') { majHauteurNav(); ouvrirCollection(); }
     if (nom === 'collection') { rendreCollection(); }
+    if (nom === 'brevet') { majHautBrevet(); rendreBrevet(); }
     window.scrollTo(0, 0);
   }
 
@@ -3996,6 +4080,647 @@ var CADRES = {"commune": "data:image/webp;base64,UklGRiYnAQBXRUJQVlA4WAoAAAAQAAA
     document.body.classList.remove('modal-ouvert');
     if (dernierFocus && dernierFocus.focus) { try { dernierFocus.focus(); } catch (e) { } }
   }
+
+  /* ---------- Sujets type brevet : contenus ---------- */
+  /* t : qcm | multi | num | redac ; p : partie (0 ou 1) ; n : notion à revoir ; c : compétence */
+  var BV_COMP = { conn: 'Mobiliser ses connaissances', doc: 'Exploiter des documents', calc: 'Calculer avec une formule', rais: 'Raisonner et argumenter' };
+
+  function bvGraphe(o) {
+    var W = 460, H = 270, g = 48, d = 18, h = 18, b = 44;
+    var lx = W - g - d, ly = H - h - b;
+    function X(x) { return g + (x - o.xmin) / (o.xmax - o.xmin) * lx; }
+    function Y(y) { return h + ly - (y - o.ymin) / (o.ymax - o.ymin) * ly; }
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + o.titre + '" class="bv-svg">';
+    var x, y;
+    for (x = o.xmin; x <= o.xmax + 1e-9; x += o.xpas) {
+      s += '<line x1="' + X(x) + '" y1="' + h + '" x2="' + X(x) + '" y2="' + (h + ly) + '" stroke="#D9D3E6" stroke-width="1"/>';
+      s += '<text x="' + X(x) + '" y="' + (h + ly + 16) + '" font-size="11" text-anchor="middle" fill="#1A1033">' + fmt(x) + '</text>';
+    }
+    for (y = o.ymin; y <= o.ymax + 1e-9; y += o.ypas) {
+      s += '<line x1="' + g + '" y1="' + Y(y) + '" x2="' + (g + lx) + '" y2="' + Y(y) + '" stroke="#D9D3E6" stroke-width="1"/>';
+      s += '<text x="' + (g - 6) + '" y="' + (Y(y) + 4) + '" font-size="11" text-anchor="end" fill="#1A1033">' + fmt(y) + '</text>';
+    }
+    s += '<path d="M' + g + ' ' + h + 'V' + (h + ly) + 'H' + (g + lx) + '" fill="none" stroke="#1A1033" stroke-width="2"/>';
+    var pts = o.pts.map(function (p) { return X(p[0]).toFixed(1) + ',' + Y(p[1]).toFixed(1); }).join(' ');
+    s += '<polyline points="' + pts + '" fill="none" stroke="' + (o.couleur || '#FF5A36') + '" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>';
+    if (o.points) { o.pts.forEach(function (p) { s += '<circle cx="' + X(p[0]).toFixed(1) + '" cy="' + Y(p[1]).toFixed(1) + '" r="3.5" fill="#1A1033"/>'; }); }
+    s += '<text x="' + (g + lx / 2) + '" y="' + (H - 6) + '" font-size="12" font-weight="700" text-anchor="middle" fill="#1A1033">' + o.xl + '</text>';
+    s += '<text x="12" y="' + (h + ly / 2) + '" font-size="12" font-weight="700" text-anchor="middle" fill="#1A1033" transform="rotate(-90 12 ' + (h + ly / 2) + ')">' + o.yl + '</text>';
+    return s + '</svg>';
+  }
+  function bvChaine(res, conv, sorties) {
+    var s = '<svg viewBox="0 0 520 200" role="img" aria-label="Chaîne énergétique : ' + res[0] + ', ' + conv[0] + '" class="bv-svg">';
+    s += '<defs><marker id="bvfl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1A1033"/></marker></defs>';
+    s += '<rect x="6" y="75" width="118" height="50" rx="8" fill="#FFF1C9" stroke="#1A1033" stroke-width="2"/><text x="65" y="97" font-size="13" font-weight="700" text-anchor="middle">' + res[0] + '</text><text x="65" y="113" font-size="11" text-anchor="middle">' + res[1] + '</text>';
+    var lignes = conv[1].split(' ');
+    s += '<line x1="124" y1="100" x2="196" y2="100" stroke="#1A1033" stroke-width="2" marker-end="url(#bvfl)"/>';
+    s += '<text x="160" y="' + (lignes.length > 1 ? 76 : 90) + '" font-size="10.5" text-anchor="middle">' + lignes.map(function (l, i) { return '<tspan x="160" dy="' + (i ? 12 : 0) + '">' + l + '</tspan>'; }).join('') + '</text>';
+    s += '<ellipse cx="250" cy="100" rx="52" ry="28" fill="#DDF4FF" stroke="#1A1033" stroke-width="2"/><text x="250" y="105" font-size="13" font-weight="700" text-anchor="middle">' + conv[0] + '</text>';
+    sorties.forEach(function (so, i) {
+      var y = i === 0 ? 42 : 158;
+      s += '<line x1="298" y1="' + (i === 0 ? 88 : 112) + '" x2="350" y2="' + y + '" stroke="#1A1033" stroke-width="2" marker-end="url(#bvfl)"/>';
+      s += '<text x="358" y="' + (y - 3) + '" font-size="12.5" font-weight="700">' + so[0] + '</text><text x="358" y="' + (y + 13) + '" font-size="11">' + so[1] + '</text>';
+    });
+    return s + '</svg>';
+  }
+  function bvCircuit() {
+    var K = 'stroke="#1A1033" stroke-width="2.5" fill="none"';
+    var s = '<svg viewBox="0 0 420 220" role="img" aria-label="Schéma du circuit d’éclairage" class="bv-svg">';
+    s += '<path d="M40 40H380V180H40Z" ' + K + '/><path d="M210 40V180" ' + K + '/>';
+    s += '<rect x="22" y="92" width="36" height="36" fill="#fff" stroke="none"/><path d="M28 100H52M33 112H47" stroke="#1A1033" stroke-width="3"/><text x="64" y="116" font-size="11">Batterie</text>';
+    s += '<rect x="100" y="28" width="60" height="24" fill="#fff" stroke="none"/><circle cx="104" cy="40" r="3" fill="#1A1033"/><circle cx="156" cy="40" r="3" fill="#1A1033"/><path d="M104 40L150 24" ' + K + '/><text x="130" y="68" font-size="11" text-anchor="middle">Interrupteur</text>';
+    function lampe(x, y, nom) { return '<circle cx="' + x + '" cy="' + y + '" r="14" fill="#fff" ' + K.replace('fill="none"', '') + '/><path d="M' + (x - 10) + ' ' + (y - 10) + 'L' + (x + 10) + ' ' + (y + 10) + 'M' + (x + 10) + ' ' + (y - 10) + 'L' + (x - 10) + ' ' + (y + 10) + '" stroke="#1A1033" stroke-width="2"/><text x="' + (x + 20) + '" y="' + (y + 4) + '" font-size="11">' + nom + '</text>'; }
+    s += lampe(210, 110, 'Phare avant') + lampe(380, 110, '');
+    s += '<text x="330" y="140" font-size="11" text-anchor="end">Feu arrière</text>';
+    return s + '</svg>';
+  }
+
+  var SUJETS = [
+    {
+      id: 'artemis', titre: 'Mission Artémis : retour vers la Lune', fam: 'mvt',
+      notions: ['poids', 'gravitation', 'communication', 'combustions'],
+      parties: ['Un astronaute sur la Lune', 'Le décollage de la fusée'],
+      gen: function () { return { m: choisir([90, 100, 110, 120, 130]) }; },
+      intro: function (v) { return 'Le programme Artémis doit ramener des astronautes sur la Lune. Équipé de sa combinaison, un astronaute a une masse de ' + v.m + ' kg. La fusée SLS qui le transporte décolle grâce à la combustion du dihydrogène dans le dioxygène.'; },
+      docs: function (v) {
+        return [
+          { titre: 'Document 1 : intensité de la pesanteur', tableau: { rh: true, tete: ['Astre', 'Terre', 'Lune', 'Mars'], lignes: [['g (N/kg)', '9,8', '1,6', '3,7']] }, texte: 'Le poids P d’un objet se calcule avec la relation P = m × g, avec P en newtons (N), m en kilogrammes (kg) et g en newtons par kilogramme (N/kg).' },
+          { titre: 'Document 2 : communiquer avec la Terre', texte: 'La Lune est située à environ 384 000 km de la Terre. Les astronautes communiquent avec le centre de contrôle grâce à des ondes radio, qui se propagent dans le vide à la vitesse d’environ 300 000 km/s.' },
+          { titre: 'Document 3 : les moteurs de la fusée', texte: 'Les moteurs principaux brûlent du dihydrogène liquide (H₂) avec du dioxygène liquide (O₂), tous deux stockés dans les réservoirs de la fusée. Cette combustion ne produit que de l’eau (H₂O), sous forme de vapeur. Dans l’espace, il n’y a pas d’air.' }
+        ];
+      },
+      questions: function (v) {
+        var P = v.m * 1.6;
+        return [
+          { p: 0, t: 'qcm', pts: 2, n: 'poids', c: 'conn', q: 'Sur la Lune, la masse de l’astronaute équipé est…', o: ['égale à ' + v.m + ' kg, comme sur Terre', 'environ 6 fois plus petite que sur Terre', 'nulle, car il flotte'], a: 0, corr: 'La masse mesure la quantité de matière : elle ne dépend pas du lieu.' },
+          { p: 0, t: 'num', pts: 4, n: 'poids', c: 'calc', q: 'À l’aide du document 1, calculer le poids de l’astronaute équipé sur la Lune.', rep: P, u: 'N', unites: ['N', 'kg', 'N/kg', 'J'], corr: 'P = m × g = ' + v.m + ' × 1,6 = ' + fmt(P) + ' N.' },
+          { p: 0, t: 'redac', pts: 4, n: 'gravitation', c: 'rais', q: 'Expliquer pourquoi l’astronaute peut faire des bonds beaucoup plus hauts sur la Lune que sur la Terre.', modele: 'Sa masse est la même, mais l’intensité de la pesanteur est plus faible sur la Lune (1,6 N/kg contre 9,8 N/kg). Son poids, c’est-à-dire la force d’attraction exercée par la Lune, est donc environ 6 fois plus faible : il est moins attiré vers le sol et retombe moins vite.', crit: [['Le poids sur la Lune est plus faible que sur la Terre.', 2], ['Justification par l’intensité de la pesanteur (valeurs du document 1 ou attraction plus faible de la Lune).', 2]] },
+          { p: 0, t: 'num', pts: 4, n: 'communication', c: 'calc', q: 'Calculer la durée mise par un message radio pour aller de la Lune à la Terre.', rep: 384000 / 300000, u: 's', unites: ['s', 'min', 'km/s', 'km'], equiv: { min: 60 }, corr: 't = d / v = 384 000 / 300 000 = 1,28 s.' },
+          { p: 1, t: 'multi', pts: 3, n: 'combustions', c: 'doc', q: 'Cocher les réactifs de la combustion qui a lieu dans les moteurs.', o: ['Dihydrogène', 'Dioxygène', 'Eau', 'Dioxyde de carbone'], ok: [0, 1], corr: 'Les réactifs sont consommés : le dihydrogène (combustible) et le dioxygène (comburant). L’eau est le produit.' },
+          { p: 1, t: 'qcm', pts: 3, n: 'transformation', c: 'conn', q: 'Quelle équation modélise correctement cette combustion ?', o: ['2 H₂ + O₂ → 2 H₂O', 'H₂ + O₂ → H₂O', 'H₂ + O₂ → 2 H₂O'], a: 0, corr: 'Il faut autant d’atomes de chaque sorte de chaque côté : 4 H et 2 O à gauche comme à droite.' },
+          { p: 1, t: 'redac', pts: 4, n: 'combustions', c: 'rais', q: 'La fusée emporte son propre dioxygène dans ses réservoirs. Expliquer pourquoi c’est indispensable.', modele: 'Une combustion a besoin d’un combustible et d’un comburant, le dioxygène. Dans l’espace, il n’y a pas d’air, donc pas de dioxygène : sans réserve de dioxygène, la combustion s’arrêterait et les moteurs s’éteindraient.', crit: [['Une combustion nécessite du dioxygène (comburant).', 2], ['Il n’y a pas d’air, donc pas de dioxygène, dans l’espace.', 2]] }
+        ];
+      }
+    },
+    {
+      id: 'route', titre: 'Sécurité routière : s’arrêter à temps', fam: 'mvt',
+      notions: ['vitesse', 'cinetique', 'chaines-energie'],
+      parties: ['La distance d’arrêt', 'L’énergie de la voiture'],
+      gen: function () { return { V: choisir([50, 70, 90, 110]), tr: choisir([1, 2]), m: choisir([1000, 1200, 1500]) }; },
+      intro: function (v) { return 'Une voiture de ' + fmt(v.m) + ' kg roule à ' + v.V + ' km/h sur une route sèche. Un obstacle surgit. ' + (v.tr === 2 ? 'Le conducteur, qui consultait son téléphone, met 2 s à réagir.' : 'Le conducteur, attentif, met 1 s à réagir.'); },
+      docs: function (v) {
+        var Vs = [30, 50, 70, 90, 110, 130], L = Vs.map(function (V) { var w = V / 3.6; return [String(V), String(Math.round(w * w / 14))]; });
+        return [
+          { titre: 'Document 1 : la distance d’arrêt', texte: 'La distance d’arrêt est la somme de deux distances : la distance de réaction, parcourue à vitesse constante pendant le temps de réaction du conducteur, et la distance de freinage, parcourue une fois les freins actionnés. Le temps de réaction est d’environ 1 s ; il augmente avec la fatigue, l’alcool ou l’usage du téléphone.' },
+          { titre: 'Document 2 : distance de freinage sur route sèche', tableau: { tete: ['Vitesse (km/h)', 'Distance de freinage (m)'], lignes: L } },
+          { titre: 'Document 3 : énergie cinétique', texte: 'L’énergie cinétique d’un objet de masse m (en kg) se déplaçant à la vitesse v (en m/s) vaut Ec = ½ × m × v², en joules (J). Lors du freinage, les disques de frein deviennent très chauds. Rappel : pour passer des km/h aux m/s, on divise par 3,6.' }
+        ];
+      },
+      questions: function (v) {
+        var w = v.V / 3.6, DR = w * v.tr, DF = Math.round(w * w / 14), Ec = 0.5 * v.m * w * w;
+        return [
+          { p: 0, t: 'num', pts: 3, n: 'vitesse', c: 'calc', q: 'Convertir la vitesse de la voiture en mètres par seconde (m/s).', rep: w, tol: 0.02, u: 'm/s', unites: ['m/s', 'km/h', 'm', 's'], corr: v.V + ' / 3,6 ≈ ' + fmt(arr(w, 1)) + ' m/s.' },
+          { p: 0, t: 'num', pts: 4, n: 'vitesse', c: 'calc', q: 'Calculer la distance de réaction du conducteur.', rep: DR, tol: 0.03, u: 'm', unites: ['m', 'km', 'm/s', 's'], equiv: { km: 1000 }, corr: 'La voiture roule à vitesse constante pendant ' + v.tr + ' s : d = v × t = ' + fmt(arr(w, 1)) + ' × ' + v.tr + ' ≈ ' + fmt(arr(DR, 1)) + ' m.' },
+          { p: 0, t: 'num', pts: 3, n: 'vitesse', c: 'doc', q: 'À l’aide du document 2, calculer la distance d’arrêt de la voiture.', rep: DR + DF, tol: 0.03, u: 'm', unites: ['m', 'km', 'm/s', 's'], equiv: { km: 1000 }, corr: 'Distance d’arrêt = distance de réaction + distance de freinage ≈ ' + fmt(arr(DR, 1)) + ' + ' + DF + ' ≈ ' + fmt(arr(DR + DF, 1)) + ' m.' },
+          { p: 0, t: 'redac', pts: 4, n: 'vitesse', c: 'rais', q: 'Expliquer pourquoi utiliser son téléphone au volant augmente le risque d’accident.', modele: 'Le téléphone détourne l’attention : le temps de réaction augmente (par exemple de 1 s à 2 s). La distance de réaction, parcourue à pleine vitesse, augmente autant, donc la distance d’arrêt aussi : la voiture risque de ne pas s’arrêter avant l’obstacle.', crit: [['Le téléphone augmente le temps de réaction.', 2], ['La distance de réaction, donc la distance d’arrêt, augmente.', 2]] },
+          { p: 1, t: 'num', pts: 4, n: 'cinetique', c: 'calc', q: 'Calculer l’énergie cinétique de la voiture avant le freinage.', rep: Ec, tol: 0.03, u: 'J', unites: ['J', 'kJ', 'W', 'N'], equiv: { kJ: 1000 }, corr: 'Ec = ½ × m × v² = 0,5 × ' + fmt(v.m) + ' × ' + fmt(arr(w, 1)) + '² ≈ ' + fmt(Math.round(Ec)) + ' J, soit environ ' + fmt(arr(Ec / 1000, 0)) + ' kJ.' },
+          { p: 1, t: 'qcm', pts: 3, n: 'cinetique', c: 'conn', q: 'Si la voiture roulait deux fois plus vite, son énergie cinétique serait…', o: ['multipliée par 2', 'multipliée par 4', 'inchangée'], a: 1, corr: 'Ec est proportionnelle au carré de la vitesse : 2² = 4.' },
+          { p: 1, t: 'qcm', pts: 3, n: 'chaines-energie', c: 'doc', q: 'Pendant le freinage, l’énergie cinétique est principalement convertie en énergie…', o: ['thermique', 'chimique', 'électrique'], a: 0, corr: 'Les freins chauffent (document 3) : l’énergie cinétique est convertie en énergie thermique.' }
+        ];
+      }
+    },
+    {
+      id: 'bouilloire', titre: 'La bouilloire électrique', fam: 'ene',
+      notions: ['puissance', 'changements', 'securite-elec'],
+      parties: ['Puissance et énergie', 'L’ébullition et la sécurité'],
+      gen: function () { var P = choisir([1800, 2000, 2200, 2400]); return { P: P, t: choisir([2, 3, 4]), tb: Math.round(334400 / P / 10) * 10 }; },
+      intro: function (v) { return 'Pour préparer un thé, Léa fait chauffer 1 L d’eau dans une bouilloire électrique branchée sur le secteur. Elle laisse fonctionner la bouilloire pendant ' + v.t + ' minutes.'; },
+      docs: function (v) {
+        var fin = v.tb + 90, pts = [[0, 20], [v.tb, 100], [fin, 100]];
+        return [
+          { titre: 'Document 1 : plaque signalétique de la bouilloire', tableau: { tete: ['Tension', 'Fréquence', 'Puissance'], lignes: [['230 V', '50 Hz', fmt(v.P) + ' W']] }, texte: 'Relations utiles : P = U × I et E = P × t (E en joules si P est en watts et t en secondes). 1 kWh = 3 600 000 J.' },
+          { titre: 'Document 2 : température de l’eau pendant le chauffage', svg: bvGraphe({ titre: 'Température de l’eau en fonction du temps', xmin: 0, xmax: Math.ceil(fin / 60) * 60, xpas: 60, ymin: 0, ymax: 120, ypas: 20, xl: 'Temps (s)', yl: 'Température (°C)', pts: pts }) },
+          { titre: 'Document 3 : consignes de sécurité', texte: 'Ne pas remplir la bouilloire lorsqu’elle est branchée. Ne pas la manipuler avec les mains mouillées. Brancher sur une prise munie d’une prise de terre. Éviter de brancher plusieurs appareils puissants sur une même multiprise : l’intensité totale serait trop grande et les fils pourraient chauffer.' }
+        ];
+      },
+      questions: function (v) {
+        var I = v.P / 230, E = v.P * v.t * 60, kwh = v.P / 1000 * v.t / 60, tb = v.tb;
+        return [
+          { p: 0, t: 'qcm', pts: 2, n: 'puissance', c: 'doc', q: 'Sur la plaque signalétique, la valeur ' + fmt(v.P) + ' W correspond…', o: ['à la puissance', 'à la tension', 'à l’énergie consommée'], a: 0, corr: 'Le watt (W) est l’unité de la puissance.' },
+          { p: 0, t: 'num', pts: 4, n: 'puissance', c: 'calc', q: 'Calculer l’intensité du courant qui traverse la bouilloire en fonctionnement.', rep: I, tol: 0.02, u: 'A', unites: ['A', 'V', 'W', 'Ω'], corr: 'I = P / U = ' + fmt(v.P) + ' / 230 ≈ ' + fmt(arr(I, 1)) + ' A.' },
+          { p: 0, t: 'num', pts: 4, n: 'puissance', c: 'calc', q: 'Calculer l’énergie électrique consommée par la bouilloire, en joules.', rep: E, tol: 0.02, u: 'J', unites: ['J', 'kJ', 'W', 'kWh'], equiv: { kJ: 1000, kWh: 3600000 }, corr: 't = ' + v.t + ' min = ' + (v.t * 60) + ' s ; E = P × t = ' + fmt(v.P) + ' × ' + (v.t * 60) + ' = ' + fmt(E) + ' J.' },
+          { p: 0, t: 'num', pts: 3, n: 'puissance', c: 'calc', q: 'Exprimer cette énergie en kilowattheures (kWh).', rep: kwh, tol: 0.03, u: 'kWh', unites: ['kWh', 'Wh', 'J', 'kW'], equiv: { Wh: 0.001, J: 1 / 3600000 }, corr: 'E = ' + fmt(E) + ' / 3 600 000 ≈ ' + fmt(arr(kwh, 3)) + ' kWh (ou P = ' + fmt(v.P / 1000) + ' kW × t = ' + fmt(arr(v.t / 60, 3)) + ' h).' },
+          { p: 1, t: 'qcm', pts: 3, n: 'changements', c: 'doc', q: 'D’après le document 2, à partir de quel instant la température de l’eau reste-t-elle constante ?', o: [tb + ' s', Math.round(tb / 2) + ' s', '100 s', (tb + 60) + ' s'], a: 0, corr: 'La courbe devient horizontale à ' + tb + ' s, à 100 °C.' },
+          { p: 1, t: 'redac', pts: 4, n: 'changements', c: 'rais', q: 'Nommer le changement d’état qui a lieu à partir de cet instant, puis expliquer pourquoi la température ne monte plus alors que la bouilloire chauffe toujours.', modele: 'C’est la vaporisation (ébullition) de l’eau, à 100 °C. Pendant un changement d’état d’un corps pur, la température reste constante (palier) : l’énergie reçue sert à faire passer l’eau de l’état liquide à l’état gazeux.', crit: [['Nom du changement d’état : vaporisation (ébullition).', 2], ['Pendant le changement d’état, la température reste constante : l’énergie sert au changement d’état.', 2]] },
+          { p: 1, t: 'multi', pts: 4, n: 'securite-elec', c: 'doc', q: 'À l’aide du document 3, cocher les situations dangereuses.', o: ['Remplir la bouilloire encore branchée sous le robinet', 'Brancher bouilloire, four et radiateur sur la même multiprise', 'Brancher la bouilloire sur une prise munie d’une prise de terre', 'Débrancher la bouilloire avant de la remplir'], ok: [0, 1], corr: 'L’eau conduit le courant : risque d’électrisation. Trop d’appareils sur une multiprise : surintensité, les fils chauffent, risque d’incendie.' }
+        ];
+      }
+    },
+    {
+      id: 'piscine', titre: 'L’eau de la piscine', fam: 'mat',
+      notions: ['ph', 'ions', 'masse-volume'],
+      parties: ['Le pH de l’eau', 'Les ions présents dans l’eau'],
+      gen: function () { return { pH: choisir([6.6, 6.7, 6.8, 6.9]), L: choisir([8, 10, 12]), l: choisir([4, 5, 6]), pr: choisir([1.2, 1.5]) }; },
+      intro: function (v) { return 'Le gardien d’une piscine municipale contrôle la qualité de l’eau du bassin, qui mesure ' + v.L + ' m de long, ' + v.l + ' m de large et ' + fmt(v.pr) + ' m de profondeur. Ce matin, il mesure un pH de ' + fmt(v.pH) + '.'; },
+      docs: function (v) {
+        return [
+          { titre: 'Document 1 : le pH idéal', texte: 'Pour le confort des baigneurs et l’efficacité de la désinfection, le pH de l’eau doit rester compris entre 7,2 et 7,6. Pour faire baisser le pH, on ajoute un produit acide appelé « pH− » ; pour le faire monter, on ajoute un produit basique appelé « pH+ ».' },
+          { titre: 'Document 2 : notice du produit pH+', texte: 'Pour 10 m³ d’eau, 100 g de produit pH+ font augmenter le pH d’environ 0,1. Rappel : le volume d’un pavé droit vaut longueur × largeur × profondeur.' },
+          { titre: 'Document 3 : tests réalisés sur un échantillon d’eau', tableau: { tete: ['Réactif ajouté', 'Observation'], lignes: [['Nitrate d’argent', 'Précipité blanc qui noircit à la lumière'], ['Soude', 'Précipité bleu']] }, texte: 'Rappels : la soude donne un précipité bleu avec Cu²⁺, vert avec Fe²⁺, rouille avec Fe³⁺. Le nitrate d’argent donne un précipité blanc qui noircit à la lumière avec Cl⁻. Certains produits anti-algues contiennent du sulfate de cuivre.' }
+        ];
+      },
+      questions: function (v) {
+        var V = v.L * v.l * v.pr, d = 7.2 - v.pH, m = V * d * 100;
+        return [
+          { p: 0, t: 'qcm', pts: 2, n: 'ph', c: 'conn', q: 'Une eau de pH ' + fmt(v.pH) + ' est…', o: ['acide', 'neutre', 'basique'], a: 0, corr: 'Son pH est inférieur à 7 : elle est (légèrement) acide.' },
+          { p: 0, t: 'redac', pts: 4, n: 'ph', c: 'doc', q: 'Le gardien doit-il corriger le pH de l’eau ? Justifier à l’aide du document 1, puis indiquer le produit à ajouter.', modele: 'Oui : le pH mesuré (' + fmt(v.pH) + ') est inférieur à 7,2, la valeur minimale conseillée. Il faut faire monter le pH, donc ajouter le produit basique pH+.', crit: [['Comparaison du pH mesuré avec l’intervalle 7,2 – 7,6.', 2], ['Il faut augmenter le pH, donc ajouter du pH+ (produit basique).', 2]] },
+          { p: 0, t: 'num', pts: 3, n: 'masse-volume', c: 'calc', q: 'Calculer le volume d’eau du bassin, en m³.', rep: V, tol: 0.01, u: 'm³', unites: ['m³', 'L', 'm²', 'kg'], equiv: { L: 0.001 }, corr: 'V = ' + v.L + ' × ' + v.l + ' × ' + fmt(v.pr) + ' = ' + fmt(V) + ' m³.' },
+          { p: 0, t: 'num', pts: 4, n: 'ph', c: 'calc', q: 'À l’aide du document 2, calculer la masse de pH+ à ajouter pour amener le pH à 7,2.', rep: m, tol: 0.03, u: 'g', unites: ['g', 'kg', 'L', 'm³'], equiv: { kg: 1000 }, corr: 'Il faut augmenter le pH de 7,2 − ' + fmt(v.pH) + ' = ' + fmt(arr(d, 1)) + ', soit ' + fmt(arr(d / 0.1, 0)) + ' fois 0,1. Pour ' + fmt(V) + ' m³ (' + fmt(V / 10) + ' fois 10 m³) : m = ' + fmt(V / 10) + ' × 100 × ' + fmt(arr(d / 0.1, 0)) + ' = ' + fmt(Math.round(m)) + ' g, soit ' + fmt(arr(m / 1000, 2)) + ' kg.' },
+          { p: 1, t: 'qcm', pts: 3, n: 'ions', c: 'doc', q: 'Quel ion le test au nitrate d’argent met-il en évidence ?', o: ['L’ion chlorure Cl⁻', 'L’ion cuivre Cu²⁺', 'L’ion fer Fe³⁺'], a: 0, corr: 'Précipité blanc qui noircit à la lumière : ions chlorure Cl⁻.' },
+          { p: 1, t: 'redac', pts: 3, n: 'ions', c: 'rais', q: 'Interpréter le test à la soude et proposer une origine à l’ion détecté.', modele: 'Le précipité bleu révèle la présence d’ions cuivre Cu²⁺. Ils proviennent probablement d’un produit anti-algues au sulfate de cuivre (document 3).', crit: [['Le précipité bleu révèle les ions cuivre Cu²⁺.', 2], ['Origine : produit anti-algues au sulfate de cuivre.', 1]] },
+          { p: 1, t: 'qcm', pts: 3, n: 'ions', c: 'conn', q: 'L’eau de la piscine conduit-elle mieux le courant électrique que l’eau pure ?', o: ['Oui, car elle contient des ions', 'Non, l’eau ne conduit jamais le courant', 'Oui, car elle est acide uniquement'], a: 0, corr: 'Les ions dissous (Cl⁻, Cu²⁺…) se déplacent et permettent le passage du courant.' },
+          { p: 1, t: 'qcm', pts: 2, n: 'ions', c: 'conn', q: 'Un ion Cu²⁺ est un atome de cuivre qui a…', o: ['perdu 2 électrons', 'gagné 2 électrons', 'perdu 2 protons'], a: 0, corr: 'Charge 2+ : deux électrons perdus ; le noyau ne change pas.' }
+        ];
+      }
+    },
+    {
+      id: 'concert', titre: 'Un concert en plein air', fam: 'sig',
+      notions: ['son', 'lumiere', 'communication'],
+      parties: ['Voir et entendre', 'Les sons du concert'],
+      gen: function () { var f = choisir([110, 220, 440, 880]), t = choisir([2, 5]); return { d: choisir([170, 255, 340, 510, 680]), f: f, tt: t, N: f * t }; },
+      intro: function (v) { return 'Sami assiste à un concert en plein air. Il est placé à ' + v.d + ' m de la scène et voit le batteur sur la scène et sur un écran géant.'; },
+      docs: function (v) {
+        return [
+          { titre: 'Document 1 : vitesses de propagation', tableau: { tete: ['Signal', 'Vitesse dans l’air'], lignes: [['Son', 'environ 340 m/s'], ['Lumière', 'environ 300 000 km/s']] }, texte: 'Le son a besoin d’un milieu matériel pour se propager. La lumière se propage aussi dans le vide.' },
+          { titre: 'Document 2 : niveaux sonores', tableau: { tete: ['Situation', 'Niveau (dB)'], lignes: [['Conversation', '60'], ['Seuil de danger', '85'], ['Concert, près des enceintes', '105'], ['Seuil de douleur', '120']] } },
+          { titre: 'Document 3 : fréquences des sons', tableau: { tete: ['Source', 'Fréquence (Hz)'], lignes: [['Grosse caisse', '50'], ['Voix du chanteur', '300'], ['Cymbale', '10 000'], ['Sifflet à ultrasons pour chien', '25 000']] }, texte: 'L’oreille humaine perçoit les sons de fréquence comprise entre 20 Hz et 20 000 Hz. Plus la fréquence est élevée, plus le son est aigu. La fréquence f (en Hz) est le nombre de vibrations par seconde.' }
+        ];
+      },
+      questions: function (v) {
+        var t = v.d / 340;
+        return [
+          { p: 0, t: 'qcm', pts: 3, n: 'son', c: 'conn', q: 'Le son de la batterie parvient à Sami en se propageant…', o: ['dans l’air, un milieu matériel', 'uniquement grâce à l’écran géant', 'dans le vide'], a: 0, corr: 'Le son est une vibration qui se propage dans un milieu matériel, ici l’air.' },
+          { p: 0, t: 'num', pts: 4, n: 'son', c: 'calc', q: 'Calculer la durée mise par le son pour aller de la scène jusqu’à Sami.', rep: t, tol: 0.03, u: 's', unites: ['s', 'min', 'm/s', 'm'], equiv: { min: 60 }, corr: 't = d / v = ' + v.d + ' / 340 = ' + fmt(arr(t, 2)) + ' s.' },
+          { p: 0, t: 'redac', pts: 4, n: 'lumiere', c: 'rais', q: 'Sami remarque qu’il voit le batteur frapper avant d’entendre le coup. Expliquer.', modele: 'La lumière se propage beaucoup plus vite que le son (300 000 km/s contre 340 m/s). La lumière arrive presque instantanément, alors que le son met ' + fmt(arr(t, 2)) + ' s : Sami voit le coup avant de l’entendre.', crit: [['La lumière est beaucoup plus rapide que le son (comparaison des vitesses).', 2], ['Le son met une durée non négligeable à arriver (valeur ou comparaison des durées).', 2]] },
+          { p: 1, t: 'multi', pts: 3, n: 'son', c: 'doc', q: 'Cocher les sons audibles par Sami.', o: ['Grosse caisse', 'Voix du chanteur', 'Cymbale', 'Sifflet à ultrasons pour chien'], ok: [0, 1, 2], corr: 'Seul le sifflet (25 000 Hz) dépasse 20 000 Hz : c’est un ultrason, inaudible.' },
+          { p: 1, t: 'qcm', pts: 3, n: 'son', c: 'doc', q: 'Près des enceintes, le niveau sonore est de 105 dB. Que faut-il conseiller à Sami ?', o: ['Porter des bouchons d’oreilles et s’éloigner des enceintes', 'Rien, ce niveau est sans danger', 'Se rapprocher pour mieux entendre'], a: 0, corr: '105 dB dépasse le seuil de danger de 85 dB : risque de lésions irréversibles de l’audition.' },
+          { p: 1, t: 'qcm', pts: 3, n: 'son', c: 'conn', q: 'Le son de la cymbale est plus … que celui de la grosse caisse.', o: ['aigu', 'grave', 'lent'], a: 0, corr: 'Sa fréquence est bien plus élevée : le son est plus aigu.' },
+          { p: 1, t: 'num', pts: 4, n: 'son', c: 'calc', q: 'Une corde de guitare effectue ' + fmt(v.N) + ' vibrations en ' + v.tt + ' s. Calculer la fréquence du son émis.', rep: v.f, tol: 0.01, u: 'Hz', unites: ['Hz', 's', 'dB', 'm/s'], corr: 'f = nombre de vibrations / durée = ' + fmt(v.N) + ' / ' + v.tt + ' = ' + v.f + ' Hz.' }
+        ];
+      }
+    },
+    {
+      id: 'voiture', titre: 'Voiture thermique ou électrique ?', fam: 'ene',
+      notions: ['chaines-energie', 'combustions', 'puissance'],
+      parties: ['Deux moteurs, deux rendements', 'Le trajet domicile – travail'],
+      gen: function () { return { Er: choisir([500, 800, 1000, 2000]), d: choisir([20, 30, 40, 50]) }; },
+      intro: function (v) { return 'La famille Martin hésite entre une voiture à essence et une voiture électrique. Chaque jour, M. Martin parcourt ' + v.d + ' km pour aller au travail et en revenir.'; },
+      docs: function (v) {
+        return [
+          { titre: 'Document 1 : chaîne énergétique du moteur à essence', svg: bvChaine(['Réservoir', 'essence'], ['Moteur', 'énergie chimique'], [['Énergie mécanique', 'environ 35 %'], ['Énergie thermique', 'environ 65 % (perdue)']]) },
+          { titre: 'Document 2 : chaîne énergétique du moteur électrique', svg: bvChaine(['Batterie', 'stockage chimique'], ['Moteur', 'énergie électrique'], [['Énergie mécanique', 'environ 90 %'], ['Énergie thermique', 'environ 10 % (perdue)']]) },
+          { titre: 'Document 3 : consommations', tableau: { tete: ['Voiture', 'Consommation', 'Émission de CO₂ en roulant'], lignes: [['À essence', '6 L pour 100 km', '2,3 kg par litre d’essence brûlé'], ['Électrique', '15 kWh pour 100 km', 'aucune']] }, texte: 'La combustion de l’essence produit du dioxyde de carbone et de l’eau. L’électricité qui recharge la batterie est produite dans des centrales (nucléaires, éoliennes, solaires, à gaz…).' }
+        ];
+      },
+      questions: function (v) {
+        var Eu = v.Er * 0.35, Ep = v.Er - Eu, L = v.d * 6 / 100, co2 = L * 2.3, kwh = v.d * 15 / 100;
+        return [
+          { p: 0, t: 'qcm', pts: 2, n: 'chaines-energie', c: 'conn', q: 'Dans le réservoir d’essence, l’énergie est stockée sous forme…', o: ['chimique', 'cinétique', 'électrique'], a: 0, corr: 'L’essence est un combustible : elle stocke de l’énergie chimique.' },
+          { p: 0, t: 'num', pts: 4, n: 'chaines-energie', c: 'calc', q: 'Le moteur à essence reçoit ' + fmt(v.Er) + ' kJ et fournit ' + fmt(Eu) + ' kJ d’énergie mécanique. Calculer l’énergie perdue.', rep: Ep, tol: 0.01, u: 'kJ', unites: ['kJ', 'J', 'W', 'kWh'], equiv: { J: 0.001 }, corr: 'L’énergie se conserve : E perdue = ' + fmt(v.Er) + ' − ' + fmt(Eu) + ' = ' + fmt(Ep) + ' kJ.' },
+          { p: 0, t: 'redac', pts: 4, n: 'chaines-energie', c: 'doc', q: 'À l’aide des documents 1 et 2, indiquer quel moteur gaspille le plus d’énergie et sous quelle forme cette énergie est perdue.', modele: 'Le moteur à essence : il perd environ 65 % de l’énergie reçue, contre 10 % pour le moteur électrique. Cette énergie est perdue sous forme d’énergie thermique (chaleur).', crit: [['Le moteur à essence gaspille le plus (65 % contre 10 %).', 2], ['L’énergie est perdue sous forme thermique (chaleur).', 2]] },
+          { p: 1, t: 'num', pts: 4, n: 'combustions', c: 'calc', q: 'Calculer la masse de CO₂ émise chaque jour par la voiture à essence sur ce trajet.', rep: co2, tol: 0.03, u: 'kg', unites: ['kg', 'g', 'L', 'km'], equiv: { g: 0.001 }, corr: 'Essence consommée : ' + v.d + ' × 6 / 100 = ' + fmt(L) + ' L ; CO₂ : ' + fmt(L) + ' × 2,3 ≈ ' + fmt(arr(co2, 2)) + ' kg.' },
+          { p: 1, t: 'multi', pts: 3, n: 'combustions', c: 'conn', q: 'Cocher les produits de la combustion de l’essence.', o: ['Dioxyde de carbone', 'Eau', 'Dioxygène', 'Essence'], ok: [0, 1], corr: 'L’essence et le dioxygène sont les réactifs ; le dioxyde de carbone et l’eau sont les produits.' },
+          { p: 1, t: 'num', pts: 4, n: 'puissance', c: 'calc', q: 'Calculer l’énergie électrique consommée chaque jour par la voiture électrique sur ce trajet.', rep: kwh, tol: 0.02, u: 'kWh', unites: ['kWh', 'Wh', 'kW', 'V'], equiv: { Wh: 0.001 }, corr: 'E = ' + v.d + ' × 15 / 100 = ' + fmt(kwh) + ' kWh.' },
+          { p: 1, t: 'redac', pts: 3, n: 'chaines-energie', c: 'rais', q: 'Un vendeur affirme : « La voiture électrique n’a aucun impact sur l’environnement. » Discuter cette affirmation.', modele: 'Elle n’émet pas de CO₂ en roulant, mais l’électricité doit être produite dans des centrales, parfois à partir de sources non renouvelables (gaz, charbon). La fabrication de la batterie consomme aussi des ressources et de l’énergie. L’affirmation est donc exagérée.', crit: [['L’électricité doit être produite (centrales, sources plus ou moins polluantes).', 2], ['Autre impact cité (fabrication, batterie, ressources) ou conclusion nuancée.', 1]] }
+        ];
+      }
+    },
+    {
+      id: 'etoiles', titre: 'Poussières d’étoiles', fam: 'mat',
+      notions: ['univers', 'atomes', 'lumiere'],
+      parties: ['Les distances dans l’Univers', 'De quoi sommes-nous faits ?'],
+      gen: function () { return { e: choisir([['Proxima du Centaure', 4.2], ['Sirius', 8.6], ['Véga', 25], ['Arcturus', 37]]) }; },
+      intro: function (v) { return 'Lors d’une nuit d’observation, Inès repère l’étoile ' + v.e[0] + '. L’animateur du club d’astronomie lui explique que « nous sommes tous des poussières d’étoiles ».'; },
+      docs: function (v) {
+        return [
+          { titre: 'Document 1 : quelques distances', tableau: { tete: ['Astre', 'Distance à la Terre'], lignes: [['Soleil', '150 millions de km'], ['Proxima du Centaure', '4,2 années-lumière'], ['Sirius', '8,6 années-lumière'], ['Véga', '25 années-lumière'], ['Arcturus', '37 années-lumière']] }, texte: 'Une année-lumière (al) est la distance parcourue par la lumière en un an : environ 9,5 × 10¹² km. La lumière se propage à environ 300 000 km/s.' },
+          { titre: 'Document 2 : nous sommes des poussières d’étoiles', texte: 'Juste après le Big Bang, l’Univers ne contenait presque que de l’hydrogène et de l’hélium. Les autres éléments chimiques, comme le carbone, l’oxygène ou le fer, ont été fabriqués au cœur des étoiles, puis dispersés dans l’espace quand ces étoiles ont explosé. Ils se sont retrouvés dans la Terre et dans tous les êtres vivants.' },
+          { titre: 'Document 3 : l’atome de carbone', texte: 'Le noyau de l’atome de carbone contient 6 protons et 6 neutrons. Un atome est électriquement neutre.' }
+        ];
+      },
+      questions: function (v) {
+        var dkm = v.e[1] * 9.5e12;
+        return [
+          { p: 0, t: 'qcm', pts: 2, n: 'univers', c: 'conn', q: 'Le Soleil est…', o: ['une étoile', 'une planète', 'une galaxie'], a: 0, corr: 'Le Soleil est une étoile parmi des milliards dans notre galaxie, la Voie lactée.' },
+          { p: 0, t: 'qcm', pts: 4, n: 'univers', c: 'conn', q: 'Quel classement va de la structure la plus petite à la plus grande ?', o: ['Planète, étoile, galaxie', 'Galaxie, étoile, planète', 'Étoile, planète, galaxie'], a: 0, corr: 'Une galaxie contient des milliards d’étoiles, autour desquelles peuvent tourner des planètes.' },
+          { p: 0, t: 'num', pts: 4, n: 'univers', c: 'calc', q: 'Calculer la distance entre la Terre et ' + v.e[0] + ', en kilomètres. (Écriture scientifique acceptée, par exemple 4,0 × 10^13.)', rep: dkm, tol: 0.03, u: 'km', unites: ['km', 'al', 'm', 'km/s'], equiv: { al: 9.5e12, m: 0.001 }, corr: 'd = ' + fmt(v.e[1]) + ' × 9,5 × 10¹² ≈ ' + fmt(arr(dkm / 1e13, 2) * 1e13) + ' km.' },
+          { p: 0, t: 'qcm', pts: 3, n: 'lumiere', c: 'rais', q: 'La lumière de ' + v.e[0] + ' qu’Inès observe ce soir est partie de l’étoile il y a…', o: ['environ ' + fmt(v.e[1]) + ' ans', 'environ ' + fmt(v.e[1]) + ' jours', 'quelques secondes'], a: 0, corr: 'Une année-lumière est parcourue en un an : la lumière a voyagé ' + fmt(v.e[1]) + ' ans. On voit l’étoile telle qu’elle était à ce moment-là.' },
+          { p: 0, t: 'num', pts: 4, n: 'lumiere', c: 'calc', q: 'Calculer la durée mise par la lumière du Soleil pour parvenir jusqu’à la Terre.', rep: 500, tol: 0.03, u: 's', unites: ['s', 'min', 'h', 'km'], equiv: { min: 60, h: 3600 }, corr: 't = d / v = 150 000 000 / 300 000 = 500 s, soit environ 8 min 20 s.' },
+          { p: 1, t: 'qcm', pts: 3, n: 'atomes', c: 'doc', q: 'Combien d’électrons possède un atome de carbone ?', o: ['6', '12', '0'], a: 0, corr: 'L’atome est neutre : autant d’électrons que de protons, soit 6.' },
+          { p: 1, t: 'redac', pts: 4, n: 'univers', c: 'doc', q: 'À l’aide du document 2, expliquer l’affirmation « nous sommes des poussières d’étoiles ».', modele: 'Les éléments chimiques qui constituent notre corps, comme le carbone ou l’oxygène, ont été fabriqués au cœur d’étoiles anciennes. Dispersés lors de l’explosion de ces étoiles, ils se sont retrouvés dans la matière de la Terre puis dans les êtres vivants.', crit: [['Les éléments de notre corps (carbone, oxygène…) ont été fabriqués dans les étoiles.', 2], ['Ils ont été dispersés à la mort des étoiles et se retrouvent sur Terre et dans les êtres vivants.', 2]] }
+        ];
+      }
+    },
+    {
+      id: 'velo', titre: 'Le vélo à assistance électrique', fam: 'ene',
+      notions: ['puissance', 'ohm', 'circuits', 'cinetique'],
+      parties: ['Le moteur et la batterie', 'L’éclairage du vélo'],
+      gen: function () { return { E: choisir([500, 625, 750]), R: choisir([10, 22, 47]) }; },
+      intro: function (v) { return 'Yanis utilise un vélo à assistance électrique pour aller au lycée. Son moteur est alimenté par une batterie de 36 V qui stocke ' + v.E + ' Wh d’énergie.'; },
+      docs: function (v) {
+        var I = [0, 0.1, 0.2, 0.3, 0.4];
+        return [
+          { titre: 'Document 1 : caractéristiques du vélo', tableau: { tete: ['Tension de la batterie', 'Énergie stockée', 'Puissance du moteur', 'Vitesse maximale assistée'], lignes: [['36 V', v.E + ' Wh', '250 W', '25 km/h']] }, texte: 'Relations utiles : P = U × I ; E = P × t ; d = v × t ; Ec = ½ × m × v².' },
+          { titre: 'Document 2 : circuit d’éclairage', svg: bvCircuit(), texte: 'Le phare avant et le feu arrière sont branchés en dérivation.' },
+          { titre: 'Document 3 : mesures sur la résistance d’un capteur', tableau: { rh: true, tete: ['Intensité I (A)'].concat(I.map(function (x) { return fmt(x); })), lignes: [['Tension U (V)'].concat(I.map(function (x) { return fmt(arr(v.R * x, 2)); }))] } }
+        ];
+      },
+      questions: function (v) {
+        var I = 250 / 36, t = v.E / 250;
+        return [
+          { p: 0, t: 'num', pts: 4, n: 'puissance', c: 'calc', q: 'Calculer l’intensité du courant qui traverse le moteur quand il fonctionne à pleine puissance.', rep: I, tol: 0.02, u: 'A', unites: ['A', 'V', 'W', 'Ω'], corr: 'I = P / U = 250 / 36 ≈ ' + fmt(arr(I, 2)) + ' A.' },
+          { p: 0, t: 'num', pts: 4, n: 'puissance', c: 'calc', q: 'Calculer la durée pendant laquelle la batterie chargée peut alimenter le moteur à pleine puissance.', rep: t, tol: 0.02, u: 'h', unites: ['h', 'min', 's', 'W'], equiv: { min: 1 / 60, s: 1 / 3600 }, corr: 't = E / P = ' + v.E + ' Wh / 250 W = ' + fmt(t) + ' h.' },
+          { p: 0, t: 'num', pts: 3, n: 'vitesse', c: 'calc', q: 'En roulant à 25 km/h pendant toute cette durée, quelle distance Yanis peut-il parcourir avec l’assistance ?', rep: 25 * t, tol: 0.02, u: 'km', unites: ['km', 'm', 'km/h', 'h'], equiv: { m: 0.001 }, corr: 'd = v × t = 25 × ' + fmt(t) + ' = ' + fmt(25 * t) + ' km.' },
+          { p: 0, t: 'redac', pts: 3, n: 'cinetique', c: 'rais', q: 'L’assistance électrique est coupée au-delà de 25 km/h. En utilisant l’énergie cinétique, expliquer l’intérêt de cette limite pour la sécurité.', modele: 'L’énergie cinétique augmente avec le carré de la vitesse : un peu plus de vitesse donne beaucoup plus d’énergie. En cas de choc, les dégâts seraient plus graves et la distance de freinage plus grande.', crit: [['L’énergie cinétique augmente fortement (avec le carré) de la vitesse.', 2], ['Conséquence : choc plus grave ou freinage plus long.', 1]] },
+          { p: 1, t: 'qcm', pts: 3, n: 'circuits', c: 'doc', q: 'Le feu arrière grille. Que devient le phare avant ?', o: ['Il reste allumé', 'Il s’éteint aussi', 'Il brille deux fois moins'], a: 0, corr: 'En dérivation, chaque branche fonctionne indépendamment.' },
+          { p: 1, t: 'qcm', pts: 3, n: 'ohm', c: 'doc', q: 'D’après le document 3, la tension U et l’intensité I sont-elles proportionnelles ?', o: ['Oui, car U / I garde la même valeur', 'Non, car U augmente', 'On ne peut pas le savoir'], a: 0, corr: 'U / I = ' + v.R + ' pour chaque mesure : U est proportionnelle à I. C’est la loi d’Ohm.' },
+          { p: 1, t: 'num', pts: 4, n: 'ohm', c: 'calc', q: 'En déduire la valeur de la résistance du capteur.', rep: v.R, tol: 0.02, u: 'Ω', unites: ['Ω', 'V', 'A', 'W'], corr: 'R = U / I, par exemple ' + fmt(arr(v.R * 0.2, 2)) + ' / 0,2 = ' + v.R + ' Ω.' }
+        ];
+      }
+    }
+  ];
+
+  /* ---------- Sujets type brevet : moteur ---------- */
+  var BV = { s: null, v: null, docs: null, qs: null, rep: {}, ordre: {}, rendu: false, valide: false, auto: {}, langue: [false, false], chrono: true, debut: 0, mt: null, duree: 30 * 60 };
+  function bvData() { if (!etat.brevet || typeof etat.brevet !== 'object') { etat.brevet = {}; } return etat.brevet; }
+  function bvAcces() { return etat.reglages.classe === '3e' || !!etat.reglages.prof; }
+  function bvSujet(id) { for (var i = 0; i < SUJETS.length; i++) { if (SUJETS[i].id === id) { return SUJETS[i]; } } return null; }
+  function bvPts(x) { return String(Math.round(x * 2) / 2).replace('.', ','); }
+  function bvLire(txt) {
+    var EXP = { '⁰': '0', '¹': '1', '²': '2', '³': '3', '⁴': '4', '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9', '⁻': '-', '⁺': '+' };
+    var t = String(txt || '').replace(/[\s  ]/g, '').replace(/,/g, '.').replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+/g, function (m) { return '^' + m.split('').map(function (c) { return EXP[c]; }).join(''); });
+    t = t.replace(/\.$/, '');
+    if (t === '') { return NaN; }
+    var m = t.match(/^([+-]?\d*\.?\d+)(?:[×xX*·]10\^?\(?([+-]?\d+)\)?)$/);
+    if (m) { return Number(m[1]) * Math.pow(10, Number(m[2])); }
+    m = t.match(/^10\^\(?([+-]?\d+)\)?$/);
+    if (m) { return Math.pow(10, Number(m[1])); }
+    return /^[+-]?(\d+\.?\d*|\.\d+)(e[+-]?\d+)?$/i.test(t) ? Number(t) : NaN;
+  }
+  function bvProche(x, cible, tol) { return isFinite(x) && Math.abs(x - cible) <= Math.abs(cible) * (tol || 0.02) + 1e-12; }
+
+  /* Note d’une question corrigée automatiquement ; null pour une question rédigée */
+  function bvNoter(q, i) {
+    var r = BV.rep[i] || {};
+    if (q.t === 'qcm') { return r.choix === q.a ? q.pts : 0; }
+    if (q.t === 'multi') {
+      var sel = r.cases || [], err = 0;
+      for (var k = 0; k < q.o.length; k++) { if ((sel.indexOf(k) >= 0) !== (q.ok.indexOf(k) >= 0)) { err++; } }
+      return err === 0 ? q.pts : (err === 1 ? q.pts / 2 : 0);
+    }
+    if (q.t === 'num') {
+      var x = bvLire(r.val), u = r.unite || '';
+      if (u === q.u && bvProche(x, q.rep, q.tol)) { return q.pts; }
+      if (q.equiv && q.equiv[u] && bvProche(x * q.equiv[u], q.rep, q.tol)) { return q.pts; }
+      if (bvProche(x, q.rep, q.tol)) { return Math.max(0, q.pts - 1); }
+      return 0;
+    }
+    var a = BV.auto[i] || [], s = 0;
+    for (var c = 0; c < q.crit.length; c++) { if (a[c]) { s += q.crit[c][1]; } }
+    return s;
+  }
+  function bvTotal() {
+    var t = 0;
+    for (var i = 0; i < BV.qs.length; i++) { t += bvNoter(BV.qs[i], i); }
+    return t + (BV.langue[0] ? 0.5 : 0) + (BV.langue[1] ? 0.5 : 0);
+  }
+
+  /* ---------- Accueil ---------- */
+  function rendreBrevet() {
+    if (BV.s) { $('bv-accueil').hidden = true; $('bv-copie').hidden = false; return; }
+    $('bv-copie').hidden = true;
+    var z = $('bv-accueil'); z.hidden = false; z.innerHTML = '';
+    z.appendChild(el('h2', null, 'Sujet type brevet'));
+    z.appendChild(el('p', 'intro', 'Entraîne-toi à la partie physique-chimie de l’épreuve de sciences du brevet : 30 minutes, 25 points, des documents à exploiter et des questions de connaissances, de calcul et de raisonnement. Les valeurs changent à chaque nouvelle copie.'));
+    if (!bvAcces()) {
+      var b = el('div', 'bloc bv-garde');
+      b.appendChild(el('h3', null, 'Réservé aux 3e'));
+      b.appendChild(el('p', null, 'Les sujets portent sur tout le programme du cycle 4. Choisis « 3e » dans « Ma classe » pour y accéder.'));
+      var go = el('button', 'btn', 'Je suis en 3e'); go.type = 'button';
+      go.onclick = function () { etat.reglages.classe = '3e'; $('ma-classe').value = '3e'; sauver(); rendreTableau(); construireLegende(); rendreBrevet(); };
+      var ac = el('div', 'actions'); ac.appendChild(go); b.appendChild(ac);
+      z.appendChild(b);
+      return;
+    }
+    var D = bvData(), faits = 0, somme = 0;
+    SUJETS.forEach(function (s) { if (D[s.id]) { faits++; somme += D[s.id].best; } });
+    var reg = el('div', 'bloc bv-reglages');
+    reg.appendChild(el('h3', null, 'Conditions de l’épreuve'));
+    reg.appendChild(el('p', null, 'Calculatrice autorisée. Les démarches engagées, même non abouties, sont valorisées : écris tes calculs. Comme au brevet, la maîtrise de la langue compte aussi.'));
+    var lab = el('label', 'bv-case'); var cb = el('input'); cb.type = 'checkbox'; cb.checked = BV.chrono; cb.onchange = function () { BV.chrono = this.checked; };
+    lab.appendChild(cb); lab.appendChild(document.createTextNode(' Chronomètre de 30 minutes (la copie est ramassée à la fin)'));
+    reg.appendChild(lab);
+    var act = el('div', 'actions');
+    var hasard = el('button', 'btn', 'Sujet au hasard'); hasard.type = 'button';
+    hasard.onclick = function () { var l = SUJETS.filter(function (s) { return !D[s.id]; }); bvCommencer(choisir(l.length ? l : SUJETS).id); };
+    act.appendChild(hasard);
+    reg.appendChild(act);
+    if (faits) { reg.appendChild(el('p', 'consigne', faits + ' sujet' + (faits > 1 ? 's' : '') + ' sur ' + SUJETS.length + ' traité' + (faits > 1 ? 's' : '') + ', moyenne des meilleures notes : ' + bvPts(somme / faits) + ' / 25.')); }
+    z.appendChild(reg);
+    var g = el('div', 'bv-grille');
+    SUJETS.forEach(function (s) {
+      var d = D[s.id];
+      var c = el('button', 'bv-carte fam-' + s.fam + (d ? ' fait' : '')); c.type = 'button';
+      c.appendChild(el('span', 'bv-num', 'Sujet ' + (SUJETS.indexOf(s) + 1)));
+      c.appendChild(el('span', 'bv-titre', s.titre));
+      c.appendChild(el('span', 'bv-notions', s.notions.map(function (id) { return notion(id).nom; }).join(' · ')));
+      c.appendChild(el('span', 'bv-score', d ? 'Meilleure note : ' + bvPts(d.best) + ' / 25 (' + d.essais + ' copie' + (d.essais > 1 ? 's' : '') + ')' : 'Pas encore traité'));
+      c.onclick = function () { bvCommencer(s.id); };
+      g.appendChild(c);
+    });
+    z.appendChild(g);
+  }
+
+  /* ---------- Copie ---------- */
+  function bvCommencer(id) {
+    var s = bvSujet(id);
+    BV.s = s; BV.v = s.gen(); BV.docs = s.docs(BV.v); BV.qs = s.questions(BV.v);
+    BV.rep = {}; BV.auto = {}; BV.langue = [false, false]; BV.rendu = false; BV.valide = false; BV.ordre = {};
+    BV.qs.forEach(function (q, i) { if (q.t === 'qcm' || q.t === 'multi') { var o = []; for (var k = 0; k < q.o.length; k++) { o.push(k); } BV.ordre[i] = melanger(o); } });
+    BV.debut = Date.now();
+    bvConstruire();
+    bvChrono();
+    $('bv-accueil').hidden = true; $('bv-copie').hidden = false;
+    window.scrollTo(0, 0);
+  }
+  function bvArreterChrono() { if (BV.mt) { clearInterval(BV.mt); BV.mt = null; } }
+  function bvChrono() {
+    bvArreterChrono();
+    function maj() {
+      var p = Math.floor((Date.now() - BV.debut) / 1000), z = $('bv-temps');
+      if (!z) { return; }
+      if (BV.chrono) {
+        var r = Math.max(0, BV.duree - p);
+        z.textContent = Math.floor(r / 60) + ' min ' + deux(r % 60) + ' s';
+        z.className = 'bv-temps' + (r <= 300 ? ' urgent' : '');
+        if (r === 0) { bvArreterChrono(); toast('Temps écoulé : ta copie est ramassée.'); bvRendre(); }
+      } else {
+        z.textContent = Math.floor(p / 60) + ' min ' + deux(p % 60) + ' s';
+      }
+    }
+    maj();
+    BV.mt = setInterval(maj, 1000);
+  }
+  function bvDoc(d) {
+    var b = el('div', 'bv-doc');
+    b.appendChild(el('h4', null, d.titre));
+    if (d.svg) { var f = el('div', 'bv-fig'); f.innerHTML = d.svg; b.appendChild(f); }
+    if (d.tableau) {
+      var w = el('div', 'bv-tab-w'), t = el('table', 'bv-tab'), tr = el('tr');
+      d.tableau.tete.forEach(function (h) { tr.appendChild(el('th', null, h)); });
+      t.appendChild(tr);
+      d.tableau.lignes.forEach(function (l) { var r = el('tr'); l.forEach(function (x, k) { r.appendChild(el(k === 0 && d.tableau.rh ? 'th' : 'td', null, x)); }); t.appendChild(r); });
+      w.appendChild(t); b.appendChild(w);
+    }
+    if (d.texte) { b.appendChild(el('p', null, d.texte)); }
+    return b;
+  }
+  function bvConstruire() {
+    var z = $('bv-copie'); z.innerHTML = '';
+    var barre = el('div', 'bv-barre');
+    var gauche = el('div', 'bv-barre-g');
+    gauche.appendChild(el('strong', null, BV.s.titre));
+    gauche.appendChild(el('span', 'consigne', 'Physique-chimie · 25 points'));
+    barre.appendChild(gauche);
+    var tps = el('span', 'bv-temps'); tps.id = 'bv-temps'; tps.setAttribute('aria-live', 'off'); barre.appendChild(tps);
+    var imp = el('button', 'btn sec', 'Imprimer'); imp.type = 'button'; imp.onclick = bvImprimer; barre.appendChild(imp);
+    var ab = el('button', 'btn sec', BV.valide ? 'Retour aux sujets' : 'Quitter'); ab.type = 'button'; ab.id = 'bv-quitter';
+    ab.onclick = function () {
+      if (!BV.valide && !BV.rendu && !confirmeQuitter()) { return; }
+      bvArreterChrono(); BV.s = null; rendreBrevet(); window.scrollTo(0, 0);
+    };
+    barre.appendChild(ab);
+    z.appendChild(barre);
+    var conf = el('div', 'bloc bv-confirm'); conf.id = 'bv-confirm'; conf.hidden = true;
+    conf.appendChild(el('p', null, 'Quitter le sujet ? Tes réponses seront perdues.'));
+    var ca = el('div', 'actions'), oui = el('button', 'btn danger', 'Oui, quitter'), non = el('button', 'btn sec', 'Continuer le sujet');
+    oui.type = non.type = 'button';
+    oui.onclick = function () { bvArreterChrono(); BV.s = null; rendreBrevet(); window.scrollTo(0, 0); };
+    non.onclick = function () { conf.hidden = true; };
+    ca.appendChild(oui); ca.appendChild(non); conf.appendChild(ca); z.appendChild(conf);
+
+    var corps = el('div', 'bv-corps');
+    var colD = el('div', 'bv-docs');
+    colD.appendChild(el('p', 'bv-intro', BV.s.intro(BV.v)));
+    BV.docs.forEach(function (d) { colD.appendChild(bvDoc(d)); });
+    corps.appendChild(colD);
+    var colQ = el('div', 'bv-questions'); colQ.id = 'bv-questions';
+    corps.appendChild(colQ);
+    z.appendChild(corps);
+    bvQuestions();
+  }
+  function confirmeQuitter() { var c = $('bv-confirm'); c.hidden = false; c.scrollIntoView({ block: 'center' }); return false; }
+
+  function bvQuestions() {
+    var z = $('bv-questions'); z.innerHTML = '';
+    var partie = -1;
+    BV.qs.forEach(function (q, i) {
+      if (q.p !== partie) {
+        partie = q.p;
+        var tot = 0; BV.qs.forEach(function (x) { if (x.p === partie) { tot += x.pts; } });
+        z.appendChild(el('h3', 'bv-partie', 'Partie ' + (partie + 1) + ' : ' + BV.s.parties[partie] + ' (' + tot + ' points)'));
+      }
+      z.appendChild(bvQuestion(q, i));
+    });
+    if (BV.rendu) { z.appendChild(bvBlocLangue()); }
+    var act = el('div', 'actions bv-fin');
+    if (!BV.rendu) {
+      var r = el('button', 'btn', 'Rendre ma copie'); r.type = 'button'; r.onclick = bvRendre; act.appendChild(r);
+      act.appendChild(el('span', 'consigne', 'Vérifie que tu as répondu à toutes les questions.'));
+    } else if (!BV.valide) {
+      var v = el('button', 'btn', 'Valider ma note'); v.type = 'button'; v.onclick = bvValider; act.appendChild(v);
+      act.appendChild(el('span', 'consigne', 'Coche d’abord les critères réussis dans tes réponses rédigées.'));
+    }
+    z.appendChild(act);
+    var bil = el('div'); bil.id = 'bv-bilan'; z.appendChild(bil);
+    if (BV.valide) { bvBilan(); }
+    bvMajNote();
+  }
+
+  function bvQuestion(q, i) {
+    var b = el('div', 'bv-q' + (BV.rendu ? ' corrigee' : ''));
+    var tete = el('div', 'bv-q-tete');
+    tete.appendChild(el('span', 'bv-q-num', 'Question ' + (i + 1)));
+    var bar = el('span', 'bv-q-pts'); bar.id = 'bv-pts-' + i;
+    bar.textContent = BV.rendu ? bvPts(bvNoter(q, i)) + ' / ' + q.pts + ' pt' + (q.pts > 1 ? 's' : '') : q.pts + ' point' + (q.pts > 1 ? 's' : '');
+    tete.appendChild(bar);
+    b.appendChild(tete);
+    b.appendChild(el('p', 'q-texte', q.q));
+    var r = BV.rep[i] || (BV.rep[i] = {});
+    if (q.t === 'qcm' || q.t === 'multi') {
+      b.appendChild(el('p', 'consigne bv-consigne', q.t === 'qcm' ? 'Une seule bonne réponse.' : 'Une ou plusieurs bonnes réponses.'));
+      var grp = el('div', 'q-options');
+      BV.ordre[i].forEach(function (k) {
+        var choisi = q.t === 'qcm' ? r.choix === k : (r.cases || []).indexOf(k) >= 0;
+        var o = el('button', 'q-opt bv-opt' + (choisi ? ' choisi' : ''), q.o[k]); o.type = 'button';
+        o.setAttribute('aria-pressed', choisi ? 'true' : 'false');
+        if (BV.rendu) {
+          o.disabled = true;
+          var bon = q.t === 'qcm' ? k === q.a : q.ok.indexOf(k) >= 0;
+          if (bon) { o.className += ' juste'; } else if (choisi) { o.className += ' faux'; }
+        } else {
+          o.onclick = function () {
+            if (q.t === 'qcm') { r.choix = k; } else { r.cases = r.cases || []; var p = r.cases.indexOf(k); if (p >= 0) { r.cases.splice(p, 1); } else { r.cases.push(k); } }
+            var tous = grp.querySelectorAll('.bv-opt');
+            for (var j = 0; j < tous.length; j++) {
+              var kk = BV.ordre[i][j], on = q.t === 'qcm' ? r.choix === kk : r.cases.indexOf(kk) >= 0;
+              tous[j].classList.toggle('choisi', on); tous[j].setAttribute('aria-pressed', on ? 'true' : 'false');
+            }
+          };
+        }
+        grp.appendChild(o);
+      });
+      b.appendChild(grp);
+    } else if (q.t === 'num') {
+      var dem = el('textarea', 'bv-demarche'); dem.rows = 2; dem.placeholder = 'Ma démarche : formule, calcul…'; dem.value = r.dem || ''; dem.setAttribute('aria-label', 'Démarche de la question ' + (i + 1));
+      dem.oninput = function () { r.dem = this.value; }; dem.disabled = BV.rendu;
+      b.appendChild(dem);
+      var lg = el('div', 'bv-num');
+      var inp = el('input'); inp.type = 'text'; inp.setAttribute('inputmode', 'decimal'); inp.placeholder = 'Résultat'; inp.value = r.val || ''; inp.setAttribute('aria-label', 'Résultat de la question ' + (i + 1));
+      inp.oninput = function () { r.val = this.value; }; inp.disabled = BV.rendu;
+      var sel = el('select'); sel.setAttribute('aria-label', 'Unité de la question ' + (i + 1));
+      sel.appendChild(new Option('Unité…', ''));
+      q.unites.forEach(function (u) { sel.appendChild(new Option(u, u)); });
+      sel.value = r.unite || ''; sel.onchange = function () { r.unite = this.value; }; sel.disabled = BV.rendu;
+      lg.appendChild(inp); lg.appendChild(sel); b.appendChild(lg);
+      if (BV.rendu) {
+        var x = bvLire(r.val), note = bvNoter(q, i), msg;
+        if (note === q.pts) { msg = 'Résultat et unité justes.'; }
+        else if (note > 0) { msg = 'Bonne valeur, mais l’unité est absente ou fausse : 1 point en moins.'; }
+        else if (r.val && !isFinite(x)) { msg = 'Ta réponse n’est pas un nombre lisible.'; }
+        else { msg = r.val ? 'Valeur incorrecte.' : 'Pas de réponse.'; }
+        b.appendChild(el('p', 'bv-verdict' + (note === q.pts ? ' ok' : ''), msg));
+      }
+    } else {
+      var ta = el('textarea', 'bv-redac'); ta.rows = 4; ta.placeholder = 'Rédige ta réponse en phrases complètes.'; ta.value = r.txt || ''; ta.setAttribute('aria-label', 'Réponse rédigée de la question ' + (i + 1));
+      ta.oninput = function () { r.txt = this.value; }; ta.disabled = BV.rendu;
+      b.appendChild(ta);
+    }
+    if (BV.rendu) {
+      var c = el('div', 'q-expl bv-corr');
+      if (q.t === 'redac') {
+        c.appendChild(el('p', null, 'Exemple de réponse attendue : ' + q.modele));
+        c.appendChild(el('p', 'bv-auto-titre', BV.valide ? 'Critères réussis :' : 'Compare ta réponse et coche les critères réussis :'));
+        var a = BV.auto[i] || (BV.auto[i] = []);
+        q.crit.forEach(function (cr, k) {
+          var l = el('label', 'bv-case'), cb = el('input'); cb.type = 'checkbox'; cb.checked = !!a[k]; cb.disabled = BV.valide;
+          cb.onchange = function () { a[k] = this.checked; $('bv-pts-' + i).textContent = bvPts(bvNoter(q, i)) + ' / ' + q.pts + ' pts'; bvMajNote(); };
+          l.appendChild(cb); l.appendChild(document.createTextNode(' ' + cr[0] + ' (' + cr[1] + ' pt' + (cr[1] > 1 ? 's' : '') + ')'));
+          c.appendChild(l);
+        });
+      } else {
+        c.appendChild(el('p', null, (q.t === 'num' ? 'Corrigé : ' : '') + q.corr));
+      }
+      var n = notion(q.n);
+      if (n) { c.appendChild(el('p', 'bv-notion', 'Notion : ' + n.nom + ' · ' + BV_COMP[q.c])); }
+      b.appendChild(c);
+    }
+    return b;
+  }
+  function bvBlocLangue() {
+    var b = el('div', 'bv-q corrigee');
+    var tete = el('div', 'bv-q-tete'); tete.appendChild(el('span', 'bv-q-num', 'Maîtrise de la langue'));
+    var p = el('span', 'bv-q-pts'); p.id = 'bv-pts-langue'; p.textContent = bvPts((BV.langue[0] ? 0.5 : 0) + (BV.langue[1] ? 0.5 : 0)) + ' / 1 pt'; tete.appendChild(p);
+    b.appendChild(tete);
+    b.appendChild(el('p', 'consigne', 'Relis tes réponses rédigées et sois honnête :'));
+    [['Mes réponses sont des phrases complètes, sans fautes gênantes.', 0], ['J’ai employé le vocabulaire scientifique et écrit les unités.', 1]].forEach(function (x) {
+      var l = el('label', 'bv-case'), cb = el('input'); cb.type = 'checkbox'; cb.checked = BV.langue[x[1]]; cb.disabled = BV.valide;
+      cb.onchange = function () { BV.langue[x[1]] = this.checked; p.textContent = bvPts((BV.langue[0] ? 0.5 : 0) + (BV.langue[1] ? 0.5 : 0)) + ' / 1 pt'; bvMajNote(); };
+      l.appendChild(cb); l.appendChild(document.createTextNode(' ' + x[0] + ' (0,5 pt)'));
+      b.appendChild(l);
+    });
+    return b;
+  }
+  function bvMajNote() {
+    var z = $('bv-temps');
+    if (BV.rendu && z) { z.textContent = 'Note : ' + bvPts(bvTotal()) + ' / 25'; z.className = 'bv-temps note'; }
+  }
+  function bvRendre() {
+    if (BV.rendu) { return; }
+    bvArreterChrono();
+    BV.rendu = true;
+    BV.dureeFinale = Math.floor((Date.now() - BV.debut) / 1000);
+    bvQuestions();
+    var q = $('bv-quitter'); if (q) { q.textContent = 'Retour aux sujets'; }
+    var premier = document.querySelector('#bv-questions .bv-q');
+    if (premier) { premier.scrollIntoView({ block: 'start' }); }
+    toast('Copie rendue. Lis le corrigé et coche les critères de tes réponses rédigées.');
+  }
+  function bvValider() {
+    BV.valide = true;
+    var note = bvTotal(), D = bvData(), id = BV.s.id;
+    var d = D[id] || (D[id] = { best: 0, essais: 0, r13: false, r20: false });
+    d.essais++; d.der = note; d.date = aujourdhui();
+    if (note > d.best) { d.best = note; }
+    var gains = [];
+    if (note >= 12.5 && !d.r13) { d.r13 = true; gains.push([2, 'sujet de brevet réussi']); }
+    if (note >= 20 && !d.r20) { d.r20 = true; gains.push([1, 'mention au sujet de brevet']); }
+    sauver();
+    bvQuestions();
+    gains.forEach(function (g, k) { setTimeout(function () { donnerBoosters(g[0], g[1]); }, 400 + k * 3800); });
+    if (typeof sonStable === 'function' && note >= 12.5) { try { sonStable(); } catch (e) { } }
+    $('bv-bilan').scrollIntoView({ block: 'start' });
+  }
+  function bvBilan() {
+    var z = $('bv-bilan'); z.innerHTML = '';
+    var note = bvTotal(), b = el('div', 'bloc bv-bilan');
+    b.appendChild(el('h3', null, 'Bilan de la copie'));
+    var gros = el('p', 'bv-note'); gros.appendChild(el('b', null, bvPts(note))); gros.appendChild(document.createTextNode(' / 25'));
+    b.appendChild(gros);
+    var appr = note >= 20 ? 'Excellente copie, digne d’une mention.' : note >= 15 ? 'Très bonne copie : quelques détails à soigner.' : note >= 12.5 ? 'Copie solide : la moyenne est atteinte.' : note >= 8 ? 'Des bases, mais des notions à retravailler avant le brevet.' : 'Reprends les fiches des notions ci-dessous, puis retente un sujet.';
+    b.appendChild(el('p', null, appr));
+    var t = BV.dureeFinale || 0;
+    b.appendChild(el('p', 'consigne', 'Temps passé : ' + Math.floor(t / 60) + ' min ' + deux(t % 60) + ' s' + (t > BV.duree ? ' (au-delà des 30 minutes de l’épreuve)' : '') + '.'));
+    var comp = {};
+    BV.qs.forEach(function (q, i) { var c = comp[q.c] || (comp[q.c] = [0, 0]); c[0] += bvNoter(q, i); c[1] += q.pts; });
+    var cz = el('div', 'bv-comps');
+    Object.keys(BV_COMP).forEach(function (k) {
+      if (!comp[k]) { return; }
+      var l = el('div', 'bv-comp'), pc = Math.round(100 * comp[k][0] / comp[k][1]);
+      l.appendChild(el('span', 'bv-comp-nom', BV_COMP[k]));
+      var j = el('span', 'bv-jauge'), f = el('i'); f.style.width = pc + '%'; f.className = pc >= 70 ? 'ok' : (pc >= 40 ? 'moy' : 'ko'); j.appendChild(f); l.appendChild(j);
+      l.appendChild(el('span', 'bv-comp-val', bvPts(comp[k][0]) + ' / ' + comp[k][1]));
+      cz.appendChild(l);
+    });
+    b.appendChild(cz);
+    var perdues = {};
+    BV.qs.forEach(function (q, i) { var p = q.pts - bvNoter(q, i); if (p > 0) { perdues[q.n] = (perdues[q.n] || 0) + p; } });
+    var ids = Object.keys(perdues).sort(function (a, c) { return perdues[c] - perdues[a]; });
+    if (ids.length) {
+      b.appendChild(el('p', 'bv-auto-titre', 'Notions à revoir en priorité :'));
+      var ul = el('div', 'bv-revoir');
+      ids.forEach(function (id) {
+        var n = notion(id); if (!n) { return; }
+        var bt = el('button', 'btn sec fam-' + n.fam, n.nom + ' (−' + bvPts(perdues[id]) + ')'); bt.type = 'button';
+        if (estDebloque(id)) { bt.onclick = function () { ouvrirNotion(id); }; } else { bt.disabled = true; bt.title = 'Notion encore verrouillée dans le tableau'; }
+        ul.appendChild(bt);
+      });
+      b.appendChild(ul);
+    }
+    var a = el('div', 'actions');
+    var re = el('button', 'btn', 'Nouvelle copie de ce sujet'); re.type = 'button'; re.onclick = function () { bvCommencer(BV.s.id); };
+    var ret = el('button', 'btn sec', 'Choisir un autre sujet'); ret.type = 'button'; ret.onclick = function () { BV.s = null; rendreBrevet(); window.scrollTo(0, 0); };
+    a.appendChild(re); a.appendChild(ret); b.appendChild(a);
+    z.appendChild(b);
+  }
+  function bvImprimer() {
+    document.body.classList.add('impression-brevet');
+    var fin = function () { document.body.classList.remove('impression-brevet'); window.removeEventListener('afterprint', fin); };
+    window.addEventListener('afterprint', fin);
+    window.print();
+  }
+
+  function majHautBrevet() { var n = document.querySelector('.nav'); if (n && window.innerWidth > 700) { document.documentElement.style.setProperty('--bv-top', (n.getBoundingClientRect().height + 8) + 'px'); } }
 
   /* ---------- Démarrage ---------- */
   function init() {
